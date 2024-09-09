@@ -1,0 +1,79 @@
+<div class="row">
+
+          <div class="col-lg-4 col-xs-6">
+                    <div class="small-box bg-aqua">
+                              <div class="inner">
+                                        <h3><?php echo $all_toko; ?></h3>
+
+                                        <p>Jumlah Toko</p>
+                              </div>
+                              <div class="icon">
+                                        <i class="ion ion-ios-briefcase-outline"></i>
+                              </div>
+                              <a href="<?php echo base_url('Report') ?>" class="small-box-footer">More info <i
+                                                  class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+          </div>
+          <div class="col-lg-4 col-xs-6">
+                    <div class="small-box bg-green">
+                              <div class="inner">
+                                        <h3><?php echo $bca_online; ?></h3>
+
+                                        <p>Edc Bca Online</p>
+                              </div>
+                              <div class="icon">
+                                        <i class="ion ion-ios-briefcase-outline"></i>
+                              </div>
+                              <a href="<?php echo base_url('Report') ?>" class="small-box-footer">More info <i
+                                                  class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+          </div>
+
+          <div class="col-lg-4 col-xs-6">
+                    <div class="small-box bg-yellow">
+                              <div class="inner">
+                                        <h3><?php echo $bca_offline_total; ?></h3>
+
+                                        <p>Edc Bca Offline</p>
+                              </div>
+                              <div class="icon">
+                                        <i class="ion ion-ios-briefcase-outline"></i>
+                              </div>
+                              <a href="<?php echo base_url('Report') ?>" class="small-box-footer">More info <i
+                                                  class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+          </div>
+
+          <div class="col-lg-4 col-xs-6">
+                    <div class="small-box bg-red">
+                              <div class="inner">
+                                        <h3><?php echo $bca_edc_rusak; ?></h3>
+
+                                        <p>Edc Bca rusak Fisik & Kabel Usb</p>
+                              </div>
+                              <div class="icon">
+                                        <i class="ion ion-ios-briefcase-outline"></i>
+                              </div>
+                              <a href="<?php echo base_url('Report/index2') ?>" class="small-box-footer">More info <i
+                                                  class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+          </div>
+
+          <div class="col-lg-4 col-xs-6">
+                    <div class="small-box bg-blue">
+                              <div class="inner">
+                                        <h3><?php echo $all_toko; ?></h3>
+
+                                        <p>Detail Tracking Trx Edc Bca Per Days</p>
+                              </div>
+                              <div class="icon">
+                                        <i class="ion ion-ios-briefcase-outline"></i>
+                              </div>
+                              <a href="<?php echo base_url('Report/index3') ?>" class="small-box-footer">More info <i
+                                                  class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+          </div>
+
+
+
+          </script>
