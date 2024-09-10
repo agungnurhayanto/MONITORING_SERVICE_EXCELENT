@@ -40,7 +40,7 @@ class Auth extends CI_Controller
 					'status' => "Loged in"
 				];
 				$this->session->set_userdata($session);
-				redirect('Report');
+				redirect('Home');
 			}
 		} else {
 			$this->session->set_flashdata('error_msg', validation_errors());

@@ -35,16 +35,34 @@
                     } ?>>
                                         <a href="<?php echo base_url('Report'); ?>">
                                                   <i class="fa fa-server"></i>
-                                                  <span>Data Edc Bca Online</span>
+                                                  <span>Data Lan 1 Gb Nok</span>
                                         </a>
                               </li>
 
                               <li <?php if ($page == 'report') {
                          echo 'class="active"';
                     } ?>>
-                                        <a href="<?php echo base_url('Report/index3'); ?>">
-                                                  <i class="fa fa-server"></i>
-                                                  <span>Report Detail Trx</span>
+                                        <a href="<?php echo base_url('Report/cpu_usage'); ?>">
+                                                  <i class="fa fa-laptop"></i>
+                                                  <span>CPU Usage >=80% </span>
+                                        </a>
+                              </li>
+
+                               <li <?php if ($page == 'report') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="<?php echo base_url('Report/cpu_suhu'); ?>">
+                                                  <i class="fa fa-fire"></i>
+                                                  <span>CPU Suhu >=80% </span>
+                                        </a>
+                              </li>
+
+                              <li <?php if ($page == 'report') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="<?php echo base_url('Report/cpu_boot'); ?>">
+                                                  <i class="fa fa-windows"></i>
+                                                  <span>Boot Time Windows </span>
                                         </a>
                               </li>
 

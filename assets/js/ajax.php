@@ -8,7 +8,7 @@ var MyTable = $('#list-data').dataTable({
           "autoWidth": false
 });
 
-var MyTable2 = $('#list-data2').dataTable({
+var MyTable2 = $('#list-data-cpu-usage').dataTable({
           "paging": true,
           "lengthChange": true,
           "searching": true,
@@ -17,7 +17,16 @@ var MyTable2 = $('#list-data2').dataTable({
           "autoWidth": false
 });
 
-var MyTable3 = $('#list-data3').dataTable({
+var MyTable3 = $('#list-data-cpu-suhu').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+});
+
+var MyTable4 = $('#list-data-cpu-boot').dataTable({
           "paging": true,
           "lengthChange": true,
           "searching": true,
@@ -31,6 +40,7 @@ window.onload = function() {
           tampilReport();
           tampilReport2();
           tampilReport3();
+          tampilReport4();
 
           <?php
           if ($this->session->flashdata('msg') != '') {
@@ -44,11 +54,15 @@ function refresh() {
 }
 
 function refresh2() {
-          MyTable2 = $('#list-data2').dataTable();
+          MyTable2 = $('#list-data-cpu-usage').dataTable();
 }
 
 function refresh3() {
-          MyTable3 = $('#list-data3').dataTable();
+          MyTable3 = $('#list-data-cpu-suhu').dataTable();
+}
+
+function refresh4() {
+          MyTable4 = $('#list-data-cpu-boot').dataTable();
 }
 
 function effect_msg_form() {
@@ -82,12 +96,12 @@ function tampilReport() {
 
 function tampilReport2() {
           $.ajax({
-                    url: '<?php echo base_url('Report/tampil2'); ?>',
+                    url: '<?php echo base_url('Report/tampil_cpu_usage'); ?>',
                     type: 'GET',
-                    cache: true, // Menambah cache di AJAX call
+                    cache: true, 
                     success: function(data) {
                               MyTable2.fnDestroy();
-                              $('#data-report2').html(data);
+                              $('#data-report-cpu-usage').html(data);
                               refresh2();
                     }
           });
@@ -95,14 +109,29 @@ function tampilReport2() {
 
 function tampilReport3() {
           $.ajax({
-                    url: '<?php echo base_url('Report/tampil3'); ?>',
+                    url: '<?php echo base_url('Report/tampil_cpu_suhu'); ?>',
                     type: 'GET',
                     cache: true, // Menambah cache di AJAX call
                     success: function(data) {
                               MyTable3.fnDestroy();
-                              $('#data-report3').html(data);
+                              $('#data-report-cpu-suhu').html(data);
                               refresh3();
                     }
           });
 }
+
+function tampilReport4() {
+          $.ajax({
+                    url: '<?php echo base_url('Report/tampil_cpu_boot'); ?>',
+                    type: 'GET',
+                    cache: true, // Menambah cache di AJAX call
+                    success: function(data) {
+                              MyTable4.fnDestroy();
+                              $('#data-report-cpu-boot').html(data);
+                              refresh4();
+                    }
+          });
+}
+
+
 </script>

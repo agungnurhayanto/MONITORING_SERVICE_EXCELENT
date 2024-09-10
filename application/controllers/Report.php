@@ -12,85 +12,72 @@ class Report extends AUTH_Controller
 	public function index()
 	{
 		$data['userdata'] = $this->userdata;
-		$data['page'] = "EDC ONLINE";
-		$data['judul'] = "Data Edc Online";
-		$data['deskripsi'] = "Report Dashboard Edc Online";
-		$data['dataReport'] = $this->M_data->bca_online();
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
 
 		$this->template->views('report/home', $data);
 	}
 
-	public function index2()
-	{
-		$data['userdata'] = $this->userdata;
-		$data['page'] = "EDC BCA RUSAK";
-		$data['judul'] = "Data Edc Bca Rusak";
-		$data['deskripsi'] = "Report Dashboard Edc Online";
-		$data['bcaRusak'] = $this->M_data->bca_rusak('edc_rusak')->result();
-
-		$this->template->views('report/home2', $data);
-	}
-
-	public function index3()
-	{
-		$data['userdata'] = $this->userdata;
-		$data['page'] = "EDC TRACKING TRX";
-		$data['judul'] = "Data Trx Harian Edc";
-		$data['deskripsi'] = "Report Dashboard Edc Online";
-		$data['dataReportTrx'] = $this->M_data->bca_online();
-
-		$this->template->views('report/home3', $data);
-	}
-
 	public function tampil()
 	{
-		$data['BcaOnline'] = $this->M_data->bca_online();
-
-		foreach ($data['BcaOnline'] as $row) {
-
-			if ($row['status'] != 'Offline') {
-				$row['status'] = 'Online';
-			}
-		}
-
+		$data['dataReport'] = $this->M_data->select_lan_1gb('services_excelent')->result();
 		$this->load->view('report/list_data', $data);
 	}
 
-	public function tampil2()
+	public function cpu_usage()
 	{
-		$data['BcaRusak'] = $this->M_data->bca_rusak('edc_rusak')->result();
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
 
-		$this->load->view('report/list_data2', $data);
+		$this->template->views('report/cpu_usage', $data);
 	}
 
-	public function tampil3()
+	public function tampil_cpu_usage()
 	{
-		$data['trackingTrx'] = $this->M_data->trackingTrx();
+		$data['dataReport'] = $this->M_data->select_cpu_usage('services_excelent')->result();
+		$this->load->view('report/list_data_cpu_usage', $data);
+	}
 
-		foreach ($data['trackingTrx'] as &$row) {
-			foreach ($row['status'] as &$status) {
-				if ($status != 'Off') {
-					$status = 'On';
-				}
-			}
-		}
+	public function cpu_suhu()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
 
-		$this->load->view('report/list_data3', $data);
+		$this->template->views('report/cpu_suhu', $data);
+	}
+
+	public function tampil_cpu_suhu()
+	{
+		$data['dataReport'] = $this->M_data->select_cpu_suhu('services_excelent')->result();
+		$this->load->view('report/list_data_cpu_suhu', $data);
+	}
+
+	public function cpu_boot()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
+
+		$this->template->views('report/cpu_boot', $data);
+	}
+
+	public function tampil_cpu_boot()
+	{
+		$data['dataReport'] = $this->M_data->select_cpu_boot('services_excelent')->result();
+		$this->load->view('report/list_data_cpu_boot', $data);
 	}
 
 
 
 
-	// public function detail()
-	// {
-	// 	$data['userdata'] 	= $this->userdata;
-
-	// 	$id 				= trim($_POST['id']);
-	// 	$data['dataReport'] = $this->M_data->select_by_id($id);
 
 
-	// 	echo show_my_modal('modals/modal_detail_report', 'detail-report', $data, 'lg');
-	// }
 
 	public function export()
 	{
