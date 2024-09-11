@@ -28,6 +28,8 @@
                                                   <th style="background-color: darkcyan; color: white;">Lan 1 GB </th>
                                                   <th style="background-color: darkcyan; color: white;">Tgl Tarik Data
                                                   </th>
+                                                   <th style="background-color: darkcyan; color: white;">Keterangan
+                                                  </th>
 
 
 

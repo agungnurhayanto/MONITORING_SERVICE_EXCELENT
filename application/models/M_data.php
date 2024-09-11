@@ -19,6 +19,92 @@ class M_data extends CI_Model
 		return $data->num_rows();
 	}
 
+   public function total_rows_lan($edp_names)
+  
+   {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.lan_speed', '100 MB/s');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+   public function total_rows_usage($edp_names)
+   
+   {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.cpu_usage >=', 80);
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+   
+
+  public function total_rows_suhu($edp_names)
+   
+    {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.suhu >=', 80);
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+
+     public function total_rows_boottime($edp_names)
+   
+    {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where("CAST(TRIM(REPLACE(boot_time, ' Menit', '')) AS DECIMAL(5, 2)) >=", 4, FALSE);
+        $this->db->where('edp.nama_edp', $name);
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
 
 	public function select_lan_1gb($table)
     {

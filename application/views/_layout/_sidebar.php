@@ -66,6 +66,15 @@
                                         </a>
                               </li>
 
+                               <li <?php if ($page == 'report') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="#">
+                                                  <i class="fa fa-windows"></i>
+                                                  <span>Key Windows -  comming soon </span>
+                                        </a>
+                              </li>
+
 
 
 

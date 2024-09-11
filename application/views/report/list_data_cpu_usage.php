@@ -10,6 +10,7 @@ foreach ($dataReport as $key => $row) {
           <td><?php echo $row->nama_edp; ?></td>
           <td><?php echo $row->cpu_usage; ?></td>
           <td><?php echo $row->request; ?></td>
+           <td><?php echo $row->keterangan; ?></td>
 </tr>
 <?php
 }

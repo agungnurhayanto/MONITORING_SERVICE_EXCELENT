@@ -16,7 +16,7 @@ class Auth extends CI_Controller
 		if ($session == '') {
 			$this->load->view('login');
 		} else {
-			redirect('Report');
+			redirect('Home');
 		}
 	}
 
