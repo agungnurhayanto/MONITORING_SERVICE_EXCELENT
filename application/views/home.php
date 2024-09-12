@@ -114,6 +114,95 @@ $users = [
 
 ?>
 
+
+ <style>
+  /* Custom styling untuk memperbesar progress bar */
+   .progress-bar {
+    height: 100px; /* Perbesar tinggi progress bar */
+    font-size: 18px; /* Perbesar ukuran teks di dalam progress bar */
+    line-height: 20px; /* Selaraskan teks secara vertikal */
+    font-weight: bold; /* Buat teks lebih tebal */
+    padding: 0 10px; /* Tambahkan padding di kanan dan kiri untuk ruang teks */
+  }
+
+  .progress {
+    background-color: #f0f0f0; /* Warna latar belakang progress bar */
+    border-radius: 15px; /* Membuat sudut yang lebih membulat */
+  }
+
+  .progress-bar span {
+    color: white; /* Ubah warna teks menjadi putih */
+  }
+</style>
+
+<div class="col-md-12">
+  <div class="box box-solid">
+    <div class="box-header with-border">
+      <h3 class="box-title">Progress</h3>
+    </div>
+
+    <div class="box-body">
+      <?php 
+        $data_lan_terpakai = $ttl_toko - $data_lan_sisa; 
+        $persentase_lan_terpakai = ($data_lan_terpakai / $ttl_toko) * 100;
+
+
+        $data_cpu_usage = $data_usage_total;
+        $persentase_total_usage_ok = ($data_cpu_usage / $ttl_toko) * 100;
+
+        $data_cpu_suhu = $data_suhu_total;
+        $persentase_total_suhu_ok = ($data_cpu_suhu / $ttl_toko) * 100;
+
+         $data_boot_time = $data_boottime_total;
+         $persentase_total_boot_time = ($data_boot_time / $ttl_toko) * 100;
+
+      ?>
+      
+      <div class="row">
+        <!-- Progress bar pertama -->
+        <div class="col-md-6">
+          <div class="progress">
+            <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="<?= $data_lan_terpakai; ?>" aria-valuemin="0" aria-valuemax="<?= $ttl_toko; ?>" style="width: <?= $persentase_lan_terpakai; ?>%">
+              <span><?= $data_lan_terpakai; ?> Station sudah menggunakan LAN 1GB dari <?= $ttl_toko; ?> total toko (<?= round($persentase_lan_terpakai, 2); ?>%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress bar kedua -->
+        <div class="col-md-6">
+          <div class="progress">
+            <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="<?= $data_lan_terpakai; ?>" aria-valuemin="0" aria-valuemax="<?= $ttl_toko; ?>" style="width: <?= $persentase_total_usage_ok; ?>%">
+              <span><?= $data_cpu_usage; ?> Cpu Usage nya sudah OK dari <?= $ttl_toko; ?> total toko (<?= round($persentase_total_usage_ok, 2); ?>%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="row">
+        <!-- Progress bar pertama -->
+        <div class="col-md-6">
+          <div class="progress">
+            <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="<?= $data_lan_terpakai; ?>" aria-valuemin="0" aria-valuemax="<?= $ttl_toko; ?>" style="width: <?= $persentase_total_suhu_ok; ?>%">
+              <span><?= $data_cpu_suhu; ?> Suhu Cpu sudah OK dari <?= $ttl_toko; ?> total toko (<?= round($persentase_total_suhu_ok, 2); ?>%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress bar kedua -->
+        <div class="col-md-6">
+          <div class="progress">
+            <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="<?= $data_lan_terpakai; ?>" aria-valuemin="0" aria-valuemax="<?= $ttl_toko; ?>" style="width: <?= $persentase_total_boot_time; ?>%">
+              <span><?= $data_boot_time; ?> Boot Time windows Kurang Dari 4 Menit dari <?= $ttl_toko; ?> total toko (<?= round($persentase_total_boot_time, 2); ?>%)</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+
+      
+    
+
 <div class="row">
     <?php foreach ($users as $user): ?>
         <div class="col-md-3">
@@ -153,37 +242,9 @@ $users = [
                 </div>
             </div>
         </div>
+
     <?php endforeach; ?>
-
-<div class="col-md-6">
-<div class="box box-solid">
-<div class="box-header with-border">
-<h3 class="box-title">Progress</h3>
 </div>
 
-<div class="box-body">
-<div class="progress">
-<div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-<span class="sr-only">100% Complete (success)</span>
-</div>
-</div>
-<div class="progress">
-<div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-<span class="sr-only">100% Complete</span>
-</div>
-</div>
-<div class="progress">
-<div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-<span class="sr-only">100% Complete (warning)</span>
-</div>
-</div>
-<div class="progress">
-<div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-<span class="sr-only">100% Complete</span>
-</div>
-</div>
-</div>
-
-</div>
 
 

@@ -1,3 +1,30 @@
+
+
+
+<!-- Modal HTML -->
+<div class="modal fade" id="flashMessageModal" tabindex="-1" role="dialog" aria-labelledby="flashMessageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="flashMessageModalLabel"><h1>Ngopi dulu gaes kalo ngantuk mah !!!</h1></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php
+        if ($this->session->flashdata('berhasil')) {
+          echo '<div class="alert alert-success">' . $this->session->flashdata('berhasil') . '</div>';
+        }
+        if ($this->session->flashdata('gagal')) {
+          echo '<div class="alert alert-danger">' . $this->session->flashdata('gagal') . '</div>';
+        }
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
 <aside class="main-sidebar">
           <!-- sidebar: style can be found in sidebar.less -->
           <section class="sidebar">
@@ -79,7 +106,49 @@
 
 
                     </ul>
-                    <!-- /.sidebar-menu -->
+                    
           </section>
-          <!-- /.sidebar -->
+         
+           <div class="sidebar-item mb-3">
+                              <button class="form-control btn btn-success" data-toggle="modal"
+                                        data-target="#import-se"><i
+                                                  class="glyphicon glyphicon glyphicon-floppy-open"> Import Data SE</i></button>
+
+                    </div>
+                    <br/>
+                    <div class="sidebar-item mb-3">
+
+                              <a href="<?php echo base_url('Report/download_template'); ?>"
+                                        class="form-control btn btn-info">
+                                        <i class="glyphicon glyphicon-download"> Download Template</i> 
+                    </a>
+                             
+           </div>
+
+
 </aside>
+
+<div id="tempat-modal"></div>
+
+<?php
+$data['judul'] = ' Report Service Excelent';
+$data['url'] = 'home/import';
+echo show_my_modal('modals/modal_import', 'import-se', $data);
+
+?>
+
+<script>
+$(document).ready(function() {
+          // Menghilangkan pesan flash setelah 5 detik
+          setTimeout(function() {
+                    $(".alert").fadeOut("slow");
+          }, 5000);
+});
+
+
+ $(document).ready(function() {
+    <?php if ($this->session->flashdata('berhasil') || $this->session->flashdata('gagal')): ?>
+      $('#flashMessageModal').modal('show');
+    <?php endif; ?>
+  });
+</script>

@@ -19,6 +19,49 @@ class M_data extends CI_Model
 		return $data->num_rows();
 	}
 
+    public function total_rows_lan_1gb()
+    {
+
+        $this->db->from('services_excelent');
+        $this->db->where_in('services_excelent.lan_speed', ['1000 MB/s','-']);
+        $data = $this->db->get();
+
+        return $data->num_rows();
+    }
+
+     public function total_rows_usage_row()
+
+     {
+
+        $this->db->from('services_excelent');
+        $this->db->where('services_excelent.cpu_usage >=', 80);
+    
+        $data = $this->db->get();
+        return $data->num_rows();
+     }
+
+      public function total_rows_suhu_row()
+
+     {
+
+        $this->db->from('services_excelent');
+        $this->db->where('services_excelent.suhu >=', 80);
+    
+        $data = $this->db->get();
+        return $data->num_rows();
+     }
+
+      public function total_rows_boot_time()
+
+     {
+
+        $this->db->from('services_excelent');
+        $this->db->where("CAST(TRIM(REPLACE(boot_time, ' Menit', '')) AS DECIMAL(5, 2)) >=", 4, FALSE);
+    
+        $data = $this->db->get();
+        return $data->num_rows();
+     }
+
    public function total_rows_lan($edp_names)
   
    {
@@ -153,7 +196,11 @@ class M_data extends CI_Model
     return $this->db->get();
 }
 
+public function insert_data_excel($data)
+    {
+        $this->db->insert_batch('services_excelent', $data);
 
-
+        return $this->db->affected_rows();
+    }
 
 }
