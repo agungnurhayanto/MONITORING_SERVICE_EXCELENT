@@ -4,7 +4,7 @@
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><small>Dashboard </small></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>REPORT</b> Edc</span>
+                    <span class="logo-lg"><b>REPORT</b> SE</span>
           </a>
 
           <!-- nav -->

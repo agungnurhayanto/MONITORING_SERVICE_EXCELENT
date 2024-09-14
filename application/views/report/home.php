@@ -23,9 +23,13 @@
                                                   <th style="background-color: darkcyan; color: white;">No</th>
                                                   <th style="background-color: darkcyan; color: white;">Kdtk</th>
                                                   <th style="background-color: darkcyan; color: white;">Nama Toko</th>
-                                                  <th style="background-color: darkcyan; color: white;">Am</th>
-                                                  <th style="background-color: darkcyan; color: white;">As</th>
-                                                  <th style="background-color: darkcyan; color: white;">Status Trx</th>
+                                                  <th style="background-color: darkcyan; color: white;">Station</th>
+                                                  <th style="background-color: darkcyan; color: white;">Nama Edp</th>
+                                                  <th style="background-color: darkcyan; color: white;">Lan 1 GB </th>
+                                                  <th style="background-color: darkcyan; color: white;">Tgl Tarik Data
+                                                  </th>
+                                                   <th style="background-color: darkcyan; color: white;">Keterangan
+                                                  </th>
 
 
 

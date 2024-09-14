@@ -75,32 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.36.229',
-	'username' => 'admin',
-	'password' => '123456',
-	'database' => 'poscabang',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-
-$db['server_2'] = array(
-	'dsn'	=> '',
-	'hostname' => '192.168.36.117',
-	'username' => 'eisg026',
-	'password' => 'c@BQ1TsOk3L@H',
-	'database' => 'indomaret',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'bojogalak',
+	'database' => 'service_excelent',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

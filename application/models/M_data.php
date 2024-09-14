@@ -11,296 +11,196 @@ class M_data extends CI_Model
 		$this->db = $this->load->database('default', TRUE);
 	}
 
-
 	public function total_rows()
 	{
-		$data = $this->db->get('master_toko');
+		$data = $this->db->get('services_excelent');
 
 
 		return $data->num_rows();
 	}
 
+    public function total_rows_lan_1gb()
+    {
 
-	public function online_bca_rows()
+        $this->db->from('services_excelent');
+        $this->db->where_in('services_excelent.lan_speed', ['1000 MB/s','-']);
+        $data = $this->db->get();
+
+        return $data->num_rows();
+    }
+
+     public function total_rows_usage_row()
+
+     {
+
+        $this->db->from('services_excelent');
+        $this->db->where('services_excelent.cpu_usage >=', 80);
+    
+        $data = $this->db->get();
+        return $data->num_rows();
+     }
+
+      public function total_rows_suhu_row()
+
+     {
+
+        $this->db->from('services_excelent');
+        $this->db->where('services_excelent.suhu >=', 80);
+    
+        $data = $this->db->get();
+        return $data->num_rows();
+     }
+
+      public function total_rows_boot_time()
+
+     {
+
+        $this->db->from('services_excelent');
+        $this->db->where("CAST(TRIM(REPLACE(boot_time, ' Menit', '')) AS DECIMAL(5, 2)) >=", 4, FALSE);
+    
+        $data = $this->db->get();
+        return $data->num_rows();
+     }
+
+   public function total_rows_lan($edp_names)
+  
+   {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.lan_speed', '100 MB/s');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+   public function total_rows_usage($edp_names)
+   
+   {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.cpu_usage >=', 80);
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+   
+
+  public function total_rows_suhu($edp_names)
+   
+    {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.suhu >=', 80);
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+
+     public function total_rows_boottime($edp_names)
+   
+    {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where("CAST(TRIM(REPLACE(boot_time, ' Menit', '')) AS DECIMAL(5, 2)) >=", 4, FALSE);
+        $this->db->where('edp.nama_edp', $name);
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+
+	public function select_lan_1gb($table)
+    {
+    return $this->db
+        ->select('services_excelent.*, edp.nik, edp.nama_edp')
+        ->from('services_excelent')
+        ->join('edp', 'services_excelent.kdtk = edp.kdtk')
+        ->where('services_excelent.lan_speed', '100 MB/s')
+        ->order_by('edp.nik', 'ASC')
+        ->get(); 
+
+        }
+
+
+	public function select_cpu_usage($table)
 	{
-		$bulan_tahun_sekarang = date('mY');
-		$bulan_tahun_sebelumnya = date('mY', strtotime('-1 month'));
-		$trxEdcSekarang = 'EDC' . $bulan_tahun_sekarang;
-		$trxEdcSebelumnya = 'EDC' . $bulan_tahun_sebelumnya;
-
-		$second_db = $this->load->database('server_2', TRUE);
-
-		// Query untuk bulan sekarang
-		$subquery_sekarang = $second_db->query("SELECT DISTINCT toko
-           FROM $trxEdcSekarang
-           WHERE tanggal_sales >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
-           AND TID != ' '
-           AND kode_bank = 'B01'");
-
-		// Query untuk bulan sebelumnya
-		$subquery_sebelumnya = $second_db->query("SELECT DISTINCT toko
-           FROM $trxEdcSebelumnya
-           WHERE tanggal_sales >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
-           AND TID != ' '
-           AND kode_bank = 'B01'");
-
-		// Gabungkan hasil dari kedua query
-		$toko_data_sekarang = $subquery_sekarang->result_array();
-		$toko_data_sebelumnya = $subquery_sebelumnya->result_array();
-		$toko_data = array_merge($toko_data_sekarang, $toko_data_sebelumnya);
-
-		$kd_toko_array = array();
-		foreach ($toko_data as $toko) {
-			$kd_toko_array[] = $toko['toko'];
-		}
-
-		$kd_toko_string = implode("','", $kd_toko_array);
-
-		$query = $this->db->query("SELECT * FROM master_toko");
-		$master_toko_data = $query->result_array();
-
-		// Query untuk mendapatkan toko yang rusak fisik dari tabel edc_rusak
-		$edc_rusak_query = $this->db->query("SELECT DISTINCT kdtk FROM edc_rusak");
-		$edc_rusak_data = $edc_rusak_query->result_array();
-		$edc_rusak_array = array();
-
-		foreach ($edc_rusak_data as $rusak) {
-			$edc_rusak_array[] = $rusak['kdtk'];
-		}
-
-		$online_count = 0;
-
-		foreach ($master_toko_data as $toko) {
-			if (in_array($toko['kdtk'], $kd_toko_array) && !in_array($toko['kdtk'], $edc_rusak_array)) {
-				$online_count++;
-			}
-		}
-
-		return $online_count;
+		return $this->db
+        ->select('services_excelent.*, edp.nik, edp.nama_edp') 
+        ->from('services_excelent')                             
+        ->join('edp', 'services_excelent.kdtk = edp.kdtk')    
+        ->where('services_excelent.cpu_usage >=', 80)      
+        ->order_by('edp.nik', 'ASC')                   
+        ->get();
 	}
 
 
-
-	public function offline_bca_rows()
+	public function select_cpu_suhu($table)
 	{
-		$bulan_tahun_sekarang = date('mY');
-		$bulan_tahun_sebelumnya = date('mY', strtotime('-1 month'));
-		$trxEdcSekarang = 'EDC' . $bulan_tahun_sekarang;
-		$trxEdcSebelumnya = 'EDC' . $bulan_tahun_sebelumnya;
-
-		$second_db = $this->load->database('server_2', TRUE);
-
-		// Query untuk bulan sekarang
-		$subquery_sekarang = $second_db->query("SELECT DISTINCT toko
-       FROM $trxEdcSekarang
-       WHERE tanggal_sales >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
-       AND TID != ' '
-       AND kode_bank = 'B01'");
-
-		// Query untuk bulan sebelumnya
-		$subquery_sebelumnya = $second_db->query("SELECT DISTINCT toko
-       FROM $trxEdcSebelumnya
-       WHERE tanggal_sales >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
-       AND TID != ' '
-       AND kode_bank = 'B01'");
-
-		// Gabungkan hasil dari kedua query
-		$toko_data_sekarang = $subquery_sekarang->result_array();
-		$toko_data_sebelumnya = $subquery_sebelumnya->result_array();
-		$toko_data = array_merge($toko_data_sekarang, $toko_data_sebelumnya);
-
-		$kd_toko_array = array();
-		foreach ($toko_data as $toko) {
-			$kd_toko_array[] = $toko['toko'];
-		}
-
-		// Query untuk mendapatkan toko yang rusak fisik dari tabel edc_rusak
-		$edc_rusak_query = $this->db->query("SELECT DISTINCT kdtk FROM edc_rusak");
-		$edc_rusak_data = $edc_rusak_query->result_array();
-		$edc_rusak_array = array();
-
-		foreach ($edc_rusak_data as $rusak) {
-			$edc_rusak_array[] = $rusak['kdtk'];
-		}
-
-		// Query untuk mendapatkan semua toko dari master_toko
-		$query = $this->db->query("SELECT * FROM master_toko");
-		$master_toko_data = $query->result_array();
-
-		$offline_count = 0;
-
-		foreach ($master_toko_data as $toko) {
-			if (!in_array($toko['kdtk'], $kd_toko_array) && !in_array($toko['kdtk'], $edc_rusak_array)) {
-				$offline_count++;
-			}
-		}
-
-		return $offline_count;
+		return $this->db
+        ->select('services_excelent.*, edp.nik, edp.nama_edp') 
+        ->from('services_excelent')                             
+        ->join('edp', 'services_excelent.kdtk = edp.kdtk')    
+        ->where('services_excelent.suhu >=', 80)      
+        ->order_by('edp.nik', 'ASC')                   
+        ->get();
 	}
 
+	public function select_cpu_boot($table)
+{
+    $this->db->select('services_excelent.*, edp.nik, edp.nama_edp')
+        ->from('services_excelent')
+        ->join('edp', 'services_excelent.kdtk = edp.kdtk')
+        ->where("CAST(TRIM(REPLACE(boot_time, ' Menit', '')) AS DECIMAL(5, 2)) >=", 4, FALSE)
+        ->order_by('edp.nik', 'ASC');
 
-	public function bca_online()
-	{
-		$bulan_tahun_sekarang = date('mY');
-		$bulan_tahun_sebelumnya = date('mY', strtotime('-1 month'));
-		$trxEdcSekarang = 'EDC' . $bulan_tahun_sekarang;
-		$trxEdcSebelumnya = 'EDC' . $bulan_tahun_sebelumnya;
+    return $this->db->get();
+}
 
-		$second_db = $this->load->database('server_2', TRUE);
+public function insert_data_excel($data)
+    {
+        $this->db->insert_batch('services_excelent', $data);
 
-		// Query untuk bulan sekarang
-		$subquery_sekarang = $second_db->query("SELECT DISTINCT toko
-       FROM $trxEdcSekarang
-       WHERE tanggal_sales >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
-       AND TID != ' '
-       AND kode_bank = 'B01'");
+        return $this->db->affected_rows();
+    }
 
-		// Query untuk bulan sebelumnya
-		$subquery_sebelumnya = $second_db->query("SELECT DISTINCT toko
-       FROM $trxEdcSebelumnya
-       WHERE tanggal_sales >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
-       AND TID != ' '
-       AND kode_bank = 'B01'");
-
-		// Gabungkan hasil dari kedua query
-		$toko_data_sekarang = $subquery_sekarang->result_array();
-		$toko_data_sebelumnya = $subquery_sebelumnya->result_array();
-		$toko_data = array_merge($toko_data_sekarang, $toko_data_sebelumnya);
-
-		$kd_toko_array = array();
-		foreach ($toko_data as $toko) {
-			$kd_toko_array[] = $toko['toko'];
-		}
-
-		$kd_toko_string = implode("','", $kd_toko_array);
-
-		$query = $this->db->query("SELECT * FROM master_toko");
-		$master_toko_data = $query->result_array();
-
-		// Query untuk mendapatkan toko yang rusak fisik dari tabel edc_rusak
-		$edc_rusak_query = $this->db->query("SELECT DISTINCT kdtk FROM edc_rusak");
-		$edc_rusak_data = $edc_rusak_query->result_array();
-		$edc_rusak_array = array();
-
-		foreach ($edc_rusak_data as $rusak) {
-			$edc_rusak_array[] = $rusak['kdtk'];
-		}
-
-		$result = array();
-
-		foreach ($master_toko_data as $toko) {
-			$status = 'Offline'; // Default status offline
-
-			if (in_array($toko['kdtk'], $edc_rusak_array)) {
-				$status = 'Rusak Fisik Edc';
-			} elseif (in_array($toko['kdtk'], $kd_toko_array)) {
-				$status = 'Online';
-			}
-
-			$result[] = array(
-				'kdtk' => $toko['kdtk'],
-				'nama_toko' => $toko['nama_toko'],
-				'am' => $toko['am'],
-				'as' => $toko['as'],
-				'status' => $status
-			);
-		}
-
-		// sortir keterangan 
-		usort($result, function ($a, $b) {
-			if ($a['status'] == $b['status']) {
-				return 0;
-			}
-			return ($a['status'] == 'Rusak Fisik Edc') ? -1 : 1;
-		});
-
-		return $result;
-	}
-
-
-	public function trackingTrx()
-	{
-		$bulan_tahun = date('mY');
-		$trxEdc = 'EDC' . $bulan_tahun;
-
-		$second_db = $this->load->database('server_2', TRUE);
-
-		// Inisialisasi array untuk menyimpan hasil per tanggal
-		$result = [];
-
-		// Loop melalui semua hari dalam sebulan
-		$total_days = date('t');
-		$current_date = date('Y-m-'); // Prefix untuk tahun dan bulan saat ini
-
-		// Ambil data master toko
-		$query = $this->db->query("SELECT * FROM master_toko");
-		$master_toko_data = $query->result_array();
-
-		// Inisialisasi array toko
-		foreach ($master_toko_data as $toko) {
-			$result[$toko['kdtk']] = [
-				'kdtk' => $toko['kdtk'],
-				'nama_toko' => $toko['nama_toko'],
-				'status' => array_fill(1, $total_days, 'Off')
-			];
-		}
-
-		for ($day = 1; $day <= $total_days; $day++) {
-			$date = $current_date . str_pad($day, 2, '0', STR_PAD_LEFT);
-			$subquery = $second_db->query("
-        			SELECT DISTINCT toko
-                              FROM $trxEdc 
-                              WHERE tanggal_sales = '$date'
-                              AND TID != ' '
-                              AND kode_bank = 'B01'
-                              ");
-
-			$toko_data = $subquery->result_array();
-			$kd_toko_array = array_column($toko_data, 'toko');
-
-			foreach ($master_toko_data as $toko) {
-				$kdtk = $toko['kdtk'];
-
-				// Tentukan status untuk hari ini
-				if (in_array($kdtk, $kd_toko_array)) {
-					$result[$kdtk]['status'][$day] = 'On'; // Jika ada transaksi, status = 'On'
-				} else {
-					$result[$kdtk]['status'][$day] = 'Off'; // Jika tidak ada transaksi, status = 'Off'
-				}
-			}
-		}
-
-		usort($result, function ($a, $b) {
-			$offDaysA = count(array_filter($a['status'], function ($status) {
-				return $status == 'Off';
-			}));
-			$offDaysB = count(array_filter($b['status'], function ($status) {
-				return $status == 'Off';
-			}));
-
-			return $offDaysB >= $offDaysA; // Sort descending
-		});
-
-		return $result;
-	}
-
-
-	public function bca_rusak($table)
-	{
-		return $this->db->get($table);
-	}
-
-	public function offline_bca_rusak()
-	{
-		$data =  $this->db->get('edc_rusak');
-
-		return $data->num_rows();
-	}
-
-	public function insert_data_excel($data)
-	{
-		$this->db->insert_batch('edc_rusak', $data);
-
-		return $this->db->affected_rows();
-	}
 }

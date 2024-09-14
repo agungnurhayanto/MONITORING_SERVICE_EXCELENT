@@ -29,13 +29,13 @@
 <body class="hold-transition login-page">
           <div class="login-box">
                     <div class="login-logo">
-                              <a href="<?php echo base_url(); ?>assets/index2.html"><b>Login</b>Edc Online</a>
+                              <a href="<?php echo base_url(); ?>assets/index2.html"><b>Service</b>Excelent 2024</a>
                     </div>
 
                     <!-- /.login-logo -->
                     <div class="login-box-body">
                               <p class="login-box-msg">
-                                        Log in to start your session
+                                        Start your dream with hardwork
                               </p>
 
                               <form action="<?php echo base_url('Auth/login'); ?>" method="post">

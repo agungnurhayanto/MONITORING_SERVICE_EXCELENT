@@ -2,8 +2,8 @@
 <html>
 
 <head>
-          <title>Edc | Dashboard</title>
-           <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/img/IDM.png" />
+          <title>SE | Dashboard</title>
+          <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/img/neural.png" sizes="16x16" />
           <!-- meta -->
           <?php echo @$_meta; ?>
 
