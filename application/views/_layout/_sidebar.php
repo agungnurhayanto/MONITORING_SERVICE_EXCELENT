@@ -93,14 +93,57 @@
                                         </a>
                               </li>
 
+
                                <li <?php if ($page == 'report') {
                          echo 'class="active"';
                     } ?>>
-                                        <a href="#">
+                                        <a href="<?php echo base_url('Report/idm_listener'); ?>">
                                                   <i class="fa fa-windows"></i>
-                                                  <span>Key Windows -  comming soon </span>
+                                                  <span>idm_listener </span>
                                         </a>
                               </li>
+
+                               <li <?php if ($page == 'report') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="<?php echo base_url('Report/edc_bca'); ?>">
+                                                  <i class="fa fa-windows"></i>
+                                                  <span>Edc Bca </span>
+                                        </a>
+                              </li>
+
+                               <li <?php if ($page == 'report') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="<?php echo base_url('Report/edc_mandiri'); ?>">
+                                                  <i class="fa fa-windows"></i>
+                                                  <span>Edc Mandiri </span>
+                                        </a>
+                              </li>
+
+                                <li <?php if ($page == 'report') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="<?php echo base_url('Report/key_windows'); ?>">
+                                                  <i class="fa fa-windows"></i>
+                                                  <span>Windows Key </span>
+                                        </a>
+                              </li>
+
+
+
+                               <li <?php if ($page == 'solving') {
+                         echo 'class="active"';
+                    } ?>>
+                                         <a href="<?php echo base_url('Solving'); ?>">
+                                                  <i class="fa fa-wrench"></i>
+                                                  <span>Kendala </span>
+                                        </a>
+                              </li>
+
+
+
+
 
 
 

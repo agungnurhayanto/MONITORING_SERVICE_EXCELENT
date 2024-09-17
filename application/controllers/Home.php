@@ -18,6 +18,12 @@ class Home extends AUTH_Controller
         $total_rows_usage = $this->M_data->total_rows_usage($edp_names);
         $total_rows_suhu = $this->M_data->total_rows_suhu($edp_names);
         $total_rows_boottime = $this->M_data->total_rows_boottime($edp_names);
+        $total_rows_idm_listener = $this->M_data->total_rows_idm_listener($edp_names);
+        $total_rows_edc_bca = $this->M_data->total_rows_edc_bca($edp_names);
+        $total_rows_edc_mandiri = $this->M_data->total_rows_edc_mandiri($edp_names);
+        $total_rows_key_windows = $this->M_data->total_rows_key_windows($edp_names);
+        $total_rows_aktivasi_os = $this->M_data->total_rows_aktivasi_os($edp_names);
+
         $ttl_toko = $this->M_data->total_rows();
         $ttl_toko_lan_1gb = $this->M_data->total_rows_lan_1gb();
         $ttl_toko_usage_row = $this->M_data->total_rows_usage_row();
@@ -35,10 +41,17 @@ class Home extends AUTH_Controller
         $data['total_rows_usage'] = $total_rows_usage;
         $data['total_rows_suhu'] = $total_rows_suhu;
         $data['total_rows_boottime'] = $total_rows_boottime;
+        $data['total_rows_idm_listener'] = $total_rows_idm_listener;
+        $data['total_rows_edc_bca'] = $total_rows_edc_bca;
+        $data['total_rows_edc_mandiri'] = $total_rows_edc_mandiri;
+        $data['total_rows_key_windows'] = $total_rows_key_windows;
+        $data['total_rows_aktivasi_os'] = $total_rows_aktivasi_os;
+
         $data['data_lan_sisa'] = $data_lan_sisa;
         $data['data_usage_total'] = $data_usage_ttl;
         $data['data_suhu_total'] = $data_suhu_ttl;
         $data['data_boottime_total'] = $data_boottime_ttl;
+
 
         $data['ttl_toko'] = $ttl_toko;
         

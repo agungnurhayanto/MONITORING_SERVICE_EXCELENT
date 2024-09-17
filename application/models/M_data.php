@@ -148,6 +148,114 @@ class M_data extends CI_Model
 
     }
 
+      public function total_rows_idm_listener($edp_names)
+   
+     {
+
+      $results = [];
+    
+     foreach ($edp_names as $name) {
+        $this->db->select('idm_listener.*, edp.nama_edp');
+        $this->db->from('idm_listener');
+        $this->db->join('edp', 'edp.kdtk = idm_listener.kdtk');
+        $this->db->where('idm_listener.STATUS', 'TIMEOUT');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+
+      public function total_rows_edc_bca($edp_names)
+   
+    {
+
+      $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->like('services_excelent.edc_bca_last','OFFLINE');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+     public function total_rows_edc_mandiri($edp_names)
+   
+      {
+
+      $results = [];
+    
+      foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->like('services_excelent.edc_mandiri_last','OFFLINE');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+       }
+
+            return $results;
+
+       }
+
+
+        public function total_rows_key_windows($edp_names)
+   
+        {
+
+          $results = [];
+    
+        foreach ($edp_names as $name) {
+        $this->db->select('licency.*, edp.nama_edp');
+        $this->db->from('licency');
+        $this->db->join('edp', 'edp.kdtk = licency.kdtk');
+        $this->db->like('licency.windows_key','NOK');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+         }
+
+            return $results;
+
+         }
+
+
+          public function total_rows_aktivasi_os($edp_names)
+   
+        {
+
+          $results = [];
+    
+        foreach ($edp_names as $name) {
+        $this->db->select('licency.*, edp.nama_edp');
+        $this->db->from('licency');
+        $this->db->join('edp', 'edp.kdtk = licency.kdtk');
+        $this->db->like('licency.aktivasi_os','NOK');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+         }
+
+            return $results;
+
+         }
+
 
 	public function select_lan_1gb($table)
     {
@@ -163,6 +271,7 @@ class M_data extends CI_Model
 
 
 	public function select_cpu_usage($table)
+
 	{
 		return $this->db
         ->select('services_excelent.*, edp.nik, edp.nama_edp') 
@@ -186,7 +295,7 @@ class M_data extends CI_Model
 	}
 
 	public function select_cpu_boot($table)
-{
+    {
     $this->db->select('services_excelent.*, edp.nik, edp.nama_edp')
         ->from('services_excelent')
         ->join('edp', 'services_excelent.kdtk = edp.kdtk')
@@ -194,13 +303,85 @@ class M_data extends CI_Model
         ->order_by('edp.nik', 'ASC');
 
     return $this->db->get();
-}
+   }
 
-public function insert_data_excel($data)
+   public function select_idm_listener($table)
+
+    {
+        return $this->db
+        ->select('idm_listener.*, edp.nik, edp.nama_edp') 
+        ->from('idm_listener')                             
+        ->join('edp', 'idm_listener.kdtk = edp.kdtk')    
+        ->where('idm_listener.KETERANGAN', 'Try again')      
+        ->order_by('edp.nik', 'ASC')                   
+        ->get();
+    }
+
+    public function select_edc_bca($table)
+    {
+        return $this->db
+        ->select('services_excelent.*, edp.nik, edp.nama_edp') 
+        ->from('services_excelent')                             
+        ->join('edp', 'services_excelent.kdtk = edp.kdtk')    
+        ->like('services_excelent.edc_bca_last','OFFLINE')      
+        ->order_by('edp.nik', 'ASC')                   
+        ->get();
+    }
+
+     public function select_edc_mandiri($table)
+    {
+        return $this->db
+        ->select('services_excelent.*, edp.nik, edp.nama_edp') 
+        ->from('services_excelent')                             
+        ->join('edp', 'services_excelent.kdtk = edp.kdtk')    
+        ->like('services_excelent.edc_mandiri_last','OFFLINE')      
+        ->order_by('edp.nik', 'ASC')                   
+        ->get();
+    }
+
+
+    public function select_key_windows($table)
+    {
+    return $this->db
+        ->select('licency.*, edp.nik, edp.nama_edp')
+        ->from('licency')
+        ->join('edp', 'licency.kdtk = edp.kdtk')
+        ->where('licency.windows_key', 'NOK')
+        ->order_by('edp.nik', 'ASC')
+        ->get(); 
+
+    }
+
+     public function select_aktivasi_os($table)
+    {
+    return $this->db
+        ->select('licency.*, edp.nik, edp.nama_edp')
+        ->from('licency')
+        ->join('edp', 'licency.kdtk = edp.kdtk')
+        ->where('licency.aktivasi_os', 'NOK')
+        ->order_by('edp.nik', 'ASC')
+        ->get(); 
+
+    }
+
+
+    public function insert_data_excel($data)
     {
         $this->db->insert_batch('services_excelent', $data);
 
         return $this->db->affected_rows();
     }
+
+
+
+public function select_solving($table)
+    {
+    return $this->db
+        ->select('kendala.*, edp.nik, edp.nama_edp')
+        ->from('kendala')
+        ->join('edp', 'kendala.kdtk = edp.kdtk')
+        ->get(); 
+
+        }
 
 }
