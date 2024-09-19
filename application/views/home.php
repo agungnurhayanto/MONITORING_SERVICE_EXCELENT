@@ -282,6 +282,16 @@ $users = [
                             </a>
                         </li>
 
+                          <li><a href="<?php echo base_url('Report/edc_bca') ?>" class="small-box-footer" style="font-size: 20px;">Edc Bca Offline <i class="fa fa-arrow-circle-right" style="font-size: 20px;"></i>
+                            <span class="pull-right badge bg-red" style="font-size: 20px;"><?php echo $user['edc_bca']; ?></span></a></li>
+
+                              <li><a href="<?php echo base_url('Report/edc_mandiri') ?>" class="small-box-footer" style="font-size: 20px;">Edc Mandiri Offline <i class="fa fa-arrow-circle-right" style="font-size: 20px;"></i>
+                            <span class="pull-right badge bg-red" style="font-size: 20px;"><?php echo $user['edc_mandiri']; ?></span></a></li>
+
+                                <li><a href="<?php echo base_url('Report/idm_listener') ?>" class="small-box-footer" style="font-size: 20px;">Idm Listener <i class="fa fa-arrow-circle-right" style="font-size: 20px;"></i>
+                            <span class="pull-right badge bg-yellow" style="font-size: 20px;"><?php echo $user['idm_listener']; ?></span></a></li>
+
+
                         <li>
                             <a href="<?php echo base_url('Report/cpu_usage') ?>" class="small-box-footer" style="font-size: 20px;">CPU Usage >=80%
                                 <i class="fa fa-arrow-circle-right"></i>
@@ -299,16 +309,7 @@ $users = [
                             <span class="pull-right badge dark cyan" style="font-size: 20px;"><?php echo $user['total_time']; ?></span></a></li>
 
 
-                             <li><a href="<?php echo base_url('Report/idm_listener') ?>" class="small-box-footer" style="font-size: 20px;">Idm Listener <i class="fa fa-arrow-circle-right" style="font-size: 20px;"></i>
-                            <span class="pull-right badge bg-yellow" style="font-size: 20px;"><?php echo $user['idm_listener']; ?></span></a></li>
-
-
-                              <li><a href="<?php echo base_url('Report/edc_bca') ?>" class="small-box-footer" style="font-size: 20px;">Edc Bca Offline <i class="fa fa-arrow-circle-right" style="font-size: 20px;"></i>
-                            <span class="pull-right badge bg-red" style="font-size: 20px;"><?php echo $user['edc_bca']; ?></span></a></li>
-
-                              <li><a href="<?php echo base_url('Report/edc_bca') ?>" class="small-box-footer" style="font-size: 20px;">Edc Mandiri Offline <i class="fa fa-arrow-circle-right" style="font-size: 20px;"></i>
-                            <span class="pull-right badge bg-red" style="font-size: 20px;"><?php echo $user['edc_mandiri']; ?></span></a></li>
-
+                            
                              <li><a href="<?php echo base_url('Report/key_windows') ?>" class="small-box-footer" style="font-size: 20px;">Windows Key <i class="fa fa-arrow-circle-right" style="font-size: 20px;"></i>
                             <span class="pull-right badge bg-blue" style="font-size: 20px;"><?php echo $user['key_windows']; ?></span></a></li>
 

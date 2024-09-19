@@ -5,16 +5,19 @@
 <div class="box">
           <div class="box-header">
 
-                    <div class="col-md-6">
-                              <a href="<?php echo base_url('Report/export'); ?>" class="form-control btn btn-warning"><i
-                                                  class="glyphicon glyphicon glyphicon-floppy-save"></i> Export Data
-                                        Excel</a>
+                   
+
+                     <div class="col-md-6">
+                              <a href="<?php echo base_url('Report/download_template'); ?>" class="form-control btn btn-warning"><i
+                                                  class="glyphicon glyphicon glyphicon-floppy-save"></i> Download Template</a>
                     </div>
-                    <div class="col-md-3">
-                              <!--  <button class="form-control btn btn-default" data-toggle="modal" data-target="#import-report"><i
-                              class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button> -->
+                    <div class="col-md-6">
+                               <button class="form-control btn btn-success" data-toggle="modal" data-target="#import-listener"><i
+                              class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button>
                     </div>
           </div>
+
+
           <!-- /.box-header -->
           <div class="box-body">
                     <table id="list-data-idm-listener" class="table table-bordered table-striped">
@@ -45,9 +48,9 @@
 
 <div id="tempat-modal"></div>
 
-<?php show_my_confirm('konfirmasiHapus', 'hapus-dataReport', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
 <?php
-$data['judul'] = 'Report';
+$data['judul'] = ' Idm Listener';
 $data['url'] = 'report/import';
-// echo show_my_modal('modals/modal_import', 'import-report', $data);
+echo show_my_modal('modals/modal_import', 'import-listener', $data);
+
 ?>

@@ -372,6 +372,14 @@ class M_data extends CI_Model
         return $this->db->affected_rows();
     }
 
+    public function insert_data_listener($data)
+    {
+        $this->db->insert_batch('idm_listener', $data);
+
+        return $this->db->affected_rows();
+    }
+
+
 
 
 public function select_solving($table)

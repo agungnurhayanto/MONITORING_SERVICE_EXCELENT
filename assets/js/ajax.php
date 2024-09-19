@@ -91,6 +91,15 @@ var MyTable10 = $('#list-data-aktivasi_os').dataTable({
 });
 
 
+var MyTable11 = $('#list-data-klasement').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+});
+
 window.onload = function() {
           tampilReport();
           tampilReport2();
@@ -102,6 +111,7 @@ window.onload = function() {
           tampilReport8();
           tampilReport9();
           tampilReport10();
+          tampilReport11();
 
           <?php
           if ($this->session->flashdata('msg') != '') {
@@ -147,6 +157,10 @@ function refresh9() {
 
 function refresh10() {
           MyTable10 = $('#list-data-aktivasi_os').dataTable();
+}
+
+function refresh10() {
+          MyTable11 = $('#list-data-klasement').dataTable();
 }
 
 
@@ -294,6 +308,19 @@ function tampilReport10() {
                               MyTable10.fnDestroy();
                               $('#data-report-aktivasi_os').html(data);
                               refresh10();
+                    }
+          });
+}
+
+function tampilReport11() {
+          $.ajax({
+                    url: '<?php echo base_url('klasement/tampil'); ?>',
+                    type: 'GET',
+                    cache: true, 
+                    success: function(data) {
+                              MyTable11.fnDestroy();
+                              $('#data-report-klasement').html(data);
+                              refresh11();
                     }
           });
 }

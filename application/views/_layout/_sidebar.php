@@ -57,11 +57,22 @@
                                         </a>
                               </li>
 
+                                <li <?php if ($page == 'klasement') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="<?php echo base_url('Klasement'); ?>">
+                                                  <i class="fa fa-tachometer"></i>
+                                                  <b>Klasement</b>
+                                        </a>
+                              </li>
+
+
+
                               <li <?php if ($page == 'report') {
                          echo 'class="active"';
                     } ?>>
                                         <a href="<?php echo base_url('Report'); ?>">
-                                                  <i class="fa fa-server"></i>
+                                                  <i class="fa fa-internet-explorer"></i>
                                                   <span>Data Lan 1 Gb Nok</span>
                                         </a>
                               </li>
@@ -98,8 +109,8 @@
                          echo 'class="active"';
                     } ?>>
                                         <a href="<?php echo base_url('Report/idm_listener'); ?>">
-                                                  <i class="fa fa-windows"></i>
-                                                  <span>idm_listener </span>
+                                                  <i class="fa  fa-list"></i>
+                                                  <span>Idm listener </span>
                                         </a>
                               </li>
 
@@ -107,7 +118,7 @@
                          echo 'class="active"';
                     } ?>>
                                         <a href="<?php echo base_url('Report/edc_bca'); ?>">
-                                                  <i class="fa fa-windows"></i>
+                                                  <i class="fa fa-ambulance"></i>
                                                   <span>Edc Bca </span>
                                         </a>
                               </li>
@@ -116,7 +127,7 @@
                          echo 'class="active"';
                     } ?>>
                                         <a href="<?php echo base_url('Report/edc_mandiri'); ?>">
-                                                  <i class="fa fa-windows"></i>
+                                                  <i class="fa fa-ambulance"></i>
                                                   <span>Edc Mandiri </span>
                                         </a>
                               </li>
@@ -125,8 +136,17 @@
                          echo 'class="active"';
                     } ?>>
                                         <a href="<?php echo base_url('Report/key_windows'); ?>">
-                                                  <i class="fa fa-windows"></i>
+                                                  <i class="fa fa-money"></i>
                                                   <span>Windows Key </span>
+                                        </a>
+                              </li>
+
+                               <li <?php if ($page == 'report') {
+                         echo 'class="active"';
+                    } ?>>
+                                        <a href="<?php echo base_url('Report/aktivasi_os'); ?>">
+                                                  <i class="fa fa-windows"></i>
+                                                  <span>Aktivasi OS </span>
                                         </a>
                               </li>
 
@@ -140,10 +160,6 @@
                                                   <span>Kendala </span>
                                         </a>
                               </li>
-
-
-
-
 
 
 
