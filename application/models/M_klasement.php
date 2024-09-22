@@ -29,7 +29,7 @@ class M_klasement extends CI_Model
 }
 
 
-   public function total_rows_lan($edp_names)
+  public function total_rows_lan($edp_names)
   
    {
 
@@ -39,7 +39,7 @@ class M_klasement extends CI_Model
         $this->db->select('services_excelent.*, edp.nama_edp');
         $this->db->from('services_excelent');
         $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
-        $this->db->where('services_excelent.lan_speed', '1000 MB/s');
+        $this->db->where('services_excelent.lan_speed', '100 MB/s');
         $this->db->where('edp.nama_edp', $name);
         
         $data = $this->db->get();
@@ -50,10 +50,181 @@ class M_klasement extends CI_Model
 
     }
 
+   public function total_rows_usage($edp_names)
+   
+   {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.cpu_usage >=', 80);
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+   
+
+  public function total_rows_suhu($edp_names)
+   
+    {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('services_excelent.suhu >=', 80);
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+
+     public function total_rows_boottime($edp_names)
+   
+    {
+
+    $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where("CAST(TRIM(REPLACE(boot_time, ' Menit', '')) AS DECIMAL(5, 2)) >=", 4, FALSE);
+        $this->db->where('edp.nama_edp', $name);
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+      public function total_rows_idm_listener($edp_names)
+   
+     {
+
+      $results = [];
+    
+     foreach ($edp_names as $name) {
+        $this->db->select('idm_listener.*, edp.nama_edp');
+        $this->db->from('idm_listener');
+        $this->db->join('edp', 'edp.kdtk = idm_listener.kdtk');
+        $this->db->where('idm_listener.STATUS', 'TIMEOUT');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+
+      public function total_rows_edc_bca($edp_names)
+   
+    {
+
+      $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->like('services_excelent.edc_bca_last','OFFLINE');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+
+    }
+
+    
+     public function total_rows_all($edp_names)
+   
+     {
+
+      $results = [];
+    
+    foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->where('edp.nama_edp', $name);        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+      }
+
+        return $results;
+
+      }
+
+
   
+     public function total_rows_edc_mandiri($edp_names)
+   
+      {
+
+      $results = [];
+    
+      foreach ($edp_names as $name) {
+        $this->db->select('services_excelent.*, edp.nama_edp');
+        $this->db->from('services_excelent');
+        $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+        $this->db->like('services_excelent.edc_mandiri_last','OFFLINE');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+       }
+
+            return $results;
+
+       }
+
+       
+        public function total_rows_key_windows($edp_names)
+   
+        {
+
+          $results = [];
+    
+        foreach ($edp_names as $name) {
+        $this->db->select('licency.*, edp.nama_edp');
+        $this->db->from('licency');
+        $this->db->join('edp', 'edp.kdtk = licency.kdtk');
+        $this->db->like('licency.windows_key','NOK');
+        $this->db->where('edp.nama_edp', $name);
+        
+        $data = $this->db->get();
+        $results[$name] = $data->num_rows();
+         }
+
+            return $results;
+
+         }
 
 
-    public function total_rows_aktivasi_os($edp_names)
+          public function total_rows_aktivasi_os($edp_names)
    
         {
 

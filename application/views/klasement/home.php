@@ -1,199 +1,155 @@
 
 <?php
-$users = [
-    [
+
+$usersData = [
+    'AHMAD SOFYAN' => [
         'name' => 'Ahmad Sofyan',
         'image' => 'assets/img/edp_14.jpg',
-        'bg_color' => 'bg-aqua',
-        'total_lan' => $total_rows['AHMAD SOFYAN'],
-        'total_cpu' => $total_rows_usage['AHMAD SOFYAN'],
-        'total_suhu' => $total_rows_suhu['AHMAD SOFYAN'],
-        'total_time' => $total_rows_boottime['AHMAD SOFYAN'],
-        'idm_listener' => $total_rows_idm_listener['AHMAD SOFYAN'],
-        'edc_bca' => $total_rows_edc_bca['AHMAD SOFYAN'],
-        'edc_mandiri' => $total_rows_edc_mandiri['AHMAD SOFYAN'],
-        'key_windows' => $total_rows_key_windows['AHMAD SOFYAN'],
-        'aktivasi_os' => $total_rows_aktivasi_os['AHMAD SOFYAN'],
-        'total' => $total_rows['AHMAD SOFYAN'] + $total_rows_usage['AHMAD SOFYAN'] + $total_rows_suhu['AHMAD SOFYAN'] + $total_rows_boottime['AHMAD SOFYAN'] + $total_rows_idm_listener['AHMAD SOFYAN'] + $total_rows_edc_bca['AHMAD SOFYAN'] + $total_rows_edc_mandiri['AHMAD SOFYAN'] + $total_rows_key_windows['AHMAD SOFYAN'] + $total_rows_aktivasi_os['AHMAD SOFYAN']
-
+        'bg_color' => 'bg-aqua'
     ],
-    [
+    'ADHI PRASETYO' => [
         'name' => 'Adhi Prasetyo',
         'image' => 'assets/img/edp_5.jpg',
-        'bg_color' => 'bg-green',
-        'total_lan' => $total_rows['ADHI PRASETYO'],
-        'total_cpu' => $total_rows_usage['ADHI PRASETYO'],
-        'total_suhu' => $total_rows_suhu['ADHI PRASETYO'],
-        'total_time' => $total_rows_boottime['ADHI PRASETYO'],
-        'idm_listener' => $total_rows_idm_listener['ADHI PRASETYO'],
-        'edc_bca' => $total_rows_edc_bca['ADHI PRASETYO'],
-        'edc_mandiri' => $total_rows_edc_mandiri['ADHI PRASETYO'],
-        'key_windows' => $total_rows_key_windows['ADHI PRASETYO'],
-        'aktivasi_os' => $total_rows_aktivasi_os['ADHI PRASETYO'],
-        'total' => $total_rows['ADHI PRASETYO'] + $total_rows_usage['ADHI PRASETYO'] + $total_rows_suhu['ADHI PRASETYO'] + $total_rows_boottime['ADHI PRASETYO'] + $total_rows_idm_listener['ADHI PRASETYO'] + $total_rows_edc_bca['ADHI PRASETYO'] + $total_rows_edc_mandiri['ADHI PRASETYO'] + $total_rows_key_windows['ADHI PRASETYO'] + $total_rows_aktivasi_os['ADHI PRASETYO']
+        'bg_color' => 'bg-green'
     ],
-    [
+    'DEDE HERMANSYAH' => [
         'name' => 'Dede Hermansyah',
         'image' => 'assets/img/edp_10.jpg',
-        'bg_color' => 'bg-yellow',
-        'total_lan' => $total_rows['DEDE HERMANSYAH'],
-        'total_cpu' => $total_rows_usage['DEDE HERMANSYAH'],
-        'total_suhu' => $total_rows_suhu['DEDE HERMANSYAH'],
-        'total_time' => $total_rows_boottime['DEDE HERMANSYAH'],
-        'idm_listener' => $total_rows_idm_listener['DEDE HERMANSYAH'],
-        'edc_bca' => $total_rows_edc_bca['DEDE HERMANSYAH'],
-        'edc_mandiri' => $total_rows_edc_mandiri['DEDE HERMANSYAH'],
-        'key_windows' => $total_rows_key_windows['DEDE HERMANSYAH'],
-        'aktivasi_os' => $total_rows_aktivasi_os['DEDE HERMANSYAH'],
-         'total' => $total_rows['DEDE HERMANSYAH'] + $total_rows_usage['DEDE HERMANSYAH'] + $total_rows_suhu['DEDE HERMANSYAH'] + $total_rows_boottime['DEDE HERMANSYAH'] + $total_rows_idm_listener['DEDE HERMANSYAH'] + $total_rows_edc_bca['DEDE HERMANSYAH'] + $total_rows_edc_mandiri['DEDE HERMANSYAH'] + $total_rows_key_windows['DEDE HERMANSYAH'] + $total_rows_aktivasi_os['DEDE HERMANSYAH']
+        'bg_color' => 'bg-yellow'
     ],
-    [
+    'JUANDA' => [
         'name' => 'Juanda',
         'image' => 'assets/img/edp_3.jpg',
-        'bg_color' => 'bg-red',
-        'total_lan' => $total_rows['JUANDA'],
-        'total_cpu' => $total_rows_usage['JUANDA'],
-        'total_suhu' => $total_rows_suhu['JUANDA'],
-        'total_time' => $total_rows_boottime['JUANDA'],
-        'idm_listener' => $total_rows_idm_listener['JUANDA'],
-        'edc_bca' => $total_rows_edc_bca['JUANDA'],
-        'edc_mandiri' => $total_rows_edc_mandiri['JUANDA'],
-        'key_windows' => $total_rows_key_windows['JUANDA'],
-        'aktivasi_os' => $total_rows_aktivasi_os['JUANDA'],
-         'total' => $total_rows['JUANDA'] + $total_rows_usage['JUANDA'] + $total_rows_suhu['JUANDA'] + $total_rows_boottime['JUANDA'] + $total_rows_idm_listener['JUANDA'] + $total_rows_edc_bca['JUANDA'] + $total_rows_edc_mandiri['JUANDA'] + $total_rows_key_windows['JUANDA'] + $total_rows_aktivasi_os['JUANDA']
-
-    ]
-    ,
-     [
-        'name' => 'ARIFIN HAZALI',
-        'image' => 'assets/img/edp_8.jpg',
-        'bg_color' => 'bg-aqua',
-        'total_lan' => $total_rows['ARIFIN HAZALI'],
-        'total_cpu' => $total_rows_usage['ARIFIN HAZALI'],
-        'total_suhu' => $total_rows_suhu['ARIFIN HAZALI'],
-        'total_time' => $total_rows_boottime['ARIFIN HAZALI'],
-        'idm_listener' => $total_rows_idm_listener['ARIFIN HAZALI'],
-        'edc_bca' => $total_rows_edc_bca['ARIFIN HAZALI'],
-        'edc_mandiri' => $total_rows_edc_mandiri['ARIFIN HAZALI'],
-        'key_windows' => $total_rows_key_windows['ARIFIN HAZALI'],
-        'aktivasi_os' => $total_rows_aktivasi_os['ARIFIN HAZALI'],
-         'total' => $total_rows['ARIFIN HAZALI'] + $total_rows_usage['ARIFIN HAZALI'] + $total_rows_suhu['ARIFIN HAZALI'] + $total_rows_boottime['ARIFIN HAZALI'] + $total_rows_idm_listener['ARIFIN HAZALI'] + $total_rows_edc_bca['ARIFIN HAZALI'] + $total_rows_edc_mandiri['ARIFIN HAZALI'] + $total_rows_key_windows['ARIFIN HAZALI'] + $total_rows_aktivasi_os['ARIFIN HAZALI']
+        'bg_color' => 'bg-red'
     ],
-    [
+    'ARIFIN HAZALI' => [
+        'name' => 'Arifin Hazali',
+        'image' => 'assets/img/edp_8.jpg',
+        'bg_color' => 'bg-aqua'
+    ],
+    'JAMHARA PARPANI' => [
         'name' => 'Jamhara Parpani',
         'image' => 'assets/img/edp_12.jpg',
-        'bg_color' => 'bg-green',
-        'total_lan' => $total_rows['JAMHARA PARPANI'],
-        'total_cpu' => $total_rows_usage['JAMHARA PARPANI'],
-        'total_suhu' => $total_rows_suhu['JAMHARA PARPANI'],
-        'total_time' => $total_rows_boottime['JAMHARA PARPANI'],
-        'idm_listener' => $total_rows_idm_listener['JAMHARA PARPANI'],
-        'edc_bca' => $total_rows_edc_bca['JAMHARA PARPANI'],
-        'edc_mandiri' => $total_rows_edc_mandiri['JAMHARA PARPANI'],
-        'key_windows' => $total_rows_key_windows['JAMHARA PARPANI'],
-        'aktivasi_os' => $total_rows_aktivasi_os['JAMHARA PARPANI'],
-         'total' => $total_rows['JAMHARA PARPANI'] + $total_rows_usage['JAMHARA PARPANI'] + $total_rows_suhu['JAMHARA PARPANI'] + $total_rows_boottime['JAMHARA PARPANI'] + $total_rows_idm_listener['JAMHARA PARPANI'] + $total_rows_edc_bca['JAMHARA PARPANI'] + $total_rows_edc_mandiri['JAMHARA PARPANI'] + $total_rows_key_windows['JAMHARA PARPANI'] + $total_rows_aktivasi_os['JAMHARA PARPANI']
+        'bg_color' => 'bg-green'
     ],
-    [
+    'ILHAM M FIRDAUS' => [
         'name' => 'Ilham M Firdaus',
         'image' => 'assets/img/edp_2.jpg',
-        'bg_color' => 'bg-yellow',
-        'total_lan' => $total_rows['ILHAM M FIRDAUS'],
-        'total_cpu' => $total_rows_usage['ILHAM M FIRDAUS'],
-        'total_suhu' => $total_rows_suhu['ILHAM M FIRDAUS'],
-        'total_time' => $total_rows_boottime['ILHAM M FIRDAUS'],
-        'idm_listener' => $total_rows_idm_listener['ILHAM M FIRDAUS'],
-        'edc_bca' => $total_rows_edc_bca['ILHAM M FIRDAUS'],
-        'edc_mandiri' => $total_rows_edc_mandiri['ILHAM M FIRDAUS'],
-        'key_windows' => $total_rows_key_windows['ILHAM M FIRDAUS'],
-        'aktivasi_os' => $total_rows_aktivasi_os['ILHAM M FIRDAUS'],
-         'total' => $total_rows['ILHAM M FIRDAUS'] + $total_rows_usage['ILHAM M FIRDAUS'] + $total_rows_suhu['ILHAM M FIRDAUS'] + $total_rows_boottime['ILHAM M FIRDAUS'] + $total_rows_idm_listener['ILHAM M FIRDAUS'] + $total_rows_edc_bca['ILHAM M FIRDAUS'] + $total_rows_edc_mandiri['ILHAM M FIRDAUS'] + $total_rows_key_windows['ILHAM M FIRDAUS'] + $total_rows_aktivasi_os['ILHAM M FIRDAUS']
-
-
+        'bg_color' => 'bg-yellow'
     ],
-    [
+    'EGA RAMADHANI ANWARI' => [
         'name' => 'Ega Ramadhani',
         'image' => 'assets/img/edp_6.jpg',
-        'bg_color' => 'bg-red',
-        'total_lan' => $total_rows['EGA RAMADHANI ANWARI'],
-        'total_cpu' => $total_rows_usage['EGA RAMADHANI ANWARI'],
-        'total_suhu' => $total_rows_suhu['EGA RAMADHANI ANWARI'],
-        'total_time' => $total_rows_boottime['EGA RAMADHANI ANWARI'],
-        'idm_listener' => $total_rows_idm_listener['EGA RAMADHANI ANWARI'],
-        'edc_bca' => $total_rows_edc_bca['EGA RAMADHANI ANWARI'],
-        'edc_mandiri' => $total_rows_edc_mandiri['EGA RAMADHANI ANWARI'],
-        'key_windows' => $total_rows_key_windows['EGA RAMADHANI ANWARI'],
-        'aktivasi_os' => $total_rows_aktivasi_os['EGA RAMADHANI ANWARI'],
-         'total' => $total_rows['EGA RAMADHANI ANWARI'] + $total_rows_usage['EGA RAMADHANI ANWARI'] + $total_rows_suhu['EGA RAMADHANI ANWARI'] + $total_rows_boottime['EGA RAMADHANI ANWARI'] + $total_rows_idm_listener['EGA RAMADHANI ANWARI'] + $total_rows_edc_bca['EGA RAMADHANI ANWARI'] + $total_rows_edc_mandiri['EGA RAMADHANI ANWARI'] + $total_rows_key_windows['EGA RAMADHANI ANWARI'] + $total_rows_aktivasi_os['EGA RAMADHANI ANWARI']
-
+        'bg_color' => 'bg-red'
     ],
-    [
-        'name' => 'Andreas Armando Y ',
+
+    'ANDREAS ARMANDO YUNIOR' => [
+        'name' => 'Andreas Armando Y',
         'image' => 'assets/img/edp_9.jpg',
-        'bg_color' => 'bg-aqua',
-        'total_lan' => $total_rows['ANDREAS ARMANDO YUNIOR'],
-        'total_cpu' => $total_rows_usage['ANDREAS ARMANDO YUNIOR'],
-        'total_suhu' => $total_rows_suhu['ANDREAS ARMANDO YUNIOR'],
-        'total_time' => $total_rows_boottime['ANDREAS ARMANDO YUNIOR'],
-        'idm_listener' => $total_rows_idm_listener['ANDREAS ARMANDO YUNIOR'],
-        'edc_bca' => $total_rows_edc_bca['ANDREAS ARMANDO YUNIOR'],
-        'edc_mandiri' => $total_rows_edc_mandiri['ANDREAS ARMANDO YUNIOR'],
-        'key_windows' => $total_rows_key_windows['ANDREAS ARMANDO YUNIOR'],
-        'aktivasi_os' => $total_rows_aktivasi_os['ANDREAS ARMANDO YUNIOR'],
-         'total' => $total_rows['ANDREAS ARMANDO YUNIOR'] + $total_rows_usage['ANDREAS ARMANDO YUNIOR'] + $total_rows_suhu['ANDREAS ARMANDO YUNIOR'] + $total_rows_boottime['ANDREAS ARMANDO YUNIOR'] + $total_rows_idm_listener['ANDREAS ARMANDO YUNIOR'] + $total_rows_edc_bca['ANDREAS ARMANDO YUNIOR'] + $total_rows_edc_mandiri['ANDREAS ARMANDO YUNIOR'] + $total_rows_key_windows['ANDREAS ARMANDO YUNIOR'] + $total_rows_aktivasi_os['ANDREAS ARMANDO YUNIOR']   
+        'bg_color' => 'bg-aqua'
+    ],
 
-     ],
-
-    [
+    'RAMADHAN SAPUTRA' => [
         'name' => 'Ramadhan Saputra',
-        'image' => 'assets/img/edp_7.jpg',
-        'bg_color' => 'bg-green',
-        'total_lan' => $total_rows['RAMADHAN SAPUTRA'],
-        'total_cpu' => $total_rows_usage['RAMADHAN SAPUTRA'],
-        'total_suhu' => $total_rows_suhu['RAMADHAN SAPUTRA'],
-        'total_time' => $total_rows_boottime['RAMADHAN SAPUTRA'],
-        'idm_listener' => $total_rows_idm_listener['RAMADHAN SAPUTRA'],
-        'edc_bca' => $total_rows_edc_bca['RAMADHAN SAPUTRA'],
-        'edc_mandiri' => $total_rows_edc_mandiri['RAMADHAN SAPUTRA'],
-        'key_windows' => $total_rows_key_windows['RAMADHAN SAPUTRA'],
-        'aktivasi_os' => $total_rows_aktivasi_os['RAMADHAN SAPUTRA'],
-         'total' => $total_rows['RAMADHAN SAPUTRA'] + $total_rows_usage['RAMADHAN SAPUTRA'] + $total_rows_suhu['RAMADHAN SAPUTRA'] + $total_rows_boottime['RAMADHAN SAPUTRA'] + $total_rows_idm_listener['RAMADHAN SAPUTRA'] + $total_rows_edc_bca['RAMADHAN SAPUTRA'] + $total_rows_edc_mandiri['RAMADHAN SAPUTRA'] + $total_rows_key_windows['RAMADHAN SAPUTRA'] + $total_rows_aktivasi_os['RAMADHAN SAPUTRA']
-
+        'image' => 'assets/img/edp_9.jpg',
+        'bg_color' => 'bg-aqua'
     ],
-    [
-        'name' => 'Praditya Ryan V',
-        'image' => 'assets/img/edp_13.jpg',
-        'bg_color' => 'bg-yellow',
-        'total_lan' => $total_rows['PRADITYA RIYAN VIVALDI'],
-        'total_cpu' => $total_rows_usage['PRADITYA RIYAN VIVALDI'],
-        'total_suhu' => $total_rows_suhu['PRADITYA RIYAN VIVALDI'],
-        'total_time' => $total_rows_boottime['PRADITYA RIYAN VIVALDI'],
-        'idm_listener' => $total_rows_idm_listener['PRADITYA RIYAN VIVALDI'],
-        'edc_bca' => $total_rows_edc_bca['PRADITYA RIYAN VIVALDI'],
-        'edc_mandiri' => $total_rows_edc_mandiri['PRADITYA RIYAN VIVALDI'],
-        'key_windows' => $total_rows_key_windows['PRADITYA RIYAN VIVALDI'],
-        'aktivasi_os' => $total_rows_aktivasi_os['PRADITYA RIYAN VIVALDI'],
-         'total' => $total_rows['PRADITYA RIYAN VIVALDI'] + $total_rows_usage['PRADITYA RIYAN VIVALDI'] + $total_rows_suhu['PRADITYA RIYAN VIVALDI'] + $total_rows_boottime['PRADITYA RIYAN VIVALDI'] + $total_rows_idm_listener['PRADITYA RIYAN VIVALDI'] + $total_rows_edc_bca['PRADITYA RIYAN VIVALDI'] + $total_rows_edc_mandiri['PRADITYA RIYAN VIVALDI'] + $total_rows_key_windows['PRADITYA RIYAN VIVALDI'] + $total_rows_aktivasi_os['PRADITYA RIYAN VIVALDI']
 
+    'HENDRIK ASTA MANGGALA' => [
+        'name' => 'Hendrik A M',
+        'image' => 'assets/img/edp_9.jpg',
+        'bg_color' => 'bg-aqua'
     ],
-    [
-        'name' => 'Hendrik Asta',
-        'image' => 'assets/img/edp_11.jpg',
-        'bg_color' => 'bg-red',
-        'total_lan' => $total_rows['HENDRIK ASTA MANGGALA'],
-        'total_cpu' => $total_rows_usage['HENDRIK ASTA MANGGALA'],
-        'total_suhu' => $total_rows_suhu['HENDRIK ASTA MANGGALA'],
-        'total_time' => $total_rows_boottime['HENDRIK ASTA MANGGALA'],
-        'idm_listener' => $total_rows_idm_listener['HENDRIK ASTA MANGGALA'],
-        'edc_bca' => $total_rows_edc_bca['HENDRIK ASTA MANGGALA'],
-        'edc_mandiri' => $total_rows_edc_mandiri['HENDRIK ASTA MANGGALA'],
-        'key_windows' => $total_rows_key_windows['HENDRIK ASTA MANGGALA'],
-        'aktivasi_os' => $total_rows_aktivasi_os['HENDRIK ASTA MANGGALA'],        
-         'total' => $total_rows['HENDRIK ASTA MANGGALA'] + $total_rows_usage['HENDRIK ASTA MANGGALA'] + $total_rows_suhu['HENDRIK ASTA MANGGALA'] + $total_rows_boottime['HENDRIK ASTA MANGGALA'] + $total_rows_idm_listener['HENDRIK ASTA MANGGALA'] + $total_rows_edc_bca['HENDRIK ASTA MANGGALA'] + $total_rows_edc_mandiri['HENDRIK ASTA MANGGALA'] + $total_rows_key_windows['HENDRIK ASTA MANGGALA'] + $total_rows_aktivasi_os['HENDRIK ASTA MANGGALA']
-    ]
+
+
+    'PRADITYA RIYAN VIVALDI' => [
+        'name' => 'Praditya R',
+        'image' => 'assets/img/edp_9.jpg',
+        'bg_color' => 'bg-aqua'
+    ],
+
+
+
+
+
+
 ];
 
+// $total_persen_lan = 0;
+// $total_user = count($total_rows_all); // Jumlah total user
+ $total_users = count($usersData);
+
+$users = array_map(function($key, $user) use ($total_rows, $total_rows_usage, $total_rows_suhu, $total_rows_boottime, $total_rows_idm_listener, $total_rows_edc_bca, $total_rows_edc_mandiri, $total_rows_key_windows, $total_rows_aktivasi_os, $total_rows_all) {
+
+    $total = $total_rows[$key] + $total_rows_usage[$key] + $total_rows_suhu[$key] + $total_rows_boottime[$key] + $total_rows_idm_listener[$key] + $total_rows_edc_bca[$key] + $total_rows_edc_mandiri[$key] + $total_rows_key_windows[$key] + $total_rows_aktivasi_os[$key];
+
+    $persen_lan = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+
+    $persen_bca = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_edc_bca[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+
+    $persen_mandiri = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_edc_mandiri[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;     
+    $persen_listener = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_idm_listener[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+    $persen_cpu_usage = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_usage[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+    $persen_suhu = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_suhu[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+
+    $persen_boottime = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_boottime[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+
+    $persen_key_windows = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_key_windows[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+    $persen_aktivasi_os = ($total_rows_all[$key] > 0) 
+        ? number_format(($total_rows_all[$key] - $total_rows_aktivasi_os[$key]) / $total_rows_all[$key] * 100, 2) 
+        : 0;
+
+  //  $total_persen_lan += $persen_lan;    
+
+
+
+    return array_merge($user, [
+        'total_lan' => $total_rows[$key],
+
+        'total_cpu' => $total_rows_usage[$key],
+
+        'total_suhu' => $total_rows_suhu[$key],
+        'total_time' => $total_rows_boottime[$key],
+        'idm_listener' => $total_rows_idm_listener[$key],
+        'edc_bca' => $total_rows_edc_bca[$key],
+        'edc_mandiri' => $total_rows_edc_mandiri[$key],
+        'key_windows' => $total_rows_key_windows[$key],
+        'aktivasi_os' => $total_rows_aktivasi_os[$key],
+        'total' => $total,
+
+        'persen_lan' => $persen_lan,
+        'persen_bca' => $persen_bca,
+        'persen_mandiri' => $persen_mandiri,
+        'persen_listener' => $persen_listener,
+        'persen_cpu_usage' => $persen_cpu_usage,
+        'persen_suhu' => $persen_suhu,
+        'persen_boottime' => $persen_boottime,
+        'persen_key_windows' => $persen_key_windows,
+        'persen_aktivasi_os' => $persen_aktivasi_os,
+        'persen_lan' => $persen_lan
+        
+
+    ]);
+}, array_keys($usersData), $usersData);
+
 ?>
+
 
 
 <html lang="en">
@@ -217,6 +173,33 @@ $users = [
         th {
             background-color: #f2f2f2;
         }
+
+          .green-bg {
+        background-color: green;
+        color: white;
+    }
+    .yellow-bg {
+        background-color: yellow;
+        color: black;
+    }
+    .default-bg {
+        background-color: darkcyan;
+        color: white;
+    }
+
+     .persentase {
+        font-weight: bold;
+        font-size: 20px; /* Atur ukuran sesuai kebutuhan */
+    }
+    .hijau {
+        color: green;
+    }
+    .kuning {
+        color: yellow;
+    }
+    .merah {
+        color: red;
+    }
     </style>
 </head>
 <body>
@@ -226,54 +209,107 @@ $users = [
         <thead>
     <table>
             <tr>
-                <th>NO</th>
-                <th>NAMA EDP OPERASIONAL</th>
-                <th>Lan < 1 Gb</th>
-                <th>EDC Bca</th>
-                <th>EDC Mandiri</th>
-                <th>IDM Listener</th>
-                <th>CPU Usage >=80%</th>
-                <th>Suhu CPU >=80</th>
-                <th>Boot Time <4 menit</th>
-                <th>Key Windows</th>
-                <th>Aktivasi OS</th>
-                <th>TOTAL TUGAS</th>
+                <th style="background-color: darkcyan; color: white;">NO</th>
+                <th style="background-color: darkcyan; color: white;">NAMA EDP OPERASIONAL</th>
+                <th style="background-color: darkcyan; color: white;">Lan < 1 Gb</th>
+                <th style="background-color: yellow; color: black;">Lan %</th>
+                <th style="background-color: darkcyan; color: white;">EDC Bca</th>
+                <th style="background-color: yellow; color: black;">Edc BCa %</th>
+                <th style="background-color: darkcyan; color: white;">EDC Mandiri</th>
+                <th style="background-color: yellow; color: black;">EDC Man %</th>
+                <th style="background-color: darkcyan; color: white;">IDM Listener</th>
+                <th style="background-color: yellow; color: black;">Idm %</th>
+                <th style="background-color: darkcyan; color: white;">CPU Usage >=80%</th>
+                <th style="background-color: yellow; color: black;">CU %</th>
+                <th style="background-color: darkcyan; color: white;">Suhu CPU >=80</th>
+                <th style="background-color: yellow; color: black;">Suhu %</th>
+                <th style="background-color: darkcyan; color: white;">Boot Time <4 menit</th>
+                <th style="background-color: yellow; color: black;">BT %</th>
+                <th style="background-color: darkcyan; color: white;">Key Windows</th>
+                <th style="background-color: yellow; color: black;">K Win %</th>
+                <th style="background-color: darkcyan; color: white;">Aktivasi OS</th>
+                <th style="background-color: yellow; color: black;">Akt OS %</th>
+                <th style="background-color: darkcyan; color: white;">TOTAL TUGAS</th>
+
             </tr>
         </thead>
         <tbody>
              <?php 
+
+
                 $no = 1; 
                 foreach ($users as $user): ?>
+
                 <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $user['name']; ?></td>
-                    <td><?= $user['total_lan']; ?></td>
-                    <td><?= $user['edc_bca']; ?></td>
-                    <td><?= $user['edc_mandiri']; ?></td>
-                    <td><?= $user['idm_listener']; ?></td>
-                    <td><?= $user['total_cpu']; ?></td>
-                    <td><?= $user['total_suhu']; ?></td>
-                    <td><?= $user['total_time']; ?></td>
-                    <td><?= $user['key_windows']; ?></td>
-                    <td><?= $user['aktivasi_os']; ?></td>
-                    <td><?= $user['total']; ?></td>
+                    <td class="font-weight-bold" style="font-size: 20px;"><?= $no++; ?></td>
+
+                    <td style="font-size: 20px;"><?= $user['name']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['total_lan']; ?></td>
+                    <td style="font-size: 25px ; background-color: yellow; color: black; "><?= $user['persen_lan']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['edc_bca']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_bca']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['edc_mandiri']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_mandiri']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['idm_listener']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_listener']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['total_cpu']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_cpu_usage']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['total_suhu']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_suhu']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['total_time']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_boottime']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['key_windows']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_key_windows']; ?></td>
+                    <td style="font-size: 25px;"><?= $user['aktivasi_os']; ?></td>
+                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_aktivasi_os']; ?></td>
+                    <td style="font-size: 30px; background-color: red; color: yellow;"><?= $user['total']; ?></td>
                     
                 </tr>
                 <?php endforeach; ?>
         </tbody>
          <tfoot>
                 <tr>
-                    <th colspan="2">TOTAL CASE</th>
-                    <th><?= array_sum(array_column($users, 'total_lan')); ?></th>
-                    <th><?= array_sum(array_column($users, 'edc_bca')); ?></th>
-                    <th><?= array_sum(array_column($users, 'edc_mandiri')); ?></th>
-                    <th><?= array_sum(array_column($users, 'idm_listener')); ?></th>
-                    <th><?= array_sum(array_column($users, 'total_cpu')); ?></th>
-                    <th><?= array_sum(array_column($users, 'total_suhu')); ?></th>
-                    <th><?= array_sum(array_column($users, 'total_time')); ?></th>
-                    <th><?= array_sum(array_column($users, 'key_windows')); ?></th>
-                    <th><?= array_sum(array_column($users, 'aktivasi_os')); ?></th>
-                    <th><?= array_sum(array_column($users, 'aktivasi_os')); ?></th>
+                    <th colspan="2" style="font-size: 20px; color: blue;">AVG PER USER</th>
+
+                    <?php
+function getBackgroundColor($value) {
+    if ($value > 99) {
+        return 'background-color: green;';
+    } elseif ($value > 97) {
+        return 'background-color: aqua;';
+    } else {
+        return 'background-color: red;';
+    }
+}
+?>
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'total_lan')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_lan')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_lan')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'edc_bca')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_bca')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_bca')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'edc_mandiri')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_mandiri')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_mandiri')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'idm_listener')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_listener')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_listener')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'total_cpu')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_cpu_usage')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_cpu_usage')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'total_suhu')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_suhu')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_suhu')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'total_time')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_boottime')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_boottime')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'key_windows')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_key_windows')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_key_windows')) / $total_users, 2); ?></th>
+
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'aktivasi_os')) / $total_users, 1); ?></th>
+<th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_aktivasi_os')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_aktivasi_os')) / $total_users, 2); ?></th> 
+<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'total')), 2); ?></th>
+
                    
                    
                 </tr>
@@ -282,6 +318,9 @@ $users = [
     
 
 </body>
+
+
+
 </html>
 
   
