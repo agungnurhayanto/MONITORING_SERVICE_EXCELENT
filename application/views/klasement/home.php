@@ -245,24 +245,34 @@ $users = array_map(function($key, $user) use ($total_rows, $total_rows_usage, $t
 
                     <td style="font-size: 20px;"><?= $user['name']; ?></td>
                     <td style="font-size: 25px;"><?= $user['total_lan']; ?></td>
-                    <td style="font-size: 25px ; background-color: yellow; color: black; "><?= $user['persen_lan']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_lan']); ?>"><?= $user['persen_lan']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['edc_bca']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_bca']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_bca']); ?>"><?= $user['persen_bca']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['edc_mandiri']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_mandiri']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_mandiri']); ?>"><?= $user['persen_mandiri']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['idm_listener']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_listener']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_listener']); ?>"><?= $user['persen_listener']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['total_cpu']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_cpu_usage']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_cpu_usage']); ?>"><?= $user['persen_cpu_usage']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['total_suhu']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_suhu']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_suhu']); ?>"><?= $user['persen_suhu']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['total_time']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_boottime']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_boottime']); ?>"><?= $user['persen_boottime']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['key_windows']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_key_windows']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_key_windows']); ?>"><?= $user['persen_key_windows']; ?></td>
+
                     <td style="font-size: 25px;"><?= $user['aktivasi_os']; ?></td>
-                    <td style="font-size: 25px; background-color: yellow; color: black;"><?= $user['persen_aktivasi_os']; ?></td>
-                    <td style="font-size: 30px; background-color: red; color: yellow;"><?= $user['total']; ?></td>
+                    <td style="font-size: 25px; <?= getBackgroundColor($user['persen_aktivasi_os']); ?>"><?= $user['persen_aktivasi_os']; ?></td>
+
+                    <td style="font-size: 30px; background-color: orange; color: blue;"><?= number_format($user['total']); ?></td>
+
                     
                 </tr>
                 <?php endforeach; ?>
@@ -271,17 +281,17 @@ $users = array_map(function($key, $user) use ($total_rows, $total_rows_usage, $t
                 <tr>
                     <th colspan="2" style="font-size: 20px; color: blue;">AVG PER USER</th>
 
-                    <?php
-function getBackgroundColor($value) {
-    if ($value > 99) {
-        return 'background-color: green;';
-    } elseif ($value > 97) {
-        return 'background-color: aqua;';
-    } else {
-        return 'background-color: red;';
-    }
-}
-?>
+             <?php
+             function getBackgroundColor($value) {
+             if ($value > 99) {
+             return 'background-color: green;';
+              } elseif ($value > 97) {
+                return 'background-color: aqua;';
+               } else {
+                return 'background-color: red;';
+              }
+             }
+             ?>
 <th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'total_lan')) / $total_users, 1); ?></th>
 <th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_lan')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_lan')) / $total_users, 2); ?></th>
 
@@ -308,7 +318,7 @@ function getBackgroundColor($value) {
 
 <th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'aktivasi_os')) / $total_users, 1); ?></th>
 <th style="font-size: 30px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_aktivasi_os')) / $total_users, 2)); ?>"><?= number_format(array_sum(array_column($users, 'persen_aktivasi_os')) / $total_users, 2); ?></th> 
-<th style="font-size: 30px; color: blue;"><?= number_format(array_sum(array_column($users, 'total')), 2); ?></th>
+<th style="font-size: 30px; color: blue; background-color: orange;"><?= number_format(array_sum(array_column($users, 'total'))); ?></th>
 
                    
                    
