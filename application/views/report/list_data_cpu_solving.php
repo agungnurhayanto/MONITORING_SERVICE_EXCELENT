@@ -9,6 +9,7 @@ foreach ($dataReport as $key => $row) {
           <td><?php echo $row->station; ?></td>
           <td><?php echo $row->nama_edp; ?></td>
           <td><?php echo $row->kendala; ?></td>
+          <td><?php echo $row->time; ?></td>
 </tr>
 <?php
 }

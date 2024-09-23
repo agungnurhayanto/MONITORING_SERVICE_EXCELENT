@@ -111,7 +111,7 @@ window.onload = function() {
           tampilReport8();
           tampilReport9();
           tampilReport10();
-          tampilReport11();
+          // tampilReport11();
 
           <?php
           if ($this->session->flashdata('msg') != '') {
@@ -312,17 +312,64 @@ function tampilReport10() {
           });
 }
 
-function tampilReport11() {
-          $.ajax({
-                    url: '<?php echo base_url('klasement/tampil'); ?>',
-                    type: 'GET',
-                    cache: true, 
-                    success: function(data) {
-                              MyTable11.fnDestroy();
-                              $('#data-report-klasement').html(data);
-                              refresh11();
-                    }
-          });
-}
+$('#form-tambah-report').submit(function(e) {
+    var data = $(this).serialize();
+
+    $.ajax({
+            method: 'POST',
+            url: '<?php echo base_url('Admin/prosesTambah'); ?>',
+            data: data
+        })
+        .done(function(data) {
+            var out = jQuery.parseJSON(data);
+
+            tampilReport();
+            if (out.status == 'form') {
+                $('.form-msg').html(out.msg);
+                effect_msg_form();
+            } else {
+                document.getElementById("form-tambah-report").reset();
+                $('#tambah-report').modal('hide');
+                $('.msg').html(out.msg);
+                effect_msg();
+            }
+        })
+
+    e.preventDefault();
+});
+
+$(document).on('submit', '#form-update-report', function(e) {
+    var data = $(this).serialize();
+
+    $.ajax({
+            method: 'POST',
+            url: '<?php echo base_url('Admin/prosesUpdate'); ?>',
+            data: data
+        })
+        .done(function(data) {
+            var out = jQuery.parseJSON(data);
+
+            tampilReport();
+            if (out.status == 'form') {
+                $('.form-msg').html(out.msg);
+                effect_msg_form();
+            } else {
+                document.getElementById("form-update-report").reset();
+                $('#update-report').modal('hide');
+                $('.msg').html(out.msg);
+                effect_msg();
+            }
+        })
+
+    e.preventDefault();
+});
+
+$('#tambah-report').on('hidden.bs.modal', function() {
+    $('.form-msg').html('');
+})
+
+$('#update-report').on('hidden.bs.modal', function() {
+    $('.form-msg').html('');
+})
 
 </script>

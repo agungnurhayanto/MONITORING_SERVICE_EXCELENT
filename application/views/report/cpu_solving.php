@@ -5,15 +5,11 @@
 <div class="box">
           <div class="box-header">
 
-                    <div class="col-md-6">
-                              <a href="<?php echo base_url('Report/export'); ?>" class="form-control btn btn-warning"><i
-                                                  class="glyphicon glyphicon glyphicon-floppy-save"></i> Export Data
-                                        Excel</a>
-                    </div>
-                    <div class="col-md-3">
-                              <!--  <button class="form-control btn btn-default" data-toggle="modal" data-target="#import-report"><i
-                              class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button> -->
-                    </div>
+                     <div class="col-md-6" style="padding: 0;">
+            <button class="form-control btn btn-success" data-toggle="modal" data-target="#tambah-kendala"><i
+                    class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
+                 </div>
+                   
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -25,7 +21,9 @@
                                                   <th style="background-color: darkcyan; color: white;">Nama Toko</th>
                                                   <th style="background-color: darkcyan; color: white;">Station</th>
                                                   <th style="background-color: darkcyan; color: white;">Nama Edp</th>
-                                                   <th style="background-color: darkcyan; color: white;">Kendala
+                                                  <th style="background-color: darkcyan; color: white;">Kendala
+                                                  </th>
+                                                  <th style="background-color: darkcyan; color: white;">Tanggal Action
                                                   </th>
 
 
@@ -39,6 +37,7 @@
           </div>
 </div>
 
+<?php echo $modal_tambah_kendala; ?>
 
 <div id="tempat-modal"></div>
 

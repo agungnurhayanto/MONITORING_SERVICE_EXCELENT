@@ -15,8 +15,12 @@ class Solving extends AUTH_Controller
 		$data['page'] = "SERVICE EXCELENT";
 		$data['judul'] = "Data Service Excelent";
 		$data['deskripsi'] = "Report Dashboard Service Excelent";
+		$data['kdtk_list'] = $this->M_solving->get_kdtk_list();
+		$data['edp_list'] = $this->M_solving->get_edp_list();
+		$data['modal_tambah_kendala'] = show_my_modal('modals/modal_tambah_kendala', 'tambah-kendala', $data);
 
 		$this->template->views('report/cpu_solving', $data);
+
 	}
 
 	public function tampil()
