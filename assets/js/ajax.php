@@ -114,10 +114,10 @@ window.onload = function() {
           // tampilReport11();
 
           <?php
-          if ($this->session->flashdata('msg') != '') {
-               echo "effect_msg();";
-          }
-          ?>
+    if ($this->session->flashdata('msg') != '') {
+      echo "effect_msg();";
+    }
+    ?>
 }
 
 function refresh() {
@@ -135,6 +135,7 @@ function refresh3() {
 function refresh4() {
           MyTable4 = $('#list-data-cpu-boot').dataTable();
 }
+
 function refresh5() {
           MyTable5 = $('#list-data-cpu-solving').dataTable();
 }
@@ -197,7 +198,7 @@ function tampilReport2() {
           $.ajax({
                     url: '<?php echo base_url('Report/tampil_cpu_usage'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable2.fnDestroy();
                               $('#data-report-cpu-usage').html(data);
@@ -210,7 +211,7 @@ function tampilReport3() {
           $.ajax({
                     url: '<?php echo base_url('Report/tampil_cpu_suhu'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable3.fnDestroy();
                               $('#data-report-cpu-suhu').html(data);
@@ -236,7 +237,7 @@ function tampilReport5() {
           $.ajax({
                     url: '<?php echo base_url('Solving/tampil'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable5.fnDestroy();
                               $('#data-report-solving').html(data);
@@ -249,7 +250,7 @@ function tampilReport6() {
           $.ajax({
                     url: '<?php echo base_url('Report/tampil_idm_listener'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable6.fnDestroy();
                               $('#data-report-idm-listener').html(data);
@@ -262,7 +263,7 @@ function tampilReport7() {
           $.ajax({
                     url: '<?php echo base_url('Report/tampil_edc_bca'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable7.fnDestroy();
                               $('#data-report-edc-bca').html(data);
@@ -275,7 +276,7 @@ function tampilReport8() {
           $.ajax({
                     url: '<?php echo base_url('Report/tampil_edc_mandiri'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable8.fnDestroy();
                               $('#data-report-edc-mandiri').html(data);
@@ -289,7 +290,7 @@ function tampilReport9() {
           $.ajax({
                     url: '<?php echo base_url('Report/tampil_key_windows'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable9.fnDestroy();
                               $('#data-report-key-windows').html(data);
@@ -303,7 +304,7 @@ function tampilReport10() {
           $.ajax({
                     url: '<?php echo base_url('Report/tampil_aktivasi_os'); ?>',
                     type: 'GET',
-                    cache: true, 
+                    cache: true,
                     success: function(data) {
                               MyTable10.fnDestroy();
                               $('#data-report-aktivasi_os').html(data);
@@ -312,64 +313,83 @@ function tampilReport10() {
           });
 }
 
-$('#form-tambah-report').submit(function(e) {
-    var data = $(this).serialize();
 
-    $.ajax({
-            method: 'POST',
-            url: '<?php echo base_url('Admin/prosesTambah'); ?>',
-            data: data
-        })
-        .done(function(data) {
-            var out = jQuery.parseJSON(data);
+$('#form-tambah-kendala').submit(function(e) {
+          var data = $(this).serialize();
 
-            tampilReport();
-            if (out.status == 'form') {
-                $('.form-msg').html(out.msg);
-                effect_msg_form();
-            } else {
-                document.getElementById("form-tambah-report").reset();
-                $('#tambah-report').modal('hide');
-                $('.msg').html(out.msg);
-                effect_msg();
-            }
-        })
+          $.ajax({
+                              method: 'POST',
+                              url: '<?php echo base_url('Solving/prosesTambah'); ?>',
+                              data: data
+                    })
+                    .done(function(data) {
+                              var out = jQuery.parseJSON(data);
 
-    e.preventDefault();
+                              tampilReport5();
+                              if (out.status == 'form') {
+                                        $('.form-msg').html(out.msg);
+                                        effect_msg_form();
+                              } else {
+                                        document.getElementById("form-tambah-kendala")
+                                                  .reset();
+                                        $('#tambah-kendala').modal('hide');
+                                        $('.msg').html(out.msg);
+                                        effect_msg();
+                              }
+                    })
+
+          e.preventDefault();
 });
 
-$(document).on('submit', '#form-update-report', function(e) {
-    var data = $(this).serialize();
 
-    $.ajax({
-            method: 'POST',
-            url: '<?php echo base_url('Admin/prosesUpdate'); ?>',
-            data: data
-        })
-        .done(function(data) {
-            var out = jQuery.parseJSON(data);
+$(document).on("click", ".update-kendala", function() {
+          var id = $(this).attr("data-id");
 
-            tampilReport();
-            if (out.status == 'form') {
-                $('.form-msg').html(out.msg);
-                effect_msg_form();
-            } else {
-                document.getElementById("form-update-report").reset();
-                $('#update-report').modal('hide');
-                $('.msg').html(out.msg);
-                effect_msg();
-            }
-        })
-
-    e.preventDefault();
+          $.ajax({
+                              method: "POST",
+                              url: "<?php echo base_url('Solving/update'); ?>",
+                              data: "id=" + id
+                    })
+                    .done(function(data) {
+                              $('#tempat-modal').html(data);
+                              $('#update-kendala').modal('show');
+                    });
 });
 
-$('#tambah-report').on('hidden.bs.modal', function() {
-    $('.form-msg').html('');
+$(document).on('submit', '#form-update-kendala', function(e) {
+          var data = $(this).serialize();
+
+          $.ajax({
+                              method: 'POST',
+                              url: '<?php echo base_url('Solving/prosesUpdate'); ?>',
+                              data: data
+                    })
+                    .done(function(data) {
+                              var out = jQuery.parseJSON(data);
+
+                              tampilReport5();
+                              if (out.status == 'form') {
+                                        $('.form-msg').html(out.msg);
+                                        effect_msg_form();
+                              } else {
+                                        document.getElementById("form-update-kendala")
+                                                  .reset();
+                                        $('#update-kendala').modal('hide');
+                                        $('.msg').html(out.msg);
+                                        effect_msg();
+                              }
+                    })
+
+          e.preventDefault();
+});
+
+
+
+$('#tambah-kendala').on('hidden.bs.modal', function() {
+          $('.form-msg').html('');
 })
 
-$('#update-report').on('hidden.bs.modal', function() {
-    $('.form-msg').html('');
+$('#update-kendala').on('hidden.bs.modal', function() {
+          $('.form-msg').html('');
 })
-
 </script>

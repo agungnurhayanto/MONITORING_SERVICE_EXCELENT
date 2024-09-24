@@ -25,10 +25,15 @@
                                                   <th style="background-color: darkcyan; color: white;">Nama Toko</th>
                                                   <th style="background-color: darkcyan; color: white;">Station</th>
                                                   <th style="background-color: darkcyan; color: white;">Nama Edp</th>
-                                                  <th style="background-color: darkcyan; color: white;">Status Online </th>
+                                                  <th style="background-color: darkcyan; color: white;">Jml online
+                                                  </th>
+                                                  <th style="background-color: darkcyan; color: white;">Jml Offline
+                                                  </th>
+                                                  <th style="background-color: darkcyan; color: white;">Status Online
+                                                  </th>
                                                   <th style="background-color: darkcyan; color: white;">Tgl Tarik Data
                                                   </th>
-                                                   <th style="background-color: darkcyan; color: white;">Keterangan
+                                                  <th style="background-color: darkcyan; color: white;">Keterangan
                                                   </th>
 
 

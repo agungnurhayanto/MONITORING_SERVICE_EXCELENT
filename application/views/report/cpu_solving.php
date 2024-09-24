@@ -5,11 +5,12 @@
 <div class="box">
           <div class="box-header">
 
-                     <div class="col-md-6" style="padding: 0;">
-            <button class="form-control btn btn-success" data-toggle="modal" data-target="#tambah-kendala"><i
-                    class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
-                 </div>
-                   
+                    <div class="col-md-6" style="padding: 0;">
+                              <button class="form-control btn btn-success" data-toggle="modal"
+                                        data-target="#tambah-kendala"><i class="glyphicon glyphicon-plus-sign"></i>
+                                        Tambah Data</button>
+                    </div>
+
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -21,9 +22,13 @@
                                                   <th style="background-color: darkcyan; color: white;">Nama Toko</th>
                                                   <th style="background-color: darkcyan; color: white;">Station</th>
                                                   <th style="background-color: darkcyan; color: white;">Nama Edp</th>
+                                                  <th style="background-color: darkcyan; color: white;">Category
+                                                  </th>
                                                   <th style="background-color: darkcyan; color: white;">Kendala
                                                   </th>
                                                   <th style="background-color: darkcyan; color: white;">Tanggal Action
+                                                  </th>
+                                                  <th style="background-color: darkcyan; color: white;">Aksi
                                                   </th>
 
 

@@ -8,9 +8,11 @@ foreach ($dataReport as $key => $row) {
           <td><?php echo $row->nama; ?></td>
           <td><?php echo $row->station; ?></td>
           <td><?php echo $row->nama_edp; ?></td>
+          <td><?php echo $row->edc_bca_on; ?></td>
+          <td><?php echo $row->edc_bca_off; ?></td>
           <td><?php echo $row->edc_bca_last; ?></td>
           <td><?php echo $row->request; ?></td>
-           <td><?php echo $row->keterangan; ?></td>
+          <td><?php echo $row->keterangan; ?></td>
 </tr>
 <?php
 }
