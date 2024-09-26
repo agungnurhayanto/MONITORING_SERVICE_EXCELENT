@@ -134,6 +134,7 @@
 </div>
 
 <script>
+// function untuk menu modal tambah dan edit
 function updateNamaToko() {
           var kdtkSelect = document.getElementById('kdtk');
           var selectedOption = kdtkSelect.options[kdtkSelect.selectedIndex];

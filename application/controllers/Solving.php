@@ -112,4 +112,17 @@ class Solving extends AUTH_Controller
 
         echo json_encode($out);
     }
+
+
+    public function delete()
+    {
+        $id = $_POST['id'];
+        $result = $this->M_solving->delete($id);
+
+        if ($result > 0) {
+            echo show_succ_msg('Data Kendala Dihapus', '20px');
+        } else {
+            echo show_err_msg('Data Kendala Dihapus', '20px');
+        }
+    }
 }

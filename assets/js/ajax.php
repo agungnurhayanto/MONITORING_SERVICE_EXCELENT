@@ -384,6 +384,28 @@ $(document).on('submit', '#form-update-kendala', function(e) {
 });
 
 
+var id_report;
+$(document).on("click", ".konfirmasiHapus-report", function() {
+          id_report = $(this).attr("data-id");
+})
+$(document).on("click", ".hapus-dataReport", function() {
+          var id = id_report;
+
+          $.ajax({
+                              method: "POST",
+                              url: "<?php echo base_url('Solving/delete'); ?>",
+                              data: "id=" + id
+                    })
+                    .done(function(data) {
+                              $('#konfirmasiHapus').modal('hide');
+                              tampilReport5();
+                              $('.msg').html(data);
+                              effect_msg();
+                    })
+})
+
+
+
 
 $('#tambah-kendala').on('hidden.bs.modal', function() {
           $('.form-msg').html('');

@@ -19,8 +19,8 @@ foreach ($dataReport as $row) {
                               <i class=" fa fa-pencil"></i>
                     </button>
 
-                    <button class="btn btn-default btn-sm detail-dataReport" data-id="<?php echo $row->id; ?>""> 
-                              <i class=" fa fa-eye"></i></i></button>
+                    <button class="btn btn-danger btn-sm konfirmasiHapus-report" data-id="<?php echo $row->id; ?>"
+                              data-toggle="modal" data-target="#konfirmasiHapus"><i class="fa fa-trash"></i>
           </td>
 </tr>
 <?php

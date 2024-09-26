@@ -73,10 +73,10 @@
 
                     <div class="input-group form-group">
                               <span class="input-group-addon" id="sizing-addon2">
-                                        <i class="glyphicon glyphicon-time"></i>
+                                        <i class="glyphicon glyphicon-calendar"></i>
                               </span>
-                              <input type="date" class="form-control" placeholder="Input Tgl Action" name="time"
-                                        aria-describedby="sizing-addon2" required="">
+                              <input type="date" class="form-control datepicker" placeholder="Input Tgl Action"
+                                        name="time" aria-describedby="sizing-addon2" required="">
                     </div>
 
                     <div class="input-group form-group">
@@ -99,8 +99,6 @@
                               </select>
                     </div>
 
-
-
                     <div class="form-group">
                               <div class="col-md-12">
                                         <button type="submit" class="form-control btn btn-warning"> <i
@@ -113,6 +111,7 @@
 </div>
 
 <script>
+// function untuk menu modal tambah dan edit
 function updateNamaToko() {
           var kdtkSelect = document.getElementById('kdtk');
           var selectedOption = kdtkSelect.options[kdtkSelect.selectedIndex];
