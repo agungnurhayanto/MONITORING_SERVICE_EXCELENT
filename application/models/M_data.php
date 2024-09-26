@@ -302,7 +302,7 @@ class M_data extends CI_Model
             ->select('idm_listener.*, edp.nik, edp.nama_edp')
             ->from('idm_listener')
             ->join('edp', 'idm_listener.kdtk = edp.kdtk')
-            ->where('idm_listener.KETERANGAN', 'Try again')
+            ->where('idm_listener.KETERANGAN', 'Listener NOK')
             ->order_by('edp.nik', 'ASC')
             ->get();
     }
