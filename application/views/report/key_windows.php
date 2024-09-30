@@ -25,10 +25,13 @@
                                                   <th style="background-color: darkcyan; color: white;">Nama Toko</th>
                                                   <th style="background-color: darkcyan; color: white;">Station</th>
                                                   <th style="background-color: darkcyan; color: white;">Nama Edp</th>
-                                                  <th style="background-color: darkcyan; color: white;">Windows Key </th>
+                                                  <th style="background-color: darkcyan; color: white;">Windows Key
+                                                  </th>
                                                   <th style="background-color: darkcyan; color: white;">Tgl Tarik Data
                                                   </th>
-                                                   <th style="background-color: darkcyan; color: white;">Keterangan
+                                                  <th style="background-color: darkcyan; color: white;">Partial Licency
+                                                  </th>
+                                                  <th style="background-color: darkcyan; color: white;">Keterangan
                                                   </th>
 
 

@@ -160,7 +160,7 @@ function refresh10() {
           MyTable10 = $('#list-data-aktivasi_os').dataTable();
 }
 
-function refresh10() {
+function refresh11() {
           MyTable11 = $('#list-data-klasement').dataTable();
 }
 
