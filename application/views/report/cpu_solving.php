@@ -11,44 +11,60 @@
                                         Tambah Data</button>
                     </div>
 
+                    <div class="col-md-6">
+                              <a href="<?php echo base_url('Solving/export'); ?>"
+                                        class="form-control btn btn-warning"><i
+                                                  class="glyphicon glyphicon glyphicon-floppy-print"></i> Export Data
+                                        Excel</a>
+                    </div>
+
+                    <hr />
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                              <table id="list-data-cpu-solving" class="table table-bordered table-striped">
+                                        <thead>
+                                                  <tr>
+                                                            <th style="background-color: darkcyan; color: white;">No
+                                                            </th>
+                                                            <th style="background-color: darkcyan; color: white;">Kdtk
+                                                            </th>
+                                                            <th style="background-color: darkcyan; color: white;">Nama
+                                                                      Toko</th>
+                                                            <th style="background-color: darkcyan; color: white;">
+                                                                      Station</th>
+                                                            <th style="background-color: darkcyan; color: white;">Nama
+                                                                      Edp</th>
+                                                            <th style="background-color: darkcyan; color: white;">
+                                                                      Category
+                                                            </th>
+                                                            <th style="background-color: darkcyan; color: white;">
+                                                                      Kendala
+                                                            </th>
+                                                            <th style="background-color: darkcyan; color: white;">
+                                                                      Tanggal Action
+                                                            </th>
+                                                            <th style="background-color: darkcyan; color: white;">Aksi
+                                                            </th>
+
+
+
+                                                  </tr>
+                                        </thead>
+                                        <tbody id="data-report-solving">
+
+                                        </tbody>
+                              </table>
+                    </div>
           </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-                    <table id="list-data-cpu-solving" class="table table-bordered table-striped">
-                              <thead>
-                                        <tr>
-                                                  <th style="background-color: darkcyan; color: white;">No</th>
-                                                  <th style="background-color: darkcyan; color: white;">Kdtk</th>
-                                                  <th style="background-color: darkcyan; color: white;">Nama Toko</th>
-                                                  <th style="background-color: darkcyan; color: white;">Station</th>
-                                                  <th style="background-color: darkcyan; color: white;">Nama Edp</th>
-                                                  <th style="background-color: darkcyan; color: white;">Category
-                                                  </th>
-                                                  <th style="background-color: darkcyan; color: white;">Kendala
-                                                  </th>
-                                                  <th style="background-color: darkcyan; color: white;">Tanggal Action
-                                                  </th>
-                                                  <th style="background-color: darkcyan; color: white;">Aksi
-                                                  </th>
 
+          <?php echo $modal_tambah_kendala; ?>
 
+          <div id="tempat-modal"></div>
 
-                                        </tr>
-                              </thead>
-                              <tbody id="data-report-solving">
-
-                              </tbody>
-                    </table>
-          </div>
-</div>
-
-<?php echo $modal_tambah_kendala; ?>
-
-<div id="tempat-modal"></div>
-
-<?php show_my_confirm('konfirmasiHapus', 'hapus-dataReport', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
-<?php
-$data['judul'] = 'Report';
-$data['url'] = 'report/import';
-// echo show_my_modal('modals/modal_import', 'import-report', $data);
-?>
+          <?php show_my_confirm('konfirmasiHapus', 'hapus-dataReport', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
+          <?php
+          $data['judul'] = 'Report';
+          $data['url'] = 'report/import';
+          // echo show_my_modal('modals/modal_import', 'import-report', $data);
+          ?>

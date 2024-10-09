@@ -6,13 +6,16 @@
           <div class="box-header">
 
                     <div class="col-md-6">
-                              <a href="<?php echo base_url('Report/export'); ?>" class="form-control btn btn-warning"><i
-                                                  class="glyphicon glyphicon glyphicon-floppy-save"></i> Export Data
-                                        Excel</a>
+                              <a href="<?php echo base_url('Report/download_template_key_windows'); ?>"
+                                        class="form-control btn btn-warning"><i
+                                                  class="glyphicon glyphicon glyphicon-floppy-save"></i> Download
+                                        Template Import</a>
                     </div>
-                    <div class="col-md-3">
-                              <!--  <button class="form-control btn btn-default" data-toggle="modal" data-target="#import-report"><i
-                              class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button> -->
+                    <div class="col-md-6">
+                              <button class="form-control btn btn-success" data-toggle="modal"
+                                        data-target="#import-licency"><i
+                                                  class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data
+                                        Excel</button>
                     </div>
           </div>
           <!-- /.box-header -->
@@ -25,10 +28,11 @@
                                                   <th style="background-color: darkcyan; color: white;">Nama Toko</th>
                                                   <th style="background-color: darkcyan; color: white;">Station</th>
                                                   <th style="background-color: darkcyan; color: white;">Nama Edp</th>
-                                                  <th style="background-color: darkcyan; color: white;">Aktivasi OS </th>
+                                                  <th style="background-color: darkcyan; color: white;">Aktivasi OS
+                                                  </th>
                                                   <th style="background-color: darkcyan; color: white;">Tgl Tarik Data
                                                   </th>
-                                                   <th style="background-color: darkcyan; color: white;">Keterangan
+                                                  <th style="background-color: darkcyan; color: white;">Keterangan
                                                   </th>
 
 
@@ -45,9 +49,9 @@
 
 <div id="tempat-modal"></div>
 
-<?php show_my_confirm('konfirmasiHapus', 'hapus-dataReport', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
 <?php
-$data['judul'] = 'Report';
-$data['url'] = 'report/import';
-// echo show_my_modal('modals/modal_import', 'import-report', $data);
+$data['judul'] = ' Key Windows';
+$data['url'] = 'report/import_licency';
+echo show_my_modal('modals/modal_import', 'import-licency', $data);
+
 ?>

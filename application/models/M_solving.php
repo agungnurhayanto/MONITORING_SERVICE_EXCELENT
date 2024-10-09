@@ -75,4 +75,12 @@ class M_solving extends CI_Model
 
         return $this->db->affected_rows();
     }
+
+    public function select_all_data()
+
+    {
+        $this->db->order_by('nama_edp', 'ASC');
+        $query = $this->db->get('kendala');
+        return $query->result();
+    }
 }

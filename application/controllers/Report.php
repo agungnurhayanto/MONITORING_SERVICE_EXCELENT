@@ -170,6 +170,18 @@ class Report extends AUTH_Controller
 		}
 	}
 
+	public function download_template_key_windows()
+	{
+		$this->load->helper('download');
+		$file_path = 'assets/templates/key_windows.csv';
+
+		if (file_exists($file_path)) {
+			force_download($file_path, NULL);
+		} else {
+			show_404();
+		}
+	}
+
 
 	public function import()
 	{
@@ -259,6 +271,90 @@ class Report extends AUTH_Controller
 		} else {
 			$this->session->set_flashdata('gagal', 'File tidak boleh kosong');
 			redirect('Report/idm_listener');
+		}
+	}
+
+
+	public function import_licency()
+	{
+		$this->form_validation->set_rules('excel', 'csv', 'File', 'trim|required');
+
+		if ($_FILES['excel']['name'] != '') {
+			$config['upload_path'] = './assets/excel/';
+			$config['allowed_types'] = 'xls|xlsx|csv';
+			$config['overwrite'] = true;
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('excel')) {
+				$this->session->set_flashdata('gagal', 'Upload file gagal: ' . $this->upload->display_errors());
+				redirect('Report/key_windows');
+				return;
+			} else {
+				$data = $this->upload->data();
+				$inputFileName = './assets/excel/' . $data['file_name'];
+
+				error_reporting(E_ALL);
+				date_default_timezone_set('Asia/Jakarta');
+				include './assets/phpexcel/Classes/PHPExcel/IOFactory.php';
+				$objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+				$sheetData = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+
+				// Ambil baris mulai dari baris kedua
+				$sheetData = array_slice($sheetData, 1); // Mengabaikan satu baris pertama
+
+				$index = 0;
+				$resultData = array();
+
+				// Definisikan kolom yang diharapkan
+				$expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+				$columns = array_keys($sheetData[0]); // Kolom pada baris pertama data (bukan header)
+
+				// Cek apakah kolom yang diharapkan ada
+				if (array_diff($expectedColumns, $columns)) {
+					$this->session->set_flashdata('gagal', 'Format data salah: Kolom yang diperlukan tidak ada');
+					unlink($inputFileName); // Hapus file
+					redirect('Report/key_windows');
+					return; // Hentikan eksekusi lebih lanjut
+				}
+
+				// Hapus data tabel setelah pengecekan kolom
+				$this->db->empty_table('licency');
+
+				foreach ($sheetData as $key => $value) {
+
+					$resultData[$index]['keterangan'] = isset($value['A']) ? $value['A'] : '';
+					$resultData[$index]['request'] = isset($value['B']) ? $value['B'] : '';
+					$resultData[$index]['response'] = isset($value['C']) ? $value['C'] : '';
+					$resultData[$index]['kdtk'] = isset($value['D']) ? $value['D'] : '';
+					$resultData[$index]['nama'] = isset($value['E']) ? $value['E'] : '';
+					$resultData[$index]['station'] = isset($value['F']) ? $value['F'] : '';
+					$resultData[$index]['partial_key'] = isset($value['G']) ? $value['G'] : '';
+					$resultData[$index]['key_windows'] = isset($value['H']) ? $value['H'] : '';
+					$resultData[$index]['aktivasi_os'] = isset($value['I']) ? $value['I'] : '';
+					$resultData[$index]['windows_key'] = isset($value['J']) ? $value['J'] : '';
+
+					$index++;
+				}
+
+				unlink($inputFileName); // Hapus file
+
+				if (count($resultData) != 0) {
+					$result = $this->M_data->insert_data_licency($resultData);
+
+					if ($result > 0) {
+						$this->session->set_flashdata('berhasil', 'Data Licency Berhasil diimport ke database');
+					} else {
+						$this->session->set_flashdata('gagal', 'Data Licency Gagal diimport ke database');
+					}
+				} else {
+					$this->session->set_flashdata('gagal', 'Tidak ada data yang diimport');
+				}
+				redirect('Report/key_windows');
+			}
+		} else {
+			$this->session->set_flashdata('gagal', 'File tidak boleh kosong');
+			redirect('Report/key_windows');
 		}
 	}
 }

@@ -367,7 +367,12 @@ class M_data extends CI_Model
         return $this->db->affected_rows();
     }
 
+    public function insert_data_licency($data)
+    {
+        $this->db->insert_batch('licency', $data);
 
+        return $this->db->affected_rows();
+    }
 
 
     public function select_solving($table)

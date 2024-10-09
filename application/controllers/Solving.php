@@ -125,4 +125,52 @@ class Solving extends AUTH_Controller
             echo show_err_msg('Data Kendala Dihapus', '20px');
         }
     }
+
+
+    public function export()
+    {
+        error_reporting(E_ALL);
+
+        include_once './assets/phpexcel/Classes/PHPExcel.php';
+        $objPHPExcel = new PHPExcel();
+
+        $data = $this->M_solving->select_all_data();
+
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        $rowCount = 1;
+
+        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, "NO");
+        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, "nik");
+        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, "nama_edp");
+        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, "kdtk");
+        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, "nama_toko");
+        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, "kendala");
+        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, "station");
+        $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, "time");
+        $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, "category");
+
+
+        $rowCount++;
+
+        foreach ($data as $value) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $value->id);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $value->nik);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $value->nama_edp);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $value->kdtk);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $value->nama_toko);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $value->kendala);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $value->station);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $value->time);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $value->category);
+
+            $rowCount++;
+        }
+
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('./assets/excel/Data Kendala SE.xlsx');
+
+        $this->load->helper('download');
+        force_download('./assets/excel/Data Kendala SE.xlsx', NULL);
+    }
 }

@@ -88,7 +88,7 @@ class Home extends AUTH_Controller
                 $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
                 $sheetData = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
 
-                $sheetData = array_slice($sheetData, 1);
+                $sheetData = array_slice($sheetData, 2);
 
                 $index = 0;
                 $resultData = array();
