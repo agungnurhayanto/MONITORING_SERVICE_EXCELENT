@@ -126,7 +126,6 @@ class Solving extends AUTH_Controller
         }
     }
 
-
     public function export()
     {
         error_reporting(E_ALL);

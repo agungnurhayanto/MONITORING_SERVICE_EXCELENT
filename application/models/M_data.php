@@ -352,6 +352,18 @@ class M_data extends CI_Model
             ->get();
     }
 
+    public function select_upgrade_os($table)
+    {
+        return $this->db
+            ->select('services_excelent.*, edp.nik, edp.nama_edp')
+            ->from('services_excelent')
+            ->join('edp', 'services_excelent.kdtk = edp.kdtk')
+            ->where('services_excelent.memory_terpasang >', '4 GB')
+            ->where('services_excelent.arsitektur', '32-bit')
+            ->order_by('edp.nik', 'ASC')
+            ->get();
+    }
+
 
     public function insert_data_excel($data)
     {

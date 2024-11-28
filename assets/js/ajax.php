@@ -100,6 +100,16 @@ var MyTable11 = $('#list-data-klasement').dataTable({
           "autoWidth": false
 });
 
+var MyTable12 = $('#list-data-upgrade_os').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+});
+
+
 window.onload = function() {
           tampilReport();
           tampilReport2();
@@ -111,6 +121,7 @@ window.onload = function() {
           tampilReport8();
           tampilReport9();
           tampilReport10();
+          tampilReport12();
           // tampilReport11();
 
           <?php
@@ -163,6 +174,11 @@ function refresh10() {
 function refresh11() {
           MyTable11 = $('#list-data-klasement').dataTable();
 }
+
+function refresh12() {
+          MyTable12 = $('#list-data-upgrade_os').dataTable();
+}
+
 
 
 function effect_msg_form() {
@@ -309,6 +325,19 @@ function tampilReport10() {
                               MyTable10.fnDestroy();
                               $('#data-report-aktivasi_os').html(data);
                               refresh10();
+                    }
+          });
+}
+
+function tampilReport12() {
+          $.ajax({
+                    url: '<?php echo base_url('Report/tampil_upgrade_os'); ?>',
+                    type: 'GET',
+                    cache: true,
+                    success: function(data) {
+                              MyTable12.fnDestroy();
+                              $('#data-report-upgrade_os').html(data);
+                              refresh12();
                     }
           });
 }

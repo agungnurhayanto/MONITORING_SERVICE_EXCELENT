@@ -78,9 +78,9 @@ $usersData = [
 // $total_user = count($total_rows_all); // Jumlah total user
 $total_users = count($usersData);
 
-$users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $total_rows_suhu, $total_rows_boottime, $total_rows_idm_listener, $total_rows_edc_bca, $total_rows_edc_mandiri, $total_rows_key_windows, $total_rows_aktivasi_os, $total_rows_all) {
+$users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $total_rows_suhu, $total_rows_boottime, $total_rows_idm_listener, $total_rows_edc_bca, $total_rows_edc_mandiri, $total_rows_key_windows, $total_rows_aktivasi_os, $total_rows_upgrade_os, $total_rows_all) {
 
-    $total = $total_rows[$key] + $total_rows_usage[$key] + $total_rows_suhu[$key] + $total_rows_boottime[$key] + $total_rows_idm_listener[$key] + $total_rows_edc_bca[$key] + $total_rows_edc_mandiri[$key] + $total_rows_key_windows[$key] + $total_rows_aktivasi_os[$key];
+    $total = $total_rows[$key] + $total_rows_usage[$key] + $total_rows_suhu[$key] + $total_rows_boottime[$key] + $total_rows_idm_listener[$key] + $total_rows_edc_bca[$key] + $total_rows_edc_mandiri[$key] + $total_rows_key_windows[$key] + $total_rows_aktivasi_os[$key] + $total_rows_upgrade_os[$key];
 
     $persen_lan = ($total_rows_all[$key] > 0)
         ? number_format(($total_rows_all[$key] - $total_rows[$key]) / $total_rows_all[$key] * 100, 2)
@@ -113,6 +113,9 @@ $users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $
     $persen_aktivasi_os = ($total_rows_all[$key] > 0)
         ? number_format(($total_rows_all[$key] - $total_rows_aktivasi_os[$key]) / $total_rows_all[$key] * 100, 2)
         : 0;
+    $persen_upgrade_os = ($total_rows_all[$key] > 0)
+        ? number_format(($total_rows_all[$key] - $total_rows_upgrade_os[$key]) / $total_rows_all[$key] * 100, 2)
+        : 0;
 
     //  $total_persen_lan += $persen_lan;    
 
@@ -130,6 +133,7 @@ $users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $
         'edc_mandiri' => $total_rows_edc_mandiri[$key],
         'key_windows' => $total_rows_key_windows[$key],
         'aktivasi_os' => $total_rows_aktivasi_os[$key],
+        'upgrade_os' => $total_rows_upgrade_os[$key],
         'total' => $total,
 
         'persen_lan' => $persen_lan,
@@ -141,6 +145,7 @@ $users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $
         'persen_boottime' => $persen_boottime,
         'persen_key_windows' => $persen_key_windows,
         'persen_aktivasi_os' => $persen_aktivasi_os,
+        'persen_upgrade_os' => $persen_upgrade_os,
         'persen_lan' => $persen_lan
 
 
@@ -249,6 +254,11 @@ $users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $
                                                   OPERASIONAL</th>
                                         <th style="background-color: darkcyan; color: white;  font-size: 20px;">TOTAL
                                                   TUGAS</th>
+                                        <th style="background-color: darkcyan; color: white; font-size: 20px;">Upgrade
+                                                  Os
+                                        </th>
+                                        <th style="background-color: yellow; color: black; font-size: 20px;">Upgrade OS
+                                                  %</th>
                                         <th style="background-color: darkcyan; color: white; font-size: 20px;">Lan < 1
                                                             Gb</th>
                                         <th style="background-color: yellow; color: black; font-size: 20px;">Lan %</th>
@@ -298,6 +308,11 @@ $users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $
                               <td style="font-size: 40px; <?= getTotalColor($user['total']); ?>">
                                         <?= number_format($user['total']); ?>
                               </td>
+
+                              <td style="font-size: 25px;"><?= $user['upgrade_os']; ?></td>
+                              <td style="font-size: 25px; <?= getBackgroundColor($user['persen_upgrade_os']); ?>">
+                                        <?= $user['persen_upgrade_os']; ?></td>
+
                               <td style="font-size: 25px;"><?= $user['total_lan']; ?></td>
                               <td style="font-size: 25px; <?= getBackgroundColor($user['persen_lan']); ?>">
                                         <?= $user['persen_lan']; ?></td>
@@ -361,6 +376,14 @@ $users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $
             ?>
                               <th style="font-size: 40px; color: blue; background-color: orange;">
                                         <?= number_format(array_sum(array_column($users, 'total'))); ?></th>
+
+                              <th style="font-size: 35px; color: blue;">
+                                        <?= number_format(array_sum(array_column($users, 'upgrade_os')) / $total_users, 1); ?>
+                              </th>
+                              <th
+                                        style="font-size: 35px; color: blue; <?= getBackgroundColor(number_format(array_sum(array_column($users, 'persen_upgrade_os')) / $total_users, 2)); ?>">
+                                        <?= number_format(array_sum(array_column($users, 'persen_upgrade_os')) / $total_users, 2); ?>
+                              </th>
                               <th style="font-size: 35px; color: blue;">
                                         <?= number_format(array_sum(array_column($users, 'total_lan')) / $total_users, 1); ?>
                               </th>

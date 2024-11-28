@@ -158,6 +158,23 @@ class Report extends AUTH_Controller
 	}
 
 
+	public function upgrade_os()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
+
+		$this->template->views('report/upgrade_os', $data);
+	}
+
+	public function tampil_upgrade_os()
+	{
+		$data['dataReport'] = $this->M_data->select_upgrade_os('services_excelent')->result();
+		$this->load->view('report/list_data_upgrade_os', $data);
+	}
+
+
 	public function download_template()
 	{
 		$this->load->helper('download');

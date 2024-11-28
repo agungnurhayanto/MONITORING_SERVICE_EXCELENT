@@ -11,16 +11,6 @@ class M_solving extends CI_Model
         $this->db = $this->load->database('default', TRUE);
     }
 
-    // public function select_solving($table)
-    // {
-
-    //     return $this->db
-    //         ->select('kendala.*, edp.nik, edp.nama_edp')
-    //         ->from('kendala')
-    //         ->join('edp', 'kendala.kdtk = edp.kdtk')
-    //         ->get();
-    // }
-
     public function select_solving()
     {
 

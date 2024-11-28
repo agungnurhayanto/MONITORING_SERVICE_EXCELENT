@@ -3,19 +3,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Klasement extends AUTH_Controller
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_klasement');
-	}
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('M_klasement');
+    }
 
-	public function index()
-	{
+    public function index()
+    {
 
-		$edp_names = ['AHMAD SOFYAN', 'ADHI PRASETYO','DEDE HERMANSYAH','JUANDA','EGA RAMADHANI ANWARI','HENDRIK ASTA MANGGALA','ILHAM M FIRDAUS','JAMHARA PARPANI','PRADITYA RIYAN VIVALDI','RAMADHAN SAPUTRA','ANDREAS ARMANDO YUNIOR','ARIFIN HAZALI']; 
+        $edp_names = ['AHMAD SOFYAN', 'ADHI PRASETYO', 'DEDE HERMANSYAH', 'JUANDA', 'EGA RAMADHANI ANWARI', 'HENDRIK ASTA MANGGALA', 'ILHAM M FIRDAUS', 'JAMHARA PARPANI', 'PRADITYA RIYAN VIVALDI', 'RAMADHAN SAPUTRA', 'ANDREAS ARMANDO YUNIOR', 'ARIFIN HAZALI'];
 
         $total_rows_lan = $this->M_klasement->total_rows_lan($edp_names);
-       // $total_rows_lan_ttl = $this->M_klasement->total_rows_lan_ttl($edp_names);
+        // $total_rows_lan_ttl = $this->M_klasement->total_rows_lan_ttl($edp_names);
 
         $total_rows_usage = $this->M_klasement->total_rows_usage($edp_names);
         $total_rows_suhu = $this->M_klasement->total_rows_suhu($edp_names);
@@ -23,13 +23,14 @@ class Klasement extends AUTH_Controller
         $total_rows_idm_listener = $this->M_klasement->total_rows_idm_listener($edp_names);
 
         $total_rows_edc_bca = $this->M_klasement->total_rows_edc_bca($edp_names);
-       // $total_rows_edc_bca_ttl = $this->M_klasement->total_rows_edc_bca_ttl($edp_names);
+        // $total_rows_edc_bca_ttl = $this->M_klasement->total_rows_edc_bca_ttl($edp_names);
         $total_rows_all = $this->M_klasement->total_rows_all($edp_names);
 
 
         $total_rows_edc_mandiri = $this->M_klasement->total_rows_edc_mandiri($edp_names);
         $total_rows_key_windows = $this->M_klasement->total_rows_key_windows($edp_names);
         $total_rows_aktivasi_os = $this->M_klasement->total_rows_aktivasi_os($edp_names);
+        $total_rows_upgrade_os = $this->M_klasement->total_rows_upgrade_os($edp_names);
 
 
 
@@ -47,7 +48,7 @@ class Klasement extends AUTH_Controller
 
 
         $data['total_rows'] = $total_rows_lan;
-       // $data['total_rows_ttl'] = $total_rows_lan_ttl;
+        // $data['total_rows_ttl'] = $total_rows_lan_ttl;
 
         $data['total_rows_usage'] = $total_rows_usage;
         $data['total_rows_suhu'] = $total_rows_suhu;
@@ -63,6 +64,7 @@ class Klasement extends AUTH_Controller
         $data['total_rows_edc_mandiri'] = $total_rows_edc_mandiri;
         $data['total_rows_key_windows'] = $total_rows_key_windows;
         $data['total_rows_aktivasi_os'] = $total_rows_aktivasi_os;
+        $data['total_rows_upgrade_os'] = $total_rows_upgrade_os;
 
 
 
@@ -73,28 +75,27 @@ class Klasement extends AUTH_Controller
 
 
         $data['ttl_toko'] = $ttl_toko;
-       
-        
-		$data['userdata']         = $this->userdata;
-		$data['page']             = "Home";
-		$data['judul']            = "Halaman Klasement Liga Edp SE";
-		$data['deskripsi']        = "Report Service Excelent";
 
-		$this->template->views('klasement/home', $data);
-	}
 
-	
+        $data['userdata']         = $this->userdata;
+        $data['page']             = "Home";
+        $data['judul']            = "Halaman Klasement Liga Edp SE";
+        $data['deskripsi']        = "Report Service Excelent";
 
-	public function download_template()
-	{
-		$this->load->helper('download');
-		$file_path = 'assets/templates/templatese.csv';
+        $this->template->views('klasement/home', $data);
+    }
 
-		if (file_exists($file_path)) {
-			force_download($file_path, NULL);
-		} else {
-			show_404();
-		}
-	}
 
+
+    public function download_template()
+    {
+        $this->load->helper('download');
+        $file_path = 'assets/templates/templatese.csv';
+
+        if (file_exists($file_path)) {
+            force_download($file_path, NULL);
+        } else {
+            show_404();
+        }
+    }
 }

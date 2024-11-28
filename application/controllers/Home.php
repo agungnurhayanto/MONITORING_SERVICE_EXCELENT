@@ -126,15 +126,15 @@ class Home extends AUTH_Controller
                         $resultData[$index]['cpu_usage'] = isset($value['N']) ? $value['N'] : ''; // CPU_USAGE
                         $resultData[$index]['memory_usage'] = isset($value['O']) ? $value['O'] : ''; // MEMORY_USAGE
                         $resultData[$index]['memory_terpasang'] = isset($value['P']) ? $value['P'] : ''; // MEMORY_TERPASANG
-                        $resultData[$index]['hdd_name'] = isset($value['Q']) ? $value['Q'] : ''; // HDD_NAME
-                        $resultData[$index]['hdd_total'] = isset($value['R']) ? $value['R'] : ''; // HDD_TOTAL
-                        $resultData[$index]['hdd_used'] = isset($value['S']) ? $value['S'] : ''; // HDD_USED
-                        $resultData[$index]['hdd_free'] = isset($value['T']) ? $value['T'] : ''; // HDD_FREE
-                        $resultData[$index]['hdd_predict_failure'] = isset($value['U']) ? $value['U'] : ''; // HDD_PREDICT_FAILURE
+                        $resultData[$index]['memory_terbaca'] = isset($value['Q']) ? $value['Q'] : ''; // MEMORY_TERBACA
+                        $resultData[$index]['hdd_name'] = isset($value['R']) ? $value['R'] : ''; // HDD_NAME
+                        $resultData[$index]['hdd_total'] = isset($value['S']) ? $value['S'] : ''; // HDD_TOTAL
+                        $resultData[$index]['hdd_used'] = isset($value['T']) ? $value['T'] : ''; // HDD_USED
+                        $resultData[$index]['hdd_free'] = isset($value['U']) ? $value['U'] : ''; // HDD_FREE
                         $resultData[$index]['hdd_health'] = isset($value['V']) ? $value['V'] : ''; // HDD_HEALTH
                         $resultData[$index]['setting_hibernate'] = isset($value['W']) ? $value['W'] : ''; // SETTING_HIBERNATE
                         $resultData[$index]['ups_status'] = isset($value['X']) ? $value['X'] : ''; // UPS_STATUS
-                        $resultData[$index]['device_id'] = isset($value['Y']) ? $value['Y'] : ''; // UPS_STATUS
+                        $resultData[$index]['device_id'] = isset($value['Y']) ? $value['Y'] : ''; // DEVICE_ID
                         $resultData[$index]['aktivasi_windows'] = isset($value['Z']) ? $value['Z'] : ''; // AKTIVASI_WINDOWS
                         $resultData[$index]['partial_key_windows'] = isset($value['AA']) ? $value['AA'] : ''; // PARTIAL_KEY_WINDOWS
                         $resultData[$index]['lan_speed'] = isset($value['AB']) ? $value['AB'] : ''; // LAN_SPEED
@@ -175,9 +175,6 @@ class Home extends AUTH_Controller
             redirect('Home');
         }
     }
-
-
-
 
     public function download_template()
     {
