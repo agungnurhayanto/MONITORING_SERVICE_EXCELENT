@@ -1,0 +1,18 @@
+<?php
+$no = 1;
+foreach ($dataReport as $key => $row) {
+?>
+<tr>
+          <td><?php echo $no++; ?></td>
+          <td><?php echo $row->kdtk; ?></td>
+          <td><?php echo $row->nama; ?></td>
+          <td><?php echo $row->station; ?></td>
+          <td><?php echo $row->nama_edp; ?></td>
+          <td><?php echo $row->windows_key; ?></td>
+          <td><?php echo $row->request; ?></td>
+          <td><?php echo $row->partial_key; ?></td>
+          <td><?php echo $row->key_windows; ?></td>
+</tr>
+<?php
+}
+?>
