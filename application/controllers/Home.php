@@ -94,7 +94,7 @@ class Home extends AUTH_Controller
                 $resultData = array();
 
                 // Definisikan kolom yang diharapkan
-                $expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN'];
+                $expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP'];
                 $columns = array_keys($sheetData[0]);
 
                 // Cek apakah kolom yang diharapkan ada
@@ -132,24 +132,26 @@ class Home extends AUTH_Controller
                         $resultData[$index]['hdd_used'] = isset($value['T']) ? $value['T'] : ''; // HDD_USED
                         $resultData[$index]['hdd_free'] = isset($value['U']) ? $value['U'] : ''; // HDD_FREE
                         $resultData[$index]['hdd_health'] = isset($value['V']) ? $value['V'] : ''; // HDD_HEALTH
-                        $resultData[$index]['setting_hibernate'] = isset($value['W']) ? $value['W'] : ''; // SETTING_HIBERNATE
-                        $resultData[$index]['ups_status'] = isset($value['X']) ? $value['X'] : ''; // UPS_STATUS
-                        $resultData[$index]['device_id'] = isset($value['Y']) ? $value['Y'] : ''; // DEVICE_ID
-                        $resultData[$index]['aktivasi_windows'] = isset($value['Z']) ? $value['Z'] : ''; // AKTIVASI_WINDOWS
-                        $resultData[$index]['partial_key_windows'] = isset($value['AA']) ? $value['AA'] : ''; // PARTIAL_KEY_WINDOWS
-                        $resultData[$index]['lan_speed'] = isset($value['AB']) ? $value['AB'] : ''; // LAN_SPEED
-                        $resultData[$index]['uptime'] = isset($value['AC']) ? $value['AC'] : ''; // UPTIME
-                        $resultData[$index]['suhu'] = isset($value['AD']) ? $value['AD'] : ''; // SUHU
-                        $resultData[$index]['boot_time'] = isset($value['AE']) ? $value['AE'] : ''; // BOOT_TIME
-                        $resultData[$index]['list_ip'] = isset($value['AF']) ? $value['AF'] : ''; // LIST_IP
-                        $resultData[$index]['setting_bca'] = isset($value['AG']) ? $value['AG'] : ''; // SETTING_BCA
-                        $resultData[$index]['edc_bca_on'] = isset($value['AH']) ? $value['AH'] : ''; // EDC_BCA_ON
-                        $resultData[$index]['edc_bca_off'] = isset($value['AI']) ? $value['AI'] : ''; // EDC_BCA_OFF
-                        $resultData[$index]['edc_bca_last'] = isset($value['AJ']) ? $value['AJ'] : ''; // EDC_BCA_LAST
-                        $resultData[$index]['setting_mandiri'] = isset($value['AK']) ? $value['AK'] : ''; // SETTING_MANDIRI
-                        $resultData[$index]['edc_mandiri_on'] = isset($value['AL']) ? $value['AL'] : ''; // EDC_MANDIRI_ON
-                        $resultData[$index]['edc_mandiri_off'] = isset($value['AM']) ? $value['AM'] : ''; // EDC_MANDIRI_OFF
-                        $resultData[$index]['edc_mandiri_last'] = isset($value['AN']) ? $value['AN'] : ''; // EDC_MANDIRI_LAST
+                        $resultData[$index]['tipe'] = isset($value['W']) ? $value['W'] : '';
+                        $resultData[$index]['setting_hibernate'] = isset($value['X']) ? $value['X'] : ''; // SETTING_HIBERNATE
+                        $resultData[$index]['ups_status'] = isset($value['Y']) ? $value['Y'] : ''; // UPS_STATUS
+                        $resultData[$index]['device_id'] = isset($value['Z']) ? $value['Z'] : ''; // DEVICE_ID
+                        $resultData[$index]['aktivasi_windows'] = isset($value['AA']) ? $value['AA'] : ''; // AKTIVASI_WINDOWS
+                        $resultData[$index]['partial_key_windows'] = isset($value['AB']) ? $value['AB'] : ''; // PARTIAL_KEY_WINDOWS
+                        $resultData[$index]['last_install'] = isset($value['AC']) ? $value['AC'] : ''; // PARTIAL_KEY_WINDOWS
+                        $resultData[$index]['lan_speed'] = isset($value['AD']) ? $value['AD'] : ''; // LAN_SPEED
+                        $resultData[$index]['uptime'] = isset($value['AE']) ? $value['AE'] : ''; // UPTIME
+                        $resultData[$index]['suhu'] = isset($value['AF']) ? $value['AF'] : ''; // SUHU
+                        $resultData[$index]['boot_time'] = isset($value['AG']) ? $value['AG'] : ''; // BOOT_TIME
+                        $resultData[$index]['list_ip'] = isset($value['AH']) ? $value['AH'] : ''; // LIST_IP
+                        $resultData[$index]['setting_bca'] = isset($value['AI']) ? $value['AI'] : ''; // SETTING_BCA
+                        $resultData[$index]['edc_bca_on'] = isset($value['AJ']) ? $value['AJ'] : ''; // EDC_BCA_ON
+                        $resultData[$index]['edc_bca_off'] = isset($value['AK']) ? $value['AK'] : ''; // EDC_BCA_OFF
+                        $resultData[$index]['edc_bca_last'] = isset($value['AL']) ? $value['AL'] : ''; // EDC_BCA_LAST
+                        $resultData[$index]['setting_mandiri'] = isset($value['AM']) ? $value['AM'] : ''; // SETTING_MANDIRI
+                        $resultData[$index]['edc_mandiri_on'] = isset($value['AN']) ? $value['AN'] : ''; // EDC_MANDIRI_ON
+                        $resultData[$index]['edc_mandiri_off'] = isset($value['AO']) ? $value['AO'] : ''; // EDC_MANDIRI_OFF
+                        $resultData[$index]['edc_mandiri_last'] = isset($value['AP']) ? $value['AP'] : ''; // EDC_MANDIRI_LAST
 
                         $index++;
                     }

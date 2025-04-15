@@ -227,11 +227,11 @@ $users = array_map(function ($key, $user) use ($total_rows, $total_rows_usage, $
 
     function getTotalColor($total)
     {
-        if ($total >= 90) {
+        if ($total >= 50) {
             return 'background-color: red; color: white;';
-        } elseif ($total >= 70) {
+        } elseif ($total >= 30) {
             return 'background-color: orange; color: black;';
-        } elseif ($total >= 50) {
+        } elseif ($total >= 20) {
             return 'background-color: yellow; color: black;';
         } else {
             return 'background-color: green; color: white;';

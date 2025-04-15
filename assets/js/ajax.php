@@ -109,6 +109,15 @@ var MyTable12 = $('#list-data-upgrade_os').dataTable({
           "autoWidth": false
 });
 
+var MyTable13 = $('#list-data-list').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+});
+
 
 window.onload = function() {
           tampilReport();
@@ -122,6 +131,7 @@ window.onload = function() {
           tampilReport9();
           tampilReport10();
           tampilReport12();
+          tampilReport13();
           // tampilReport11();
 
           <?php
@@ -179,6 +189,9 @@ function refresh12() {
           MyTable12 = $('#list-data-upgrade_os').dataTable();
 }
 
+function refresh13() {
+          MyTable13 = $('#list-data-list').dataTable();
+}
 
 
 function effect_msg_form() {
@@ -338,6 +351,19 @@ function tampilReport12() {
                               MyTable12.fnDestroy();
                               $('#data-report-upgrade_os').html(data);
                               refresh12();
+                    }
+          });
+}
+
+function tampilReport13() {
+          $.ajax({
+                    url: '<?php echo base_url('Listjob/tampil'); ?>',
+                    type: 'GET',
+                    cache: true,
+                    success: function(data) {
+                              MyTable13.fnDestroy();
+                              $('#data-report-list').html(data);
+                              refresh13();
                     }
           });
 }
