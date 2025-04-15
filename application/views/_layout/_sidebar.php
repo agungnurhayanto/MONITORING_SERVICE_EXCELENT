@@ -66,6 +66,16 @@
                                         </a>
                               </li>
 
+                              <li <?php if ($page == 'listjob') {
+            echo 'class="active"';
+          } ?>>
+                                        <a href="<?php echo base_url('Listjob'); ?>">
+                                                  <i class="fa fa-home"></i>
+                                                  <span>List Job</span>
+                                        </a>
+                              </li>
+
+
 
 
                               <li <?php if ($page == 'report') {
