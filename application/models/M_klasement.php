@@ -192,21 +192,49 @@ class M_klasement extends CI_Model
 
 
 
+  // public function total_rows_edc_mandiri($edp_names)
+
+  // {
+
+  //   $results = [];
+
+  //   foreach ($edp_names as $name) {
+  //     $this->db->select('services_excelent.*, edp.nama_edp');
+  //     $this->db->from('services_excelent');
+  //     $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+  //     $this->db->like('services_excelent.edc_mandiri_last', 'OFFLINE');
+  //     $this->db->where('edp.nama_edp', $name);
+
+  //     $data = $this->db->get();
+  //     $results[$name] = $data->num_rows();
+  //   }
+
+  //   return $results;
+  // }
+
   public function total_rows_edc_mandiri($edp_names)
-
   {
-
     $results = [];
 
-    foreach ($edp_names as $name) {
-      $this->db->select('services_excelent.*, edp.nama_edp');
-      $this->db->from('services_excelent');
-      $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
-      $this->db->like('services_excelent.edc_mandiri_last', 'OFFLINE');
-      $this->db->where('edp.nama_edp', $name);
+    // Mengambil semua data yang diperlukan sekali untuk efisiensi
+    $this->db->select('edp.nama_edp');
+    $this->db->from('services_excelent');
+    $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+    $this->db->where('services_excelent.edc_mandiri_last NOT LIKE', '%ONLINE%');
+    $this->db->where('services_excelent.edc_mti_last NOT LIKE', '%ONLINE%');
+    $this->db->where('services_excelent.station !=', 'i1');
+    $data = $this->db->get()->result_array();
 
-      $data = $this->db->get();
-      $results[$name] = $data->num_rows();
+    // Inisialisasi hitungan untuk setiap nama EDP
+    foreach ($edp_names as $name) {
+      $results[$name] = 0;
+    }
+
+    // Menghitung jumlah baris untuk setiap nama EDP
+    foreach ($data as $row) {
+      if (in_array($row['nama_edp'], $edp_names)) {
+        $results[$row['nama_edp']]++;
+      }
     }
 
     return $results;
