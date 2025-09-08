@@ -11,9 +11,6 @@ foreach ($dataReport as $key => $row) {
           <td><?php echo $row->edc_mandiri_on; ?></td>
           <td><?php echo $row->edc_mandiri_off; ?></td>
           <td><?php echo $row->edc_mandiri_last; ?></td>
-          <td><?php echo $row->edc_mti_on; ?></td>
-          <td><?php echo $row->edc_mti_off; ?></td>
-          <td><?php echo $row->edc_mti_last; ?></td>
           <td><?php echo $row->request; ?></td>
           <td><?php echo $row->keterangan; ?></td>
 </tr>

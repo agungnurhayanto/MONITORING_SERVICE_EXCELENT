@@ -23,11 +23,13 @@ class Klasement extends AUTH_Controller
         $total_rows_idm_listener = $this->M_klasement->total_rows_idm_listener($edp_names);
 
         $total_rows_edc_bca = $this->M_klasement->total_rows_edc_bca($edp_names);
+        $total_rows_edc_bca_no_edc = $this->M_klasement->total_rows_edc_bca_no_edc($edp_names);
         // $total_rows_edc_bca_ttl = $this->M_klasement->total_rows_edc_bca_ttl($edp_names);
         $total_rows_all = $this->M_klasement->total_rows_all($edp_names);
 
 
         $total_rows_edc_mandiri = $this->M_klasement->total_rows_edc_mandiri($edp_names);
+        $total_rows_edc_mandiri_no_edc = $this->M_klasement->total_rows_edc_mandiri_no_edc($edp_names);
         $total_rows_key_windows = $this->M_klasement->total_rows_key_windows($edp_names);
         $total_rows_aktivasi_os = $this->M_klasement->total_rows_aktivasi_os($edp_names);
         $total_rows_upgrade_os = $this->M_klasement->total_rows_upgrade_os($edp_names);
@@ -56,12 +58,14 @@ class Klasement extends AUTH_Controller
         $data['total_rows_idm_listener'] = $total_rows_idm_listener;
 
         $data['total_rows_edc_bca'] = $total_rows_edc_bca;
+        $data['total_rows_edc_bca_no_edc'] = $total_rows_edc_bca_no_edc;
         //$data['total_rows_edc_bca_ttl'] = $total_rows_edc_bca_ttl;
         $data['total_rows_all'] = $total_rows_all;
 
 
 
         $data['total_rows_edc_mandiri'] = $total_rows_edc_mandiri;
+        $data['total_rows_edc_mandiri_no_edc'] = $total_rows_edc_mandiri_no_edc;
         $data['total_rows_key_windows'] = $total_rows_key_windows;
         $data['total_rows_aktivasi_os'] = $total_rows_aktivasi_os;
         $data['total_rows_upgrade_os'] = $total_rows_upgrade_os;

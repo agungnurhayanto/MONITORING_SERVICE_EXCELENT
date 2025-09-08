@@ -136,9 +136,29 @@
                               <li <?php if ($page == 'report') {
             echo 'class="active"';
           } ?>>
+
+
+                                        <a href="<?php echo base_url('Report/edc_bca_no_edc'); ?>">
+                                                  <i class="fa fa-ambulance"></i>
+                                                  <span>BCA ( no edc ) </span>
+                                        </a>
+                              </li>
+
+                              <li <?php if ($page == 'report') {
+            echo 'class="active"';
+          } ?>>
                                         <a href="<?php echo base_url('Report/edc_mandiri'); ?>">
                                                   <i class="fa fa-ambulance"></i>
                                                   <span>Edc Mandiri </span>
+                                        </a>
+                              </li>
+
+                              <li <?php if ($page == 'report') {
+            echo 'class="active"';
+          } ?>>
+                                        <a href="<?php echo base_url('Report/edc_mandiri_no_edc'); ?>">
+                                                  <i class="fa fa-ambulance"></i>
+                                                  <span>Edc Mandiri ( no edc) </span>
                                         </a>
                               </li>
 

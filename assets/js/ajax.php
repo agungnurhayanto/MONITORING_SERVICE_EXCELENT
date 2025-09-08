@@ -118,6 +118,23 @@ var MyTable13 = $('#list-data-list').dataTable({
           "autoWidth": false
 });
 
+var MyTable14 = $('#list-data-list-no-edc').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+});
+
+var MyTable15 = $('#list-data-edc-mandiri-no-edc').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+});
 
 window.onload = function() {
           tampilReport();
@@ -132,6 +149,8 @@ window.onload = function() {
           tampilReport10();
           tampilReport12();
           tampilReport13();
+          tampilReport14();
+          tampilReport15();
           // tampilReport11();
 
           <?php
@@ -191,6 +210,14 @@ function refresh12() {
 
 function refresh13() {
           MyTable13 = $('#list-data-list').dataTable();
+}
+
+function refresh14() {
+          MyTable14 = $('#list-data-edc-bca-no-edc').dataTable();
+}
+
+function refresh15() {
+          MyTable15 = $('#list-data-edc-mandiri-no-edc').dataTable();
 }
 
 
@@ -364,6 +391,32 @@ function tampilReport13() {
                               MyTable13.fnDestroy();
                               $('#data-report-list').html(data);
                               refresh13();
+                    }
+          });
+}
+
+function tampilReport14() {
+          $.ajax({
+                    url: '<?php echo base_url('Report/tampil_edc_bca_no_edc'); ?>',
+                    type: 'GET',
+                    cache: true,
+                    success: function(data) {
+                              MyTable14.fnDestroy();
+                              $('#data-report-edc-bca-no-edc').html(data);
+                              refresh14();
+                    }
+          });
+}
+
+function tampilReport15() {
+          $.ajax({
+                    url: '<?php echo base_url('Report/tampil_edc_mandiri_no_edc'); ?>',
+                    type: 'GET',
+                    cache: true,
+                    success: function(data) {
+                              MyTable15.fnDestroy();
+                              $('#data-report-edc-mandiri-no-edc').html(data);
+                              refresh15();
                     }
           });
 }

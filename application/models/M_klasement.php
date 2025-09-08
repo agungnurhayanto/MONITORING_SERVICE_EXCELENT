@@ -112,9 +112,7 @@ class M_klasement extends CI_Model
   }
 
   public function total_rows_idm_listener($edp_names)
-
   {
-
     $results = [];
 
     foreach ($edp_names as $name) {
@@ -144,6 +142,27 @@ class M_klasement extends CI_Model
       $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
       $this->db->like('services_excelent.edc_bca_last', 'OFFLINE');
       $this->db->where('edp.nama_edp', $name);
+
+      $data = $this->db->get();
+      $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+  }
+
+  public function total_rows_edc_bca_no_edc($edp_names)
+
+  {
+    $results = [];
+
+    foreach ($edp_names as $name) {
+      $this->db->select('services_excelent.*, edp.nama_edp');
+      $this->db->from('services_excelent');
+      $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+      $this->db->like('services_excelent.edc_bca_last', 'NOEDC');
+      $this->db->where('edp.nama_edp', $name);
+      $this->db->where("services_excelent.setting_bca", "'-");
+      $this->db->where('services_excelent.station !=', 'i1');
 
       $data = $this->db->get();
       $results[$name] = $data->num_rows();
@@ -185,6 +204,35 @@ class M_klasement extends CI_Model
       $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
       $this->db->like('services_excelent.edc_mandiri_last', 'OFFLINE');
       $this->db->where('edp.nama_edp', $name);
+
+      $data = $this->db->get();
+      $results[$name] = $data->num_rows();
+    }
+
+    return $results;
+  }
+
+
+  public function total_rows_edc_mandiri_no_edc($edp_names)
+  {
+    $results = [];
+
+    foreach ($edp_names as $name) {
+      $this->db->select('services_excelent.*, edp.nama_edp');
+      $this->db->from('services_excelent');
+      $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+
+      // Menambahkan kondisi untuk EDC Mandiri
+      $this->db->like('services_excelent.edc_mandiri_last', 'NOEDC');
+      $this->db->where("services_excelent.setting_mandiri", "'-");
+
+      // Menambahkan kondisi untuk EDC MTI
+      $this->db->like('services_excelent.edc_mti_last', 'NOEDC');
+      $this->db->where("services_excelent.setting_mti", "'-");
+
+      // Kondisi lainnya
+      $this->db->where('edp.nama_edp', $name);
+      $this->db->where('services_excelent.station !=', 'i1');
 
       $data = $this->db->get();
       $results[$name] = $data->num_rows();

@@ -20,7 +20,9 @@ class Home extends AUTH_Controller
         $total_rows_boottime = $this->M_data->total_rows_boottime($edp_names);
         $total_rows_idm_listener = $this->M_data->total_rows_idm_listener($edp_names);
         $total_rows_edc_bca = $this->M_data->total_rows_edc_bca($edp_names);
+        $total_rows_edc_bca_no_edc = $this->M_data->total_rows_edc_bca_no_edc($edp_names);
         $total_rows_edc_mandiri = $this->M_data->total_rows_edc_mandiri($edp_names);
+        $total_rows_edc_mandiri_no_edc = $this->M_data->total_rows_edc_mandiri_no_edc($edp_names);
         $total_rows_key_windows = $this->M_data->total_rows_key_windows($edp_names);
         $total_rows_aktivasi_os = $this->M_data->total_rows_aktivasi_os($edp_names);
 
@@ -43,7 +45,9 @@ class Home extends AUTH_Controller
         $data['total_rows_boottime'] = $total_rows_boottime;
         $data['total_rows_idm_listener'] = $total_rows_idm_listener;
         $data['total_rows_edc_bca'] = $total_rows_edc_bca;
+        $data['total_rows_edc_bca_no_edc'] = $total_rows_edc_bca_no_edc;
         $data['total_rows_edc_mandiri'] = $total_rows_edc_mandiri;
+        $data['total_rows_edc_mandiri_no_edc'] = $total_rows_edc_mandiri_no_edc;
         $data['total_rows_key_windows'] = $total_rows_key_windows;
         $data['total_rows_aktivasi_os'] = $total_rows_aktivasi_os;
 
@@ -94,7 +98,7 @@ class Home extends AUTH_Controller
                 $resultData = array();
 
                 // Definisikan kolom yang diharapkan
-                $expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP'];
+                $expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT'];
                 $columns = array_keys($sheetData[0]);
 
                 // Cek apakah kolom yang diharapkan ada
@@ -152,6 +156,10 @@ class Home extends AUTH_Controller
                         $resultData[$index]['edc_mandiri_on'] = isset($value['AN']) ? $value['AN'] : ''; // EDC_MANDIRI_ON
                         $resultData[$index]['edc_mandiri_off'] = isset($value['AO']) ? $value['AO'] : ''; // EDC_MANDIRI_OFF
                         $resultData[$index]['edc_mandiri_last'] = isset($value['AP']) ? $value['AP'] : ''; // EDC_MANDIRI_LAST
+                        $resultData[$index]['setting_mti'] = isset($value['AQ']) ? $value['AQ'] : ''; // SETTING_MANDIRI
+                        $resultData[$index]['edc_mti_on'] = isset($value['AR']) ? $value['AR'] : ''; // EDC_MANDIRI_ON
+                        $resultData[$index]['edc_mti_off'] = isset($value['AS']) ? $value['AS'] : ''; // EDC_MANDIRI_OFF
+                        $resultData[$index]['edc_mti_last'] = isset($value['AT']) ? $value['AT'] : ''; // EDC_MANDIRI_LAST
 
                         $index++;
                     }

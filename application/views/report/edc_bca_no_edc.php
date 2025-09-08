@@ -17,7 +17,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-                    <table id="list-data-edc-mandiri" class="table table-bordered table-striped">
+                    <table id="list-data-edc-bca-no-edc" class="table table-bordered table-striped">
                               <thead>
                                         <tr>
                                                   <th style="background-color: darkcyan; color: white;">No</th>
@@ -25,36 +25,22 @@
                                                   <th style="background-color: darkcyan; color: white;">Nama Toko</th>
                                                   <th style="background-color: darkcyan; color: white;">Station</th>
                                                   <th style="background-color: darkcyan; color: white;">Nama Edp</th>
-                                                  <th style="background-color: darkcyan; color: white;">Jml ol wirecard
+                                                  <th style="background-color: darkcyan; color: white;">Jml online
                                                   </th>
                                                   <th style="background-color: darkcyan; color: white;">Jml Offline
-                                                            wirecard
                                                   </th>
                                                   <th style="background-color: darkcyan; color: white;">Status Online
-                                                            wirecard
                                                   </th>
-
-                                                  <th style="background-color: darkcyan; color: white;">Jml ol mti /
-                                                            yokke
-                                                  </th>
-                                                  <th style="background-color: darkcyan; color: white;">Jml Offline
-                                                            mti / yokke
-                                                  </th>
-                                                  <th style="background-color: darkcyan; color: white;">Status Online
-                                                            mti / yokke
-                                                  </th>
-
                                                   <th style="background-color: darkcyan; color: white;">Tgl Tarik Data
                                                   </th>
-                                                  <th style="background-color: darkcyan; color: white;">status tarik
-                                                            data
+                                                  <th style="background-color: darkcyan; color: white;">Keterangan
                                                   </th>
 
 
 
                                         </tr>
                               </thead>
-                              <tbody id="data-report-edc-mandiri">
+                              <tbody id="data-report-edc-bca-no-edc">
 
                               </tbody>
                     </table>

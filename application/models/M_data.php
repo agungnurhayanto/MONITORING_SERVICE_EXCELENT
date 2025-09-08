@@ -185,6 +185,27 @@ class M_data extends CI_Model
         return $results;
     }
 
+    public function total_rows_edc_bca_no_edc($edp_names)
+
+    {
+        $results = [];
+
+        foreach ($edp_names as $name) {
+            $this->db->select('services_excelent.*, edp.nama_edp');
+            $this->db->from('services_excelent');
+            $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+            $this->db->like('services_excelent.edc_bca_last', 'NOEDC');
+            $this->db->where('edp.nama_edp', $name);
+            $this->db->where("services_excelent.setting_bca", "'-");
+            $this->db->where('services_excelent.station !=', 'i1');
+
+            $data = $this->db->get();
+            $results[$name] = $data->num_rows();
+        }
+
+        return $results;
+    }
+
     public function total_rows_edc_mandiri($edp_names)
 
     {
@@ -198,6 +219,27 @@ class M_data extends CI_Model
             $this->db->like('services_excelent.edc_mandiri_last', 'OFFLINE');
             $this->db->where('edp.nama_edp', $name);
 
+            $data = $this->db->get();
+            $results[$name] = $data->num_rows();
+        }
+
+        return $results;
+    }
+
+    public function total_rows_edc_mandiri_no_edc($edp_names)
+
+    {
+
+        $results = [];
+
+        foreach ($edp_names as $name) {
+            $this->db->select('services_excelent.*, edp.nama_edp');
+            $this->db->from('services_excelent');
+            $this->db->join('edp', 'edp.kdtk = services_excelent.kdtk');
+            $this->db->like('services_excelent.edc_mandiri_last', 'NOEDC');
+            $this->db->where('edp.nama_edp', $name);
+            $this->db->where("services_excelent.setting_mandiri", "'-");
+            $this->db->where('services_excelent.station !=', 'i1');
             $data = $this->db->get();
             $results[$name] = $data->num_rows();
         }
@@ -318,14 +360,57 @@ class M_data extends CI_Model
             ->get();
     }
 
+    public function select_edc_bca_no_edc($table)
+    {
+        return $this->db
+            ->select('services_excelent.*, edp.nik, edp.nama_edp')
+            ->from('services_excelent')
+            ->join('edp', 'services_excelent.kdtk = edp.kdtk')
+            ->like('services_excelent.edc_bca_last', 'NOEDC')
+            ->where("services_excelent.setting_bca", "'-")
+            ->where('services_excelent.station !=', 'i1')
+            ->order_by('nama', 'ASC')
+            ->get();
+    }
+
+    // public function select_edc_mandiri($table)
+    // {
+    //     return $this->db
+    //         ->select('services_excelent.*, edp.nik, edp.nama_edp')
+    //         ->from('services_excelent')
+    //         ->join('edp', 'services_excelent.kdtk = edp.kdtk')
+    //         ->like('services_excelent.edc_mandiri_last', 'OFFLINE')
+    //         ->order_by('edp.nik', 'ASC')
+    //         ->get();
+    // }
+
     public function select_edc_mandiri($table)
     {
         return $this->db
             ->select('services_excelent.*, edp.nik, edp.nama_edp')
             ->from('services_excelent')
             ->join('edp', 'services_excelent.kdtk = edp.kdtk')
-            ->like('services_excelent.edc_mandiri_last', 'OFFLINE')
-            ->order_by('edp.nik', 'ASC')
+            ->where('services_excelent.edc_mandiri_last NOT LIKE', '%ONLINE%')
+            ->where('services_excelent.edc_mti_last NOT LIKE', '%ONLINE%')
+            ->where('services_excelent.station !=', 'i1')
+            ->order_by('services_excelent.kdtk', 'ASC')
+            ->get();
+    }
+
+
+
+    public function select_edc_mandiri_no_edc($table)
+    {
+        return $this->db
+            ->select('services_excelent.*, edp.nik, edp.nama_edp')
+            ->from('services_excelent')
+            ->join('edp', 'services_excelent.kdtk = edp.kdtk')
+            ->like('services_excelent.edc_mandiri_last', 'NOEDC')
+            ->where("services_excelent.setting_mandiri", "'-")
+            ->like('services_excelent.edc_mti_last', 'NOEDC') // Tambahan untuk edc_mti_last
+            ->where("services_excelent.setting_mti", "'-")   // Tambahan untuk setting_mti
+            ->where('services_excelent.station !=', 'i1')
+            ->order_by('nama', 'ASC')
             ->get();
     }
 

@@ -107,6 +107,22 @@ class Report extends AUTH_Controller
 		$this->load->view('report/list_data_edc_bca', $data);
 	}
 
+	public function edc_bca_no_edc()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
+
+		$this->template->views('report/edc_bca_no_edc', $data);
+	}
+
+	public function tampil_edc_bca_no_edc()
+	{
+		$data['dataReport'] = $this->M_data->select_edc_bca_no_edc('services_excelent')->result();
+		$this->load->view('report/list_data_edc_bca_no_edc', $data);
+	}
+
 	public function edc_mandiri()
 	{
 		$data['userdata'] = $this->userdata;
@@ -123,6 +139,22 @@ class Report extends AUTH_Controller
 		$this->load->view('report/list_data_edc_mandiri', $data);
 	}
 
+
+	public function edc_mandiri_no_edc()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
+
+		$this->template->views('report/edc_mandiri_no_edc', $data);
+	}
+
+	public function tampil_edc_mandiri_no_edc()
+	{
+		$data['dataReport'] = $this->M_data->select_edc_mandiri_no_edc('services_excelent')->result();
+		$this->load->view('report/list_data_edc_mandiri_no_edc', $data);
+	}
 
 	public function key_windows()
 	{

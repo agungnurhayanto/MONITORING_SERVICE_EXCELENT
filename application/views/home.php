@@ -10,7 +10,9 @@ $users = [
     'total_time' => $total_rows_boottime['AHMAD SOFYAN'],
     'idm_listener' => $total_rows_idm_listener['AHMAD SOFYAN'],
     'edc_bca' => $total_rows_edc_bca['AHMAD SOFYAN'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['AHMAD SOFYAN'],
     'edc_mandiri' => $total_rows_edc_mandiri['AHMAD SOFYAN'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['AHMAD SOFYAN'],
     'key_windows' => $total_rows_key_windows['AHMAD SOFYAN'],
     'aktivasi_os' => $total_rows_aktivasi_os['AHMAD SOFYAN']
   ],
@@ -24,7 +26,9 @@ $users = [
     'total_time' => $total_rows_boottime['ADHI PRASETYO'],
     'idm_listener' => $total_rows_idm_listener['ADHI PRASETYO'],
     'edc_bca' => $total_rows_edc_bca['ADHI PRASETYO'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['ADHI PRASETYO'],
     'edc_mandiri' => $total_rows_edc_mandiri['ADHI PRASETYO'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['ADHI PRASETYO'],
     'key_windows' => $total_rows_key_windows['ADHI PRASETYO'],
     'aktivasi_os' => $total_rows_aktivasi_os['ADHI PRASETYO']
   ],
@@ -38,7 +42,9 @@ $users = [
     'total_time' => $total_rows_boottime['DEDE HERMANSYAH'],
     'idm_listener' => $total_rows_idm_listener['DEDE HERMANSYAH'],
     'edc_bca' => $total_rows_edc_bca['DEDE HERMANSYAH'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['DEDE HERMANSYAH'],
     'edc_mandiri' => $total_rows_edc_mandiri['DEDE HERMANSYAH'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['DEDE HERMANSYAH'],
     'key_windows' => $total_rows_key_windows['DEDE HERMANSYAH'],
     'aktivasi_os' => $total_rows_aktivasi_os['DEDE HERMANSYAH']
   ],
@@ -52,7 +58,9 @@ $users = [
     'total_time' => $total_rows_boottime['JUANDA'],
     'idm_listener' => $total_rows_idm_listener['JUANDA'],
     'edc_bca' => $total_rows_edc_bca['JUANDA'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['JUANDA'],
     'edc_mandiri' => $total_rows_edc_mandiri['JUANDA'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['JUANDA'],
     'key_windows' => $total_rows_key_windows['JUANDA'],
     'aktivasi_os' => $total_rows_aktivasi_os['JUANDA']
 
@@ -67,7 +75,9 @@ $users = [
     'total_time' => $total_rows_boottime['ARIFIN HAZALI'],
     'idm_listener' => $total_rows_idm_listener['ARIFIN HAZALI'],
     'edc_bca' => $total_rows_edc_bca['ARIFIN HAZALI'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['ARIFIN HAZALI'],
     'edc_mandiri' => $total_rows_edc_mandiri['ARIFIN HAZALI'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['ARIFIN HAZALI'],
     'key_windows' => $total_rows_key_windows['ARIFIN HAZALI'],
     'aktivasi_os' => $total_rows_aktivasi_os['ARIFIN HAZALI']
   ],
@@ -81,7 +91,9 @@ $users = [
     'total_time' => $total_rows_boottime['JAMHARA PARPANI'],
     'idm_listener' => $total_rows_idm_listener['JAMHARA PARPANI'],
     'edc_bca' => $total_rows_edc_bca['JAMHARA PARPANI'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['JAMHARA PARPANI'],
     'edc_mandiri' => $total_rows_edc_mandiri['JAMHARA PARPANI'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['JAMHARA PARPANI'],
     'key_windows' => $total_rows_key_windows['JAMHARA PARPANI'],
     'aktivasi_os' => $total_rows_aktivasi_os['JAMHARA PARPANI']
   ],
@@ -95,7 +107,9 @@ $users = [
     'total_time' => $total_rows_boottime['ILHAM M FIRDAUS'],
     'idm_listener' => $total_rows_idm_listener['ILHAM M FIRDAUS'],
     'edc_bca' => $total_rows_edc_bca['ILHAM M FIRDAUS'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['ILHAM M FIRDAUS'],
     'edc_mandiri' => $total_rows_edc_mandiri['ILHAM M FIRDAUS'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['ILHAM M FIRDAUS'],
     'key_windows' => $total_rows_key_windows['ILHAM M FIRDAUS'],
     'aktivasi_os' => $total_rows_aktivasi_os['ILHAM M FIRDAUS']
   ],
@@ -109,7 +123,9 @@ $users = [
     'total_time' => $total_rows_boottime['EGA RAMADHANI ANWARI'],
     'idm_listener' => $total_rows_idm_listener['EGA RAMADHANI ANWARI'],
     'edc_bca' => $total_rows_edc_bca['EGA RAMADHANI ANWARI'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['EGA RAMADHANI ANWARI'],
     'edc_mandiri' => $total_rows_edc_mandiri['EGA RAMADHANI ANWARI'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['EGA RAMADHANI ANWARI'],
     'key_windows' => $total_rows_key_windows['EGA RAMADHANI ANWARI'],
     'aktivasi_os' => $total_rows_aktivasi_os['EGA RAMADHANI ANWARI']
   ],
@@ -123,7 +139,9 @@ $users = [
     'total_time' => $total_rows_boottime['ANDREAS ARMANDO YUNIOR'],
     'idm_listener' => $total_rows_idm_listener['ANDREAS ARMANDO YUNIOR'],
     'edc_bca' => $total_rows_edc_bca['ANDREAS ARMANDO YUNIOR'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['ANDREAS ARMANDO YUNIOR'],
     'edc_mandiri' => $total_rows_edc_mandiri['ANDREAS ARMANDO YUNIOR'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['ANDREAS ARMANDO YUNIOR'],
     'key_windows' => $total_rows_key_windows['ANDREAS ARMANDO YUNIOR'],
     'aktivasi_os' => $total_rows_aktivasi_os['ANDREAS ARMANDO YUNIOR']
   ],
@@ -137,7 +155,9 @@ $users = [
     'total_time' => $total_rows_boottime['RAMADHAN SAPUTRA'],
     'idm_listener' => $total_rows_idm_listener['RAMADHAN SAPUTRA'],
     'edc_bca' => $total_rows_edc_bca['RAMADHAN SAPUTRA'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['RAMADHAN SAPUTRA'],
     'edc_mandiri' => $total_rows_edc_mandiri['RAMADHAN SAPUTRA'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['RAMADHAN SAPUTRA'],
     'key_windows' => $total_rows_key_windows['RAMADHAN SAPUTRA'],
     'aktivasi_os' => $total_rows_aktivasi_os['RAMADHAN SAPUTRA']
   ],
@@ -151,7 +171,9 @@ $users = [
     'total_time' => $total_rows_boottime['PRADITYA RIYAN VIVALDI'],
     'idm_listener' => $total_rows_idm_listener['PRADITYA RIYAN VIVALDI'],
     'edc_bca' => $total_rows_edc_bca['PRADITYA RIYAN VIVALDI'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['PRADITYA RIYAN VIVALDI'],
     'edc_mandiri' => $total_rows_edc_mandiri['PRADITYA RIYAN VIVALDI'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['PRADITYA RIYAN VIVALDI'],
     'key_windows' => $total_rows_key_windows['PRADITYA RIYAN VIVALDI'],
     'aktivasi_os' => $total_rows_aktivasi_os['PRADITYA RIYAN VIVALDI']
   ],
@@ -165,7 +187,9 @@ $users = [
     'total_time' => $total_rows_boottime['HENDRIK ASTA MANGGALA'],
     'idm_listener' => $total_rows_idm_listener['HENDRIK ASTA MANGGALA'],
     'edc_bca' => $total_rows_edc_bca['HENDRIK ASTA MANGGALA'],
+    'edc_bca_no_edc' => $total_rows_edc_bca_no_edc['HENDRIK ASTA MANGGALA'],
     'edc_mandiri' => $total_rows_edc_mandiri['HENDRIK ASTA MANGGALA'],
+    'edc_mandiri_no_edc' => $total_rows_edc_mandiri_no_edc['HENDRIK ASTA MANGGALA'],
     'key_windows' => $total_rows_key_windows['HENDRIK ASTA MANGGALA'],
     'aktivasi_os' => $total_rows_aktivasi_os['HENDRIK ASTA MANGGALA']
   ]
@@ -337,6 +361,16 @@ $users = [
                                                                                                     style="font-size: 20px;"><?php echo $user['edc_bca']; ?></span></a>
                                                                       </li>
 
+                                                                      <li><a href="<?php echo base_url('Report/edc_bca_no_edc') ?>"
+                                                                                          class="small-box-footer"
+                                                                                          style="font-size: 20px;">Edc
+                                                                                          Bca No Edc <i
+                                                                                                    class="fa fa-arrow-circle-right"
+                                                                                                    style="font-size: 20px;"></i>
+                                                                                          <span class="pull-right badge bg-red"
+                                                                                                    style="font-size: 20px;"><?php echo $user['edc_bca_no_edc']; ?></span></a>
+                                                                      </li>
+
                                                                       <li><a href="<?php echo base_url('Report/edc_mandiri') ?>"
                                                                                           class="small-box-footer"
                                                                                           style="font-size: 20px;">Edc
@@ -345,6 +379,16 @@ $users = [
                                                                                                     style="font-size: 20px;"></i>
                                                                                           <span class="pull-right badge bg-red"
                                                                                                     style="font-size: 20px;"><?php echo $user['edc_mandiri']; ?></span></a>
+                                                                      </li>
+
+                                                                      <li><a href="<?php echo base_url('Report/edc_mandiri_no_edc') ?>"
+                                                                                          class="small-box-footer"
+                                                                                          style="font-size: 20px;">Edc
+                                                                                          Mandiri No Edc <i
+                                                                                                    class="fa fa-arrow-circle-right"
+                                                                                                    style="font-size: 20px;"></i>
+                                                                                          <span class="pull-right badge bg-red"
+                                                                                                    style="font-size: 20px;"><?php echo $user['edc_mandiri_no_edc']; ?></span></a>
                                                                       </li>
 
                                                                       <li><a href="<?php echo base_url('Report/idm_listener') ?>"
