@@ -119,7 +119,7 @@ class M_klasement extends CI_Model
       $this->db->select('idm_listener.*, edp.nama_edp');
       $this->db->from('idm_listener');
       $this->db->join('edp', 'edp.kdtk = idm_listener.kdtk');
-      $this->db->where('idm_listener.STATUS', 'TIMEOUT');
+      $this->db->where('idm_listener.STATUS', "'-");
       $this->db->where('edp.nama_edp', $name);
 
       $data = $this->db->get();
