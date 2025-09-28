@@ -46,7 +46,7 @@ $usersData = [
     ],
     'PRADITYA RIYAN VIVALDI' => [
         'name' => 'Praditya R',
-        'image' => 'assets/img/edp_13.jpg',
+        'image' => 'assets/img/edp_.jpg',
     ],
 ];
 
@@ -153,6 +153,21 @@ function getBackgroundColor($value)
             font-weight: bold;
             color: blue;
         }
+
+        .zoom-photo {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.zoom-photo:hover {
+    transform: scale(8); /* zoom 2x */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* biar ada efek bayangan */
+    z-index: 1000; /* biar gak ketiban elemen lain */
+    position: relative;
+}
+
     </style>
 </head>
 <body>
@@ -187,17 +202,14 @@ function getBackgroundColor($value)
         <?php $no=1; foreach($users as $user): ?>
         <tr>
             <td><?= $no++; ?></td>
-            <!-- <td style="text-align:left">
-                <img src="<?= base_url($user['image']); ?>" width="40" height="40"> 
-                <?= $user['name']; ?>
-            </td> -->
             <td>
   <div style="display:flex; align-items:center; gap:8px;">
-      <img src="<?= base_url($user['image']); ?>" width="32" height="32" style="border-radius:50%; border:1px solid #ccc;">
+      <img src="<?= base_url($user['image']); ?>" 
+           class="zoom-photo"
+           width="32" height="32">
       <span style="font-size:15px; font-weight:bold;"><?= $user['name']; ?></span>
   </div>
 </td>
-
             <td style="<?= getTotalColor($user['total']); ?>"><?= $user['total']; ?></td>
             <td><?= $user['total_lan']; ?></td>
             <td style="<?= getBackgroundColor($user['persen_lan']); ?>"><?= $user['persen_lan']; ?>%</td>
