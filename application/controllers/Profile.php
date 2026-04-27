@@ -1,22 +1,26 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profile extends AUTH_Controller {
-	public function __construct() {
+class Profile extends AUTH_Controller
+{
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('M_admin');
 	}
 
-	public function index() {
+	public function index()
+	{
 		$data['userdata'] 		= $this->userdata;
-		
+
 		$data['page'] 			= "profile";
 		$data['judul'] 			= "Profile";
 		$data['deskripsi'] 		= "Setting Profile";
 		$this->template->views('profile', $data);
 	}
 
-	public function update() {
+	public function update()
+	{
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|max_length[15]');
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
 
@@ -25,13 +29,12 @@ class Profile extends AUTH_Controller {
 		if ($this->form_validation->run() == TRUE) {
 			$config['upload_path'] = './assets/img/';
 			$config['allowed_types'] = 'jpg|png';
-			
+
 			$this->load->library('upload', $config);
-			
-			if (!$this->upload->do_upload('foto')){
+
+			if (!$this->upload->do_upload('foto')) {
 				$error = array('error' => $this->upload->display_errors());
-			}
-			else{
+			} else {
 				$data_foto = $this->upload->data();
 				$data['foto'] = $data_foto['file_name'];
 			}
@@ -51,7 +54,8 @@ class Profile extends AUTH_Controller {
 		}
 	}
 
-	public function ubah_password() {
+	public function ubah_password()
+	{
 		$this->form_validation->set_rules('passLama', 'Password Lama', 'trim|required');
 		$this->form_validation->set_rules('passBaru', 'Password Baru', 'trim|required');
 		$this->form_validation->set_rules('passKonf', 'Password Konfirmasi', 'trim|required');
@@ -86,7 +90,6 @@ class Profile extends AUTH_Controller {
 			redirect('Profile');
 		}
 	}
-
 }
 
 /* End of file Profile.php */
