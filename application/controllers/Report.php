@@ -41,6 +41,23 @@ class Report extends AUTH_Controller
 		$this->load->view('report/list_data_cpu_usage', $data);
 	}
 
+
+	public function ups_nok()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
+
+		$this->template->views('report/ups_nok', $data);
+	}
+
+	public function tampil_ups_nok()
+	{
+		$data['dataReport'] = $this->M_data->select_ups_nok('services_excelent')->result();
+		$this->load->view('report/list_data_ups_nok', $data);
+	}
+
 	public function cpu_suhu()
 	{
 		$data['userdata'] = $this->userdata;
@@ -206,6 +223,22 @@ class Report extends AUTH_Controller
 		$this->load->view('report/list_data_upgrade_os', $data);
 	}
 
+	public function hasil()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent Hasil Jadwal";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
+
+		$this->template->views('report/report', $data);
+	}
+
+	public function tampil_hasil()
+	{
+		$data['dataReport'] = $this->M_data->select_report('services_excelent')->result();
+		$this->load->view('report/list_data_report_se', $data);
+	}
+
 
 	public function download_template()
 	{
@@ -258,13 +291,15 @@ class Report extends AUTH_Controller
 				$sheetData = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
 
 				// Ambil baris mulai dari baris ketiga
-				$sheetData = array_slice($sheetData, 2); // Mengabaikan dua baris pertama
+				$sheetData = array_slice($sheetData, 1); // Mengabaikan dua baris pertama
 
 				$index = 0;
 				$resultData = array();
 
 				// Definisikan kolom yang diharapkan
-				$expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'];
+				//$expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'];
+				$expectedColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'];
+
 				$columns = array_keys($sheetData[0]); // Kolom pada baris pertama data (bukan header)
 
 				// Cek apakah kolom yang diharapkan ada
@@ -295,9 +330,14 @@ class Report extends AUTH_Controller
 					$resultData[$index]['VERSI_IDMLIBRARY'] = isset($value['N']) ? $value['N'] : ''; // VERSI_IDMLIBRARY
 					$resultData[$index]['FILE_CABANG_INI'] = isset($value['O']) ? $value['O'] : ''; // FILE_CABANG_INI
 					$resultData[$index]['VERSI_ATTRIBUTE'] = isset($value['P']) ? $value['P'] : ''; // FILE_CABANG_INI
-					$resultData[$index]['LibreHardwareMonitor_dll'] = isset($value['Q']) ? $value['Q'] : ''; // LibreHardwareMonitor_dll
-					$resultData[$index]['OS_KeyDLL_dll'] = isset($value['R']) ? $value['R'] : ''; // OS_KeyDLL_dll
-					$resultData[$index]['STATUS'] = isset($value['S']) ? $value['S'] : ''; // STATUS
+					// $resultData[$index]['LibreHardwareMonitor_dll'] = isset($value['Q']) ? $value['Q'] : ''; // LibreHardwareMonitor_dll
+					// $resultData[$index]['OS_KeyDLL_dll'] = isset($value['R']) ? $value['R'] : ''; // OS_KeyDLL_dll
+					// $resultData[$index]['STATUS'] = isset($value['S']) ? $value['S'] : ''; // STATUS
+					$resultData[$index]['LibreHardwareMonitor_dll'] = $value['Q'];
+					$resultData[$index]['OS_KeyDLL_dll'] = $value['R'];
+					$resultData[$index]['SE_dll'] = isset($value['S']) ? $value['S'] : '';
+					$resultData[$index]['STATUS'] = isset($value['T']) ? $value['T'] : '';
+
 
 					$index++;
 				}

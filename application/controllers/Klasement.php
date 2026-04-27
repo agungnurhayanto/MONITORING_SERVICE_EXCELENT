@@ -12,7 +12,7 @@ class Klasement extends AUTH_Controller
     public function index()
     {
 
-        $edp_names = ['AHMAD SOFYAN', 'ADHI PRASETYO', 'DEDE HERMANSYAH', 'JUANDA', 'EGA RAMADHANI ANWARI', 'HENDRIK ASTA MANGGALA', 'ILHAM M FIRDAUS', 'JAMHARA PARPANI', 'PRADITYA RIYAN VIVALDI', 'RAMADHAN SAPUTRA', 'ANDREAS ARMANDO YUNIOR', 'ARIFIN HAZALI'];
+        $edp_names = ['AHMAD SOFYAN', 'ADHI PRASETYO', 'DEDE HERMANSYAH', 'JUANDA', 'EGA RAMADHANI ANWARI', 'HENDRIK ASTA MANGGALA', 'ILHAM MUHAMMAD FIRDAUS', 'JAMHARA PARPANI', 'PRADITYA RIYAN VIVALDI', 'RAMADHAN SAPUTRA', 'ANDREAS ARMANDO YUNIOR', 'ARIFIN HAZALI'];
 
         $total_rows_lan = $this->M_klasement->total_rows_lan($edp_names);
         // $total_rows_lan_ttl = $this->M_klasement->total_rows_lan_ttl($edp_names);

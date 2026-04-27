@@ -24,7 +24,7 @@ $usersData = [
         'name' => 'Jamhara Parpani',
         'image' => 'assets/img/edp_12.jpg',
     ],
-    'ILHAM M FIRDAUS' => [
+    'ILHAM MUHAMMAD FIRDAUS' => [
         'name' => 'Ilham M Firdaus',
         'image' => 'assets/img/edp_2.jpg',
     ],
@@ -46,7 +46,7 @@ $usersData = [
     ],
     'PRADITYA RIYAN VIVALDI' => [
         'name' => 'Praditya R',
-        'image' => 'assets/img/edp_.jpg',
+        'image' => 'assets/img/edp_13.jpg',
     ],
 ];
 
@@ -143,16 +143,18 @@ function getBackgroundColor($value)
             font-size: 16px;
         }
         td {
-            font-size: 15px;
+            font-size: 18px;
+            font-weight: bold; 
         }
         img {
             border-radius: 50%;
         }
-        tfoot th, tfoot td {
-            background: #f8f9fa;
-            font-weight: bold;
-            color: blue;
-        }
+       tfoot td, 
+tfoot th {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+}
 
         .zoom-photo {
     border-radius: 50%;

@@ -105,7 +105,6 @@ class M_data extends CI_Model
 
 
     public function total_rows_suhu($edp_names)
-
     {
 
         $results = [];
@@ -337,17 +336,29 @@ class M_data extends CI_Model
         return $this->db->get();
     }
 
-    public function select_idm_listener($table)
+    // public function select_idm_listener($table)
 
+    // {
+    //     return $this->db
+    //         ->select('idm_listener.*, edp.nik, edp.nama_edp')
+    //         ->from('idm_listener')
+    //         ->join('edp', 'idm_listener.kdtk = edp.kdtk')
+    //         ->where('idm_listener.KETERANGAN', 'Listener NOK')
+    //         ->order_by('edp.nik', 'ASC')
+    //         ->get();
+    // }
+
+    public function select_idm_listener($table)
     {
         return $this->db
             ->select('idm_listener.*, edp.nik, edp.nama_edp')
             ->from('idm_listener')
-            ->join('edp', 'idm_listener.kdtk = edp.kdtk')
-            ->where('idm_listener.KETERANGAN', 'Listener NOK')
+            ->join('edp', 'idm_listener.kdtk = edp.kdtk', 'left')
+            ->where('idm_listener.KETERANGAN NOT LIKE', '%Succes%')
             ->order_by('edp.nik', 'ASC')
             ->get();
     }
+
 
     public function select_edc_bca($table)
     {
@@ -397,8 +408,6 @@ class M_data extends CI_Model
             ->get();
     }
 
-
-
     public function select_edc_mandiri_no_edc($table)
     {
         return $this->db
@@ -445,6 +454,66 @@ class M_data extends CI_Model
             ->join('edp', 'services_excelent.kdtk = edp.kdtk')
             ->where('services_excelent.memory_terpasang >', '4 GB')
             ->where('services_excelent.arsitektur', '32-bit')
+            ->order_by('edp.nik', 'ASC')
+            ->get();
+    }
+
+
+    public function select_ups_nok($table)
+    {
+        $subquery = $this->db
+            ->select('s1.kdtk')
+            ->from($table . ' s1')
+            ->where("s1.kdtk LIKE 'T%'", null, false)
+            ->where("TRIM(s1.station) = '1'", null, false)
+            ->where("TRIM(LOWER(s1.ups_status)) = 'nok'", null, false)
+            ->where("EXISTS (
+            SELECT 1
+            FROM {$table} s2
+            WHERE s2.kdtk = s1.kdtk
+              AND TRIM(s2.station) <> '1'
+              AND LOWER(s2.ups_status) LIKE 'terpasang%'
+        )", null, false)
+            ->get_compiled_select();
+
+        return $this->db
+            ->select("{$table}.*, edp.nik, edp.nama_edp")
+            ->from($table)
+            ->join('edp', "{$table}.kdtk = edp.kdtk", 'left')
+            ->where("{$table}.kdtk IN ($subquery)", null, false)
+            ->order_by("{$table}.kdtk", 'ASC')
+            ->order_by("{$table}.station", 'ASC')
+            ->get();
+    }
+
+    public function select_report($table)
+    {
+        return $this->db
+            ->select('
+            services_excelent.keterangan,
+            services_excelent.response,
+            services_excelent.kdtk,
+            services_excelent.nama,
+            services_excelent.station,
+            services_excelent.cpu_usage,
+            services_excelent.ups_status,
+            services_excelent.lan_speed,
+            services_excelent.suhu,
+            services_excelent.boot_time,
+            services_excelent.edc_bca_on,
+            services_excelent.edc_bca_off,
+            services_excelent.edc_bca_last,
+            services_excelent.edc_mandiri_on,
+            services_excelent.edc_mandiri_off,
+            services_excelent.edc_mandiri_last,
+            services_excelent.edc_mti_on,
+            services_excelent.edc_mti_off,
+            services_excelent.edc_mti_last,
+            edp.nik,
+            edp.nama_edp
+        ')
+            ->from('services_excelent')
+            ->join('edp', 'services_excelent.kdtk = edp.kdtk')
             ->order_by('edp.nik', 'ASC')
             ->get();
     }
