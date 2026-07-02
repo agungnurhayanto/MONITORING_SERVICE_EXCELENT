@@ -25,6 +25,25 @@
   </div>
 </div>
 
+<style>
+  .blink-new {
+    background: #ff0000 !important;
+    color: #fff !important;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+    animation: blink 0.8s infinite;
+    box-shadow: 0 0 8px red;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
@@ -125,6 +144,26 @@
         </a>
       </li>
 
+      <!-- <li <?php if ($page == 'report') {
+                  echo 'class="active"';
+                } ?>>
+        <a href="<?php echo base_url('Report/trace_edc'); ?>">
+          <i class="fa fa-book"></i>
+          <span>EDC REPORT HO</span>
+          <small class="label pull-right blink-new">NEW</small>
+        </a>
+      </li> -->
+
+      <li <?php if ($page == 'report') echo 'class="active"'; ?>>
+        <a href="<?php echo base_url('Report/trace_edc'); ?>">
+          <i class="fa fa-rocket text-red"></i>
+          <span style="font-weight:bold;color:#FFD700;">
+            EDC REPORT HO
+          </span>
+          <small class="label pull-right blink-new">NEW</small>
+        </a>
+      </li>
+
       <li <?php if ($page == 'report') {
             echo 'class="active"';
           } ?>>
@@ -218,6 +257,15 @@
           <span>Hasil Kunjungan </span>
         </a>
       </li>
+
+      <!-- <li <?php if ($page == 'report') {
+                  echo 'class="active"';
+                } ?>>
+        <a href="<?php echo base_url('Report/trace_edc'); ?>">
+          <i class="fa fa-book"></i>
+          <span>Edc Report HO </span>
+        </a>
+      </li> -->
 
 
 

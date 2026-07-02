@@ -25,6 +25,59 @@ class Report extends AUTH_Controller
 		$this->load->view('report/list_data', $data);
 	}
 
+
+	public function trace_edc()
+	{
+		$data['userdata'] = $this->userdata;
+		$data['page'] = "SERVICE EXCELENT";
+		$data['judul'] = "Data Service Excelent";
+		$data['deskripsi'] = "Report Dashboard Service Excelent";
+
+		$this->template->views('report/trace_edc', $data);
+	}
+
+	public function tampil_edc_trace()
+	{
+		$edp = $this->input->get('edp');
+		$edc = $this->input->get('edc');
+
+		$url = "http://localhost:8989/dashboard?";
+
+		if (!empty($edp)) {
+			$url .= "edp=" . urlencode($edp);
+		}
+
+		if (!empty($edc)) {
+			if (!empty($edp)) {
+				$url .= "&";
+			}
+
+			$url .= "edc=" . urlencode($edc);
+		}
+
+		$response = file_get_contents($url);
+
+		$data['dataList'] = json_decode($response, false);
+
+		$this->load->view('report/list_trace_edc', $data);
+	}
+
+	public function get_edp()
+	{
+		$edc = $this->input->get('edc');
+
+		$url = "http://localhost:8989/dashboard/edp";
+
+		if (!empty($edc)) {
+			$url .= "?edc=" . urlencode($edc);
+		}
+
+		$response = file_get_contents($url);
+
+		header('Content-Type: application/json');
+		echo $response;
+	}
+
 	public function cpu_usage()
 	{
 		$data['userdata'] = $this->userdata;

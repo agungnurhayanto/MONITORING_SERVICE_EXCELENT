@@ -464,7 +464,6 @@ class M_data extends CI_Model
         $subquery = $this->db
             ->select('s1.kdtk')
             ->from($table . ' s1')
-            ->where("s1.kdtk LIKE 'T%'", null, false)
             ->where("TRIM(s1.station) = '1'", null, false)
             ->where("TRIM(LOWER(s1.ups_status)) = 'nok'", null, false)
             ->where("EXISTS (

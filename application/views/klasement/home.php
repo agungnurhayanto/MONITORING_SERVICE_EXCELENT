@@ -12,10 +12,6 @@ $usersData = [
         'name' => 'Dede Hermansyah',
         'image' => 'assets/img/edp_10.jpg',
     ],
-    'JUANDA' => [
-        'name' => 'Juanda',
-        'image' => 'assets/img/edp_3.jpg',
-    ],
     'ARIFIN HAZALI' => [
         'name' => 'Arifin Hazali',
         'image' => 'assets/img/edp_8.jpg',
@@ -54,25 +50,34 @@ $total_users = count($usersData);
 
 // 🔹 bentuk array user
 $users = array_map(function ($key, $user) use (
-    $total_rows, $total_rows_usage, $total_rows_suhu, $total_rows_boottime,
-    $total_rows_idm_listener, $total_rows_edc_bca, $total_rows_edc_mandiri,
-    $total_rows_key_windows, $total_rows_aktivasi_os, $total_rows_upgrade_os,
-    $total_rows_all, $total_rows_edc_bca_no_edc, $total_rows_edc_mandiri_no_edc
+    $total_rows,
+    $total_rows_usage,
+    $total_rows_suhu,
+    $total_rows_boottime,
+    $total_rows_idm_listener,
+    $total_rows_edc_bca,
+    $total_rows_edc_mandiri,
+    $total_rows_key_windows,
+    $total_rows_aktivasi_os,
+    $total_rows_upgrade_os,
+    $total_rows_all,
+    $total_rows_edc_bca_no_edc,
+    $total_rows_edc_mandiri_no_edc
 ) {
     $total = $total_rows[$key]
-           + $total_rows_usage[$key]
-           + $total_rows_suhu[$key]
-           + $total_rows_boottime[$key]
-           + $total_rows_idm_listener[$key]
-           + $total_rows_edc_bca[$key]
-           + $total_rows_edc_bca_no_edc[$key]
-           + $total_rows_edc_mandiri[$key]
-           + $total_rows_edc_mandiri_no_edc[$key]
-           + $total_rows_key_windows[$key]
-           + $total_rows_aktivasi_os[$key]
-           + $total_rows_upgrade_os[$key];
+        + $total_rows_usage[$key]
+        + $total_rows_suhu[$key]
+        + $total_rows_boottime[$key]
+        + $total_rows_idm_listener[$key]
+        + $total_rows_edc_bca[$key]
+        + $total_rows_edc_bca_no_edc[$key]
+        + $total_rows_edc_mandiri[$key]
+        + $total_rows_edc_mandiri_no_edc[$key]
+        + $total_rows_key_windows[$key]
+        + $total_rows_aktivasi_os[$key]
+        + $total_rows_upgrade_os[$key];
 
-    $calc = function($all, $val) {
+    $calc = function ($all, $val) {
         return ($all > 0) ? number_format(($all - $val) / $all * 100, 2) : 0;
     };
 
@@ -124,6 +129,7 @@ function getBackgroundColor($value)
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Klasemen Liga EDP SE</title>
@@ -132,129 +138,140 @@ function getBackgroundColor($value)
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             border: 2px solid #000;
             padding: 6px;
             text-align: center;
         }
+
         th {
             background: #007bff;
             color: #fff;
             font-size: 16px;
         }
+
         td {
             font-size: 18px;
-            font-weight: bold; 
+            font-weight: bold;
         }
+
         img {
             border-radius: 50%;
         }
-       tfoot td, 
-tfoot th {
-    font-size: 20px;
-    font-weight: bold;
-    color: blue;
-}
+
+        tfoot td,
+        tfoot th {
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
 
         .zoom-photo {
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
 
-.zoom-photo:hover {
-    transform: scale(8); /* zoom 2x */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* biar ada efek bayangan */
-    z-index: 1000; /* biar gak ketiban elemen lain */
-    position: relative;
-}
-
+        .zoom-photo:hover {
+            transform: scale(8);
+            /* zoom 2x */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            /* biar ada efek bayangan */
+            z-index: 1000;
+            /* biar gak ketiban elemen lain */
+            position: relative;
+        }
     </style>
 </head>
+
 <body>
 
-<h2>Klasemen Liga EDP SE</h2>
+    <h2>Klasemen Liga EDP SE</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama EDP</th>
-            <th>Total Tugas</th>
-            <th>Lan <1Gb</th>
-            <th>Lan %</th>
-            <th>EDC BCA</th>
-            <th>BCA No EDC</th>
-            <th>EDC BCA %</th>
-            <th>EDC Mandiri</th>
-            <th>Mandiri No EDC</th>
-            <th>EDC Man %</th>
-            <th>IDM Listener</th>
-            <th>IDM %</th>
-            <th>CPU Usage >=80%</th>
-            <th>CU %</th>
-            <th>Suhu CPU >=80</th>
-            <th>Suhu %</th>
-            <th>Boot Time <4m</th>
-            <th>BT %</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $no=1; foreach($users as $user): ?>
-        <tr>
-            <td><?= $no++; ?></td>
-            <td>
-  <div style="display:flex; align-items:center; gap:8px;">
-      <img src="<?= base_url($user['image']); ?>" 
-           class="zoom-photo"
-           width="32" height="32">
-      <span style="font-size:15px; font-weight:bold;"><?= $user['name']; ?></span>
-  </div>
-</td>
-            <td style="<?= getTotalColor($user['total']); ?>"><?= $user['total']; ?></td>
-            <td><?= $user['total_lan']; ?></td>
-            <td style="<?= getBackgroundColor($user['persen_lan']); ?>"><?= $user['persen_lan']; ?>%</td>
-            <td><?= $user['edc_bca']; ?></td>
-            <td><?= $user['edc_bca_no_edc']; ?></td>
-            <td style="<?= getBackgroundColor($user['persen_bca']); ?>"><?= $user['persen_bca']; ?>%</td>
-            <td><?= $user['edc_mandiri']; ?></td>
-            <td><?= $user['edc_mandiri_no_edc']; ?></td>
-            <td style="<?= getBackgroundColor($user['persen_mandiri']); ?>"><?= $user['persen_mandiri']; ?>%</td>
-            <td><?= $user['idm_listener']; ?></td>
-            <td style="<?= getBackgroundColor($user['persen_listener']); ?>"><?= $user['persen_listener']; ?>%</td>
-            <td><?= $user['total_cpu']; ?></td>
-            <td style="<?= getBackgroundColor($user['persen_cpu_usage']); ?>"><?= $user['persen_cpu_usage']; ?>%</td>
-            <td><?= $user['total_suhu']; ?></td>
-            <td style="<?= getBackgroundColor($user['persen_suhu']); ?>"><?= $user['persen_suhu']; ?>%</td>
-            <td><?= $user['total_time']; ?></td>
-            <td style="<?= getBackgroundColor($user['persen_boottime']); ?>"><?= $user['persen_boottime']; ?>%</td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th colspan="2">AVG PER USER</th>
-            <td><?= number_format(array_sum(array_column($users, 'total'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'total_lan'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'persen_lan')) / $total_users,2); ?>%</td>
-            <td><?= number_format(array_sum(array_column($users, 'edc_bca'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'edc_bca_no_edc'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'persen_bca')) / $total_users,2); ?>%</td>
-            <td><?= number_format(array_sum(array_column($users, 'edc_mandiri'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'edc_mandiri_no_edc'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'persen_mandiri')) / $total_users,2); ?>%</td>
-            <td><?= number_format(array_sum(array_column($users, 'idm_listener'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'persen_listener')) / $total_users,2); ?>%</td>
-            <td><?= number_format(array_sum(array_column($users, 'total_cpu'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'persen_cpu_usage')) / $total_users,2); ?>%</td>
-            <td><?= number_format(array_sum(array_column($users, 'total_suhu'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'persen_suhu')) / $total_users,2); ?>%</td>
-            <td><?= number_format(array_sum(array_column($users, 'total_time'))); ?></td>
-            <td><?= number_format(array_sum(array_column($users, 'persen_boottime')) / $total_users,2); ?>%</td>
-        </tr>
-    </tfoot>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama EDP</th>
+                <th>Total Tugas</th>
+                <th>Lan 1Gb </th>
+                <th>Lan %</th>
+                <th>EDC BCA</th>
+                <th>BCA No EDC</th>
+                <th>EDC BCA %</th>
+                <th>EDC Mandiri</th>
+                <th>Mandiri No EDC</th>
+                <th>EDC Man %</th>
+                <th>IDM Listener</th>
+                <th>IDM %</th>
+                <th>CPU Usage >=80%</th>
+                <th>CU %</th>
+                <th>Suhu CPU >=80</th>
+                <th>Suhu %</th>
+                <th>Boot Time </th>
+                <th>BT %</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $no = 1;
+            foreach ($users as $user): ?>
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <img src="<?= base_url($user['image']); ?>"
+                                class="zoom-photo"
+                                width="32" height="32">
+                            <span style="font-size:15px; font-weight:bold;"><?= $user['name']; ?></span>
+                        </div>
+                    </td>
+                    <td style="<?= getTotalColor($user['total']); ?>"><?= $user['total']; ?></td>
+                    <td><?= $user['total_lan']; ?></td>
+                    <td style="<?= getBackgroundColor($user['persen_lan']); ?>"><?= $user['persen_lan']; ?>%</td>
+                    <td><?= $user['edc_bca']; ?></td>
+                    <td><?= $user['edc_bca_no_edc']; ?></td>
+                    <td style="<?= getBackgroundColor($user['persen_bca']); ?>"><?= $user['persen_bca']; ?>%</td>
+                    <td><?= $user['edc_mandiri']; ?></td>
+                    <td><?= $user['edc_mandiri_no_edc']; ?></td>
+                    <td style="<?= getBackgroundColor($user['persen_mandiri']); ?>"><?= $user['persen_mandiri']; ?>%</td>
+                    <td><?= $user['idm_listener']; ?></td>
+                    <td style="<?= getBackgroundColor($user['persen_listener']); ?>"><?= $user['persen_listener']; ?>%</td>
+                    <td><?= $user['total_cpu']; ?></td>
+                    <td style="<?= getBackgroundColor($user['persen_cpu_usage']); ?>"><?= $user['persen_cpu_usage']; ?>%</td>
+                    <td><?= $user['total_suhu']; ?></td>
+                    <td style="<?= getBackgroundColor($user['persen_suhu']); ?>"><?= $user['persen_suhu']; ?>%</td>
+                    <td><?= $user['total_time']; ?></td>
+                    <td style="<?= getBackgroundColor($user['persen_boottime']); ?>"><?= $user['persen_boottime']; ?>%</td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2">AVG PER USER</th>
+                <td><?= number_format(array_sum(array_column($users, 'total'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'total_lan'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'persen_lan')) / $total_users, 2); ?>%</td>
+                <td><?= number_format(array_sum(array_column($users, 'edc_bca'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'edc_bca_no_edc'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'persen_bca')) / $total_users, 2); ?>%</td>
+                <td><?= number_format(array_sum(array_column($users, 'edc_mandiri'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'edc_mandiri_no_edc'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'persen_mandiri')) / $total_users, 2); ?>%</td>
+                <td><?= number_format(array_sum(array_column($users, 'idm_listener'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'persen_listener')) / $total_users, 2); ?>%</td>
+                <td><?= number_format(array_sum(array_column($users, 'total_cpu'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'persen_cpu_usage')) / $total_users, 2); ?>%</td>
+                <td><?= number_format(array_sum(array_column($users, 'total_suhu'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'persen_suhu')) / $total_users, 2); ?>%</td>
+                <td><?= number_format(array_sum(array_column($users, 'total_time'))); ?></td>
+                <td><?= number_format(array_sum(array_column($users, 'persen_boottime')) / $total_users, 2); ?>%</td>
+            </tr>
+        </tfoot>
+    </table>
 
 </body>
+
 </html>

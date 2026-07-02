@@ -114,6 +114,11 @@
       table: '#list-data-ups-nok',
       target: '#data-report-ups-nok',
       url: 'Report/tampil_ups_nok'
+    },
+    {
+      table: '#list-data-edc-trace',
+      target: '#data-report-edc-trace',
+      url: 'Report/tampil_edc_trace'
     }
   ];
 
@@ -246,10 +251,101 @@
   // ========================
   // RELOAD TABLE BY ID
   // ========================
+  // function reloadTable(tableId) {
+  //   var item = tableConfig.find(t => t.table === tableId);
+  //   if (item) {
+  //     loadTable(item.table, item.target, base_url + item.url);
+  //   }
+  // }
+
   function reloadTable(tableId) {
+
     var item = tableConfig.find(t => t.table === tableId);
-    if (item) {
-      loadTable(item.table, item.target, base_url + item.url);
+
+    if (!item) return;
+
+    var url = base_url + item.url;
+
+    if (tableId == '#list-data-edc-trace') {
+
+      var edp = $("#filter-edp").val();
+      var edc = $("#filter-edc").val();
+
+      url += "?edp=" + encodeURIComponent(edp) +
+        "&edc=" + encodeURIComponent(edc);
     }
+
+    loadTable(item.table, item.target, url);
   }
+
+  $("#btn-filter").click(function() {
+
+    reloadTable('#list-data-edc-trace');
+
+  });
+</script>
+
+<script>
+  $('#btn-import').click(function() {
+
+    let file = $('#file-import')[0].files[0];
+
+    if (!file) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Perhatian',
+        text: 'Pilih file terlebih dahulu.'
+      });
+      return;
+    }
+
+    let formData = new FormData();
+    formData.append("file", file);
+
+    $.ajax({
+
+      url: "http://192.168.36.120:8989/monitoring/import",
+      type: "POST",
+      data: formData,
+
+      processData: false,
+      contentType: false,
+
+      beforeSend: function() {
+
+        $('#btn-import')
+          .prop('disabled', true)
+          .html('<i class="fa fa-spinner fa-spin"></i> Import...');
+
+      },
+
+      success: function(res) {
+
+        $('#btn-filter').click();
+
+        alert(res.message);
+
+      },
+
+      error: function(xhr) {
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: xhr.responseJSON?.message || 'Terjadi kesalahan saat import.'
+        });
+
+      },
+
+      complete: function() {
+
+        $('#btn-import')
+          .prop('disabled', false)
+          .html('<i class="fa fa-upload"></i> Import');
+
+      }
+
+    });
+
+  });
 </script>
